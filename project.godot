@@ -13,7 +13,7 @@ config_version=5
 config/name="The Running Man"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://RunningManIcon.png"
 
 [autoload]
 
@@ -76,6 +76,7 @@ Jump={
 2d_physics/layer_1="Players"
 2d_physics/layer_2="Enemies"
 2d_physics/layer_3="Levels"
+2d_physics/layer_4="Items"
 2d_navigation/stretch/mode="disabled"
 
 [physics]

@@ -1,9 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkns87mbvdbkf"]
+[gd_scene load_steps=11 format=3 uid="uid://bkns87mbvdbkf"]
 
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_behvx"]
 [ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="1_f0raf"]
 [ext_resource type="PackedScene" uid="uid://dwmlt7yvtkgdr" path="res://Scenes/Player.tscn" id="2_v60l6"]
 [ext_resource type="Texture2D" uid="uid://cgly4h7nlwfrc" path="res://icon.svg" id="3_25twm"]
 [ext_resource type="PackedScene" uid="uid://c57k00wdts1cu" path="res://Scenes/Enemy.tscn" id="4_ylvcq"]
+[ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Burger.tscn" id="6_b2qoe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm0y6"]
+size = Vector2(2145, 110.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5jm0s"]
+size = Vector2(2148, 109)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gs1ac"]
 texture = ExtResource("3_25twm")
@@ -15,8 +23,11 @@ tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_gs1ac")
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_behvx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BACKGROUND" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="BACKGROUND"]
 position = Vector2(-27, -24)
 scale = Vector2(4, 4)
 texture = ExtResource("1_f0raf")
@@ -24,7 +35,7 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 56.6622, 1408, 283.396)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="Sprite2D2" type="Sprite2D" parent="BACKGROUND"]
 position = Vector2(5605, -24)
 scale = Vector2(4, 4)
 texture = ExtResource("1_f0raf")
@@ -32,23 +43,50 @@ centered = false
 region_enabled = true
 region_rect = Rect2(0, 56.6622, 1408, 283.396)
 
+[node name="LIMITS" type="Node2D" parent="."]
+visible = false
+
+[node name="TopLimit" type="Area2D" parent="LIMITS"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LIMITS/TopLimit"]
+position = Vector2(1058.5, 731.25)
+shape = SubResource("RectangleShape2D_xm0y6")
+debug_color = Color(0.988705, 0.102773, 0, 0.42)
+
+[node name="BottomLimit" type="Area2D" parent="LIMITS"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LIMITS/BottomLimit"]
+position = Vector2(1059, 1134.5)
+shape = SubResource("RectangleShape2D_5jm0s")
+debug_color = Color(0.988705, 0.102773, 0, 0.42)
+
 [node name="Player" parent="." instance=ExtResource("2_v60l6")]
-position = Vector2(439, 682)
+position = Vector2(719, 834)
 motion_mode = 1
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(521, -142)
+position = Vector2(184, -328)
 limit_left = 0
 limit_top = 0
 limit_right = 11230
 limit_bottom = 1080
 editor_draw_limits = true
 
+[node name="Enemy" parent="." instance=ExtResource("4_ylvcq")]
+position = Vector2(1654, 706)
+
+[node name="Enemy2" parent="." instance=ExtResource("4_ylvcq")]
+position = Vector2(1149, 791)
+
 [node name="TileMap" type="TileMap" parent="."]
 visible = false
 tile_set = SubResource("TileSet_78hoi")
+collision_visibility_mode = 1
 format = 2
 layer_0/tile_data = PackedInt32Array(196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 196618, 0, 0, 196619, 0, 0, 196620, 0, 0, 196621, 0, 0, 196622, 0, 0, 262143, 0, 0, 262142, 0, 0, 262141, 0, 0, 262140, 0, 0, 655357, 0, 0, 655358, 0, 0, 655359, 0, 0, 589824, 0, 0, 589825, 0, 0, 589826, 0, 0, 589827, 0, 0, 589828, 0, 0, 589829, 0, 0, 589830, 0, 0, 589831, 0, 0, 589832, 0, 0, 589833, 0, 0, 589834, 0, 0, 589835, 0, 0, 589836, 0, 0, 589837, 0, 0, 589838, 0, 0)
 
-[node name="Enemy" parent="." instance=ExtResource("4_ylvcq")]
-position = Vector2(1526, 677)
+[node name="Burger" parent="." instance=ExtResource("6_b2qoe")]
+position = Vector2(1833, 949)
+
+[connection signal="body_entered" from="LIMITS/TopLimit" to="." method="_on_top_limit_body_entered"]
+[connection signal="body_entered" from="LIMITS/BottomLimit" to="." method="_on_bottom_limit_body_entered"]

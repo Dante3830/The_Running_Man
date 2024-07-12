@@ -85,7 +85,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y71f2")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -168,7 +168,7 @@ script = ExtResource("1_afftt")
 texture_filter = 1
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_k5ouc")
-animation = &"idle"
+animation = &"hurt"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -196,7 +196,6 @@ position = Vector2(100, -13)
 shape = SubResource("RectangleShape2D_q1dxs")
 
 [node name="KOTimer" type="Timer" parent="."]
-wait_time = 0.4
 
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -208,6 +207,7 @@ offset_left = -74.0
 offset_top = -202.0
 offset_right = 0.0
 offset_bottom = -189.0
+metadata/_edit_use_anchors_ = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
