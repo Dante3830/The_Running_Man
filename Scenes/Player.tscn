@@ -5,69 +5,6 @@
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="3_f04o3"]
 [ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/HealthBar.tscn" id="4_r4st1"]
 
-[sub_resource type="Animation" id="Animation_8c6ah"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-
-[sub_resource type="Animation" id="Animation_dyrlp"]
-resource_name = "Idle"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3996, 0.7659),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [13, 14, 15]
-}
-
-[sub_resource type="Animation" id="Animation_kkgxg"]
-resource_name = "Walk"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 5, 0]
-}
-
-[sub_resource type="Animation" id="Animation_8jltt"]
-resource_name = "Hurt"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [16]
-}
-
 [sub_resource type="Animation" id="Animation_5a51b"]
 resource_name = "Hit1"
 length = 0.3
@@ -116,6 +53,38 @@ tracks/0/keys = {
 "values": [7, 8, 7]
 }
 
+[sub_resource type="Animation" id="Animation_8jltt"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_dyrlp"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3996, 0.7659),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
+
 [sub_resource type="Animation" id="Animation_msdlh"]
 resource_name = "Kick"
 length = 0.7
@@ -130,6 +99,37 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [9, 10, 11, 12, 11, 10, 9, 15]
+}
+
+[sub_resource type="Animation" id="Animation_8c6ah"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+
+[sub_resource type="Animation" id="Animation_kkgxg"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 5, 0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rl3hs"]
@@ -212,7 +212,7 @@ advance_mode = 2
 states/Hit1/node = SubResource("AnimationNodeAnimation_vwx5i")
 states/Hit1/position = Vector2(135.19, -8.34375)
 states/Hit2/node = SubResource("AnimationNodeAnimation_j5d6f")
-states/Hit2/position = Vector2(332, -7.9375)
+states/Hit2/position = Vector2(273.5, -1.4375)
 states/Hit3/node = SubResource("AnimationNodeAnimation_6sj23")
 states/Hit3/position = Vector2(438.55, 74.8125)
 states/Hurt/node = SubResource("AnimationNodeAnimation_opiyn")
@@ -225,7 +225,7 @@ states/Start/position = Vector2(-134.5, 129.75)
 states/Walk/node = SubResource("AnimationNodeAnimation_vwbr1")
 states/Walk/position = Vector2(134.238, 262.862)
 transitions = ["Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_0isdf"), "Hit2", "Idle", SubResource("AnimationNodeStateMachineTransition_wrikv"), "Hit3", "Idle", SubResource("AnimationNodeStateMachineTransition_u1e61"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_uhoum"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_w0hol"), "Hit1", "Idle", SubResource("AnimationNodeStateMachineTransition_byv4h"), "Idle", "Hit1", SubResource("AnimationNodeStateMachineTransition_iht7f"), "Idle", "Hit2", SubResource("AnimationNodeStateMachineTransition_0wdk6"), "Idle", "Hit3", SubResource("AnimationNodeStateMachineTransition_7if4a"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_rbo1x"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_hlt2v"), "Walk", "Hurt", SubResource("AnimationNodeStateMachineTransition_w55sm"), "Kick", "Hurt", SubResource("AnimationNodeStateMachineTransition_dqsp2"), "Hit3", "Hurt", SubResource("AnimationNodeStateMachineTransition_5h8k6"), "Hit2", "Hurt", SubResource("AnimationNodeStateMachineTransition_j36lh"), "Hit1", "Hurt", SubResource("AnimationNodeStateMachineTransition_71g64")]
-graph_offset = Vector2(-106.065, -42.785)
+graph_offset = Vector2(23.6254, 86.7924)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sg5o8"]
 size = Vector2(101, 257)
@@ -238,6 +238,7 @@ size = Vector2(93, 223)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 4
+motion_mode = 1
 script = ExtResource("1_eaads")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -258,8 +259,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_q48fb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 1.0
-parameters/current_position = 0.0540044
-parameters/current_delta = 0.0209007
+parameters/current_position = 0.733333
+parameters/current_delta = 0.0166667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -276,8 +277,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.011922
 parameters/Idle/current_length = 1.0
-parameters/Idle/current_position = 0.0540044
-parameters/Idle/current_delta = 0.0209007
+parameters/Idle/current_position = 0.733333
+parameters/Idle/current_delta = 0.0166667
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

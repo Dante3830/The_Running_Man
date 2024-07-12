@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @export var speed = 300.0
+@export var jump_force = 400.0  # Fuerza del salto
+@export var gravity = 800.0  # Gravedad aplicada al jugador
 
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -12,23 +14,24 @@ extends CharacterBody2D
 var combo : int
 var punch = false
 
- # Indica que el jugador puede golpear
-var can_hit = true 
+var can_hit = true # Indica que el jugador puede golpear
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
 func _ready():
 	health_bar.init_health(Global.player_1_health)
+	visible = true
 
 func _process(_delta):
 	#if combo >= 2:
 		#combo_text.show()
 		#combo_text.text = str(combo) + " golpes"
-	lives_text.text = str(Global.player_1_lives)
+	lives_text.text = "x " + str(Global.player_1_lives)
 
 func _physics_process(_delta):
 	health_bar.health = Global.player_1_health
 	
+	# Movimiento basico
 	if Input.is_action_just_pressed("Left"):
 		sprite.flip_h = true
 	elif Input.is_action_just_pressed("Right"):
@@ -37,15 +40,23 @@ func _physics_process(_delta):
 	var directionX = Input.get_axis("Left", "Right")
 	var directionY = Input.get_axis("Up", "Down")
 	
+	velocity.x = directionX * speed
+	velocity.y = directionY * speed
+	
+	# Salto
+	if not is_on_floor():
+		velocity.y += gravity * _delta  # Aplicar gravedad
+	
+	if Input.is_action_just_pressed("Jump") and is_on_floor():
+		velocity.y = -jump_force  # Aplicar fuerza del salto
+	
 	if directionX != 0 or directionY != 0:
-		velocity.x = directionX * speed
-		velocity.y = directionY * speed
 		state_machine.travel("Walk")
 	else:
-		velocity = Vector2.ZERO
 		state_machine.travel("Idle")
 	
 	move_and_slide()
+	
 	hitting()
 
 func hitting():
@@ -53,11 +64,11 @@ func hitting():
 	if Input.is_action_just_pressed("Hit") and !sprite.flip_h and can_hit:
 		if combo == 0:
 			state_machine.travel("Hit1")
-		if combo == 1:
+		elif combo == 1:
 			state_machine.travel("Hit2")
-		if combo == 2:
+		elif combo == 2:
 			state_machine.travel("Hit3")
-		if combo == 3:
+		elif combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -71,14 +82,14 @@ func hitting():
 		hit_timer.start()
 	
 	# Golpe izquierdo
-	if Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
+	elif Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
 		if combo == 0:
 			state_machine.travel("Hit1")
-		if combo == 1:
+		elif combo == 1:
 			state_machine.travel("Hit2")
-		if combo == 2:
+		elif combo == 2:
 			state_machine.travel("Hit3")
-		if combo == 3:
+		elif combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -93,7 +104,8 @@ func hitting():
 
 func _hurt():
 	if Global.player_1_health == 0:
-		get_tree().quit()
+		Global.player_1_lives -= 1
+		queue_free()
 	state_machine.travel("Hurt")
 
 func _on_can_hit_timer_timeout():

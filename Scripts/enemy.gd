@@ -8,7 +8,7 @@ var punch = false
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
-@onready var hit_timer = $HitTimer  # Asegúrate de que el temporizador esté correctamente referenciado
+@onready var hit_timer = $HitTimer
 
 func hurt():
 	if life > 0:
@@ -57,6 +57,7 @@ func hitting():
 				body._hurt()
 				Global.player_1_health -= 1
 				print("Player: " + str(Global.player_1_health))
+	
 	for body in $RightPunch.get_overlapping_bodies():
 		if body.get_collision_layer() == 1:
 			if punch == false:
