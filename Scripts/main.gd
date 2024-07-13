@@ -3,6 +3,7 @@ extends Node2D
 
 @onready var PlayerScene = preload("res://Scenes/Player.tscn")
 @onready var respawn_timer = $RespawnTimer
+@onready var level_time_DP = $CanvasLayer/LevelTimeDP
 
 var player_instance
 var is_respawning = false
@@ -12,6 +13,8 @@ func _ready():
 	spawn_player()
 
 func _process(_delta):
+	level_time_DP.text =  str(int(Global.level_time))
+	
 	# Verificamos si el jugador está muerto y si el temporizador de respawn no está activo
 	if player_instance and player_instance.is_dead and not is_respawning:
 		print("Player is dead, starting respawn timer")

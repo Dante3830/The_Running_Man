@@ -259,8 +259,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_q48fb")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 1.0
-parameters/current_position = 0.169888
-parameters/current_delta = 0.00694444
+parameters/current_position = 0.410102
+parameters/current_delta = 0.026818
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -277,8 +277,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.011922
 parameters/Idle/current_length = 1.0
-parameters/Idle/current_position = 0.169888
-parameters/Idle/current_delta = 0.00694444
+parameters/Idle/current_position = 0.410102
+parameters/Idle/current_delta = 0.026818
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null
@@ -337,7 +337,6 @@ offset_right = 269.0
 offset_bottom = 121.0
 
 [node name="ComboDP" type="Label" parent="CanvasLayer"]
-visible = false
 offset_left = 64.0
 offset_top = 187.0
 offset_right = 392.0
@@ -351,6 +350,7 @@ text = "2 golpes"
 wait_time = 0.2
 
 [node name="ComboTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="timeout" from="CanHitTimer" to="." method="_on_can_hit_timer_timeout"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]
