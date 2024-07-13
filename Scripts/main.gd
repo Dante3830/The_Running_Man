@@ -1,13 +1,44 @@
+# MAIN
 extends Node2D
 
-#func _ready():
-	#$LIMITS/TopLimit.connect("body_entered", Callable(self, "_on_top_limit_body_entered"))
-	#$LIMITS/BottomLimit.connect("body_entered", Callable(self, "_on_bottom_limit_body_entered"))
-#
-#func _on_top_limit_body_entered(body):
-	#if body is CharacterBody2D:
-		#body.position.y = $LIMITS/TopLimit.position.y + $LIMITS/TopLimit.shape.extents.y  # Ajustar la posición para que esté justo debajo del límite
-#
-#func _on_bottom_limit_body_entered(body):
-	#if body is CharacterBody2D:
-		#body.position.y = $LIMITS/BottomLimit.position.y - $LIMITS/BottomLimit.shape.extents.y  # Ajustar la posición para que esté justo encima del límite
+@onready var PlayerScene = preload("res://Scenes/Player.tscn")
+@onready var respawn_timer = $RespawnTimer
+
+var player_instance
+var is_respawning = false
+
+func _ready():
+	# Instanciar el jugador al inicio del juego
+	spawn_player()
+
+func _process(_delta):
+	# Verificamos si el jugador está muerto y si el temporizador de respawn no está activo
+	if player_instance and player_instance.is_dead and not is_respawning:
+		print("Player is dead, starting respawn timer")
+		Global.player_1_lives -= 1
+		is_respawning = true
+		respawn_timer.start()
+
+	if Global.player_1_lives < 0:
+		print("Game Over")
+		get_tree().change_scene_to_file("res://Scenes/GameOver.tscn")
+
+func spawn_player():
+	print("Spawning player...")
+	player_instance = PlayerScene.instantiate()
+	add_child(player_instance)
+	player_instance.set_respawn_position()
+
+func respawn_player():
+	print("Respawning player...")
+	if player_instance:
+		player_instance.queue_free()
+	player_instance = PlayerScene.instantiate()
+	add_child(player_instance)
+	player_instance.set_respawn_position()
+	player_instance.respawn()
+	is_respawning = false
+	print("Player respawned")
+
+func _on_respawn_timer_timeout():
+	respawn_player()

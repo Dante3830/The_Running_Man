@@ -1,8 +1,7 @@
+# PLAYER
 extends CharacterBody2D
 
 @export var speed = 300.0
-@export var jump_force = 400.0  # Fuerza del salto
-@export var gravity = 800.0  # Gravedad aplicada al jugador
 
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -14,24 +13,31 @@ extends CharacterBody2D
 var combo : int
 var punch = false
 
-var can_hit = true # Indica que el jugador puede golpear
+# Indica que el jugador puede golpear
+var can_hit = true 
+
+# Añadir posición de respawn
+var respawn_position : Vector2
+
+# Añadir variable para controlar si el jugador ya ha sido "muerto"
+var is_dead = false
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
 func _ready():
-	health_bar.init_health(Global.player_1_health)
+	if health_bar:
+		health_bar.init_health(Global.player_1_health)
 	visible = true
+	# Establecer la posición de respawn inicial
+	respawn_position = global_position
 
 func _process(_delta):
-	#if combo >= 2:
-		#combo_text.show()
-		#combo_text.text = str(combo) + " golpes"
 	lives_text.text = "x " + str(Global.player_1_lives)
 
 func _physics_process(_delta):
-	health_bar.health = Global.player_1_health
+	if health_bar:
+		health_bar.health = Global.player_1_health
 	
-	# Movimiento basico
 	if Input.is_action_just_pressed("Left"):
 		sprite.flip_h = true
 	elif Input.is_action_just_pressed("Right"):
@@ -40,23 +46,15 @@ func _physics_process(_delta):
 	var directionX = Input.get_axis("Left", "Right")
 	var directionY = Input.get_axis("Up", "Down")
 	
-	velocity.x = directionX * speed
-	velocity.y = directionY * speed
-	
-	# Salto
-	if not is_on_floor():
-		velocity.y += gravity * _delta  # Aplicar gravedad
-	
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = -jump_force  # Aplicar fuerza del salto
-	
 	if directionX != 0 or directionY != 0:
+		velocity.x = directionX * speed
+		velocity.y = directionY * speed
 		state_machine.travel("Walk")
 	else:
+		velocity = Vector2.ZERO
 		state_machine.travel("Idle")
 	
 	move_and_slide()
-	
 	hitting()
 
 func hitting():
@@ -64,11 +62,11 @@ func hitting():
 	if Input.is_action_just_pressed("Hit") and !sprite.flip_h and can_hit:
 		if combo == 0:
 			state_machine.travel("Hit1")
-		elif combo == 1:
+		if combo == 1:
 			state_machine.travel("Hit2")
-		elif combo == 2:
+		if combo == 2:
 			state_machine.travel("Hit3")
-		elif combo == 3:
+		if combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -82,14 +80,14 @@ func hitting():
 		hit_timer.start()
 	
 	# Golpe izquierdo
-	elif Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
+	if Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
 		if combo == 0:
 			state_machine.travel("Hit1")
-		elif combo == 1:
+		if combo == 1:
 			state_machine.travel("Hit2")
-		elif combo == 2:
+		if combo == 2:
 			state_machine.travel("Hit3")
-		elif combo == 3:
+		if combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -103,8 +101,10 @@ func hitting():
 		hit_timer.start()
 
 func _hurt():
-	if Global.player_1_health == 0:
-		Global.player_1_lives -= 1
+	Global.player_1_health -= 1
+	if Global.player_1_health <= 0 and not is_dead:
+		is_dead = true
+		Global.player_1_health = 0
 		queue_free()
 	state_machine.travel("Hurt")
 
@@ -114,3 +114,14 @@ func _on_can_hit_timer_timeout():
 func _on_combo_timer_timeout():
 	combo = 0
 	combo_text.hide()
+
+# Añadir función para establecer la posición de respawn
+func set_respawn_position():
+	respawn_position = global_position
+
+# Función para reaparecer
+func respawn():
+	global_position = respawn_position
+	Global.player_1_health = 10 # Reiniciar la salud del jugador
+	is_dead = false # Resetear la bandera is_dead
+	visible = true
