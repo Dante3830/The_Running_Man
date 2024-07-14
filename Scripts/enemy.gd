@@ -6,6 +6,9 @@ const SPEED = 100
 var animation = false
 var punch = false
 
+var min_y_limit = 650.0
+var max_y_limit = 950.0
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var health_bar = $HealthBar
 @onready var hit_timer = $HitTimer
@@ -43,6 +46,16 @@ func _physics_process(delta):
 			animated_sprite.flip_h = false
 		if global_position.x <= target.global_position.x:
 			animated_sprite.flip_h = true
+	
+	# Limites en el eje Y
+	position = self.position
+	
+	if position.y < min_y_limit:
+		position.y = min_y_limit
+	elif position.y > max_y_limit:
+		position.y = max_y_limit
+	
+	self.position = position
 	
 	hitting()
 
