@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl3wdy6esjok4"
-path="res://.godot/imported/playerV2.png-92ca9313e0efb1f8134e176f61c5cff1.ctex"
+uid="uid://d08m6v1g0w03l"
+path="res://.godot/imported/copperBarrel .png-ab64010a033e0f11748f8811f275801d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/playerV2.png"
-dest_files=["res://.godot/imported/playerV2.png-92ca9313e0efb1f8134e176f61c5cff1.ctex"]
+source_file="res://Assets/Sprites/copperBarrel .png"
+dest_files=["res://.godot/imported/copperBarrel .png-ab64010a033e0f11748f8811f275801d.ctex"]
 
 [params]
 

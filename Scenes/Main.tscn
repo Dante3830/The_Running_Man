@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bkns87mbvdbkf"]
+[gd_scene load_steps=8 format=3 uid="uid://bkns87mbvdbkf"]
 
 [ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="1_f0raf"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_v8h2h"]
@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="5_4e7ij"]
 [ext_resource type="Texture2D" uid="uid://bsi3j8oifhelf" path="res://Assets/Sprites/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="6_4qik2"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="6_b2qoe"]
+[ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Barrel.tscn" id="8_ci02a"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_v8h2h")
@@ -69,5 +70,8 @@ region_rect = Rect2(304.842, 467.59, 19.6579, 15.9198)
 position = Vector2(247, 845)
 
 [node name="RespawnTimer" type="Timer" parent="."]
+
+[node name="Barrel" parent="." instance=ExtResource("8_ci02a")]
+position = Vector2(1364, 716)
 
 [connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

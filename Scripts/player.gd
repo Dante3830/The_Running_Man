@@ -1,9 +1,10 @@
-# PLAYER
 extends CharacterBody2D
 
 @export var speed = 300.0
-var min_y_limit = 650.0
-var max_y_limit = 950.0
+@export var jump_force = 400.0  # Fuerza del salto
+@export var gravity = 800.0  # Gravedad aplicada al jugador
+@export var min_y_limit = 650.0
+@export var max_y_limit = 950.0
 
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -23,6 +24,9 @@ var respawn_position : Vector2
 
 # Añadir variable para controlar si el jugador ya ha sido "muerto"
 var is_dead = false
+
+# Variable para controlar si el jugador está en el aire
+var is_jumping = false  # Indica si el jugador está en el aire
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
@@ -48,25 +52,34 @@ func _physics_process(_delta):
 	var directionX = Input.get_axis("Left", "Right")
 	var directionY = Input.get_axis("Up", "Down")
 	
+	velocity.x = directionX * speed
+
+	if is_jumping:
+		velocity.y += gravity * _delta  # Aplicar gravedad si el jugador está saltando
+
+	if Input.is_action_just_pressed("Jump") and not is_jumping:
+		velocity.y = -jump_force  # Aplicar fuerza del salto
+		is_jumping = true
+
+	# Simular que hay un piso en una posición Y específica
+	if global_position.y >= max_y_limit:
+		global_position.y = max_y_limit
+		velocity.y = 0
+		is_jumping = false
+
 	if directionX != 0 or directionY != 0:
-		velocity.x = directionX * speed
-		velocity.y = directionY * speed
 		state_machine.travel("Walk")
 	else:
-		velocity = Vector2.ZERO
 		state_machine.travel("Idle")
-	
+
 	# Limites en el eje Y
-	position = self.position
-	
-	if position.y < min_y_limit:
-		position.y = min_y_limit
-	elif position.y > max_y_limit:
-		position.y = max_y_limit
-	
-	self.position = position
+	if global_position.y < min_y_limit:
+		global_position.y = min_y_limit
+	elif global_position.y > max_y_limit:
+		global_position.y = max_y_limit
 	
 	move_and_slide()
+
 	hitting()
 
 func hitting():
@@ -74,11 +87,11 @@ func hitting():
 	if Input.is_action_just_pressed("Hit") and !sprite.flip_h and can_hit:
 		if combo == 0:
 			state_machine.travel("Hit1")
-		if combo == 1:
+		elif combo == 1:
 			state_machine.travel("Hit2")
-		if combo == 2:
+		elif combo == 2:
 			state_machine.travel("Hit3")
-		if combo == 3:
+		elif combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -92,14 +105,14 @@ func hitting():
 		hit_timer.start()
 	
 	# Golpe izquierdo
-	if Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
+	elif Input.is_action_just_pressed("Hit") and sprite.flip_h and can_hit:  # Usar elif aquí para evitar doble golpe en un mismo frame
 		if combo == 0:
 			state_machine.travel("Hit1")
-		if combo == 1:
+		elif combo == 1:
 			state_machine.travel("Hit2")
-		if combo == 2:
+		elif combo == 2:
 			state_machine.travel("Hit3")
-		if combo == 3:
+		elif combo == 3:
 			state_machine.travel("Kick")
 		combo += 1
 		punch = true
@@ -134,6 +147,6 @@ func set_respawn_position():
 # Función para reaparecer
 func respawn():
 	global_position = respawn_position
-	Global.player_1_health = 100 # Reiniciar la salud del jugador
+	Global.player_1_health = 10 # Reiniciar la salud del jugador
 	is_dead = false # Resetear la bandera is_dead
 	visible = true

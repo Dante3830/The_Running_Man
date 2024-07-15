@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="The Running Man"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://Scenes/Mainb.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://RunningManIcon.png"
 
 [autoload]
 
 Global="*res://Scripts/global.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [display]
 
@@ -29,7 +28,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray()
 
 [input]
 

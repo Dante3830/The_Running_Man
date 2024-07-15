@@ -1,15 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu76sfrxy11bw"]
+[gd_scene load_steps=7 format=3 uid="uid://bu76sfrxy11bw"]
 
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="1_rfle3"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_t7rd4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2xjf"]
 bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhqht"]
+bg_color = Color(1, 0.152941, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ephqy"]
+bg_color = Color(0.941176, 0.768627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jiu6u"]
+bg_color = Color(0.917647, 0, 0.137255, 1)
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("1_t7rd4")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -24,13 +35,54 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_v2xjf")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
-offset_left = 454.0
+offset_left = 304.0
 offset_top = 142.0
-offset_right = 1502.0
+offset_right = 1652.0
 offset_bottom = 383.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 15
 theme_override_fonts/font = ExtResource("1_rfle3")
 theme_override_font_sizes/font_size = 200
-text = "GAME OVER"
+text = "fin del juego"
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 531.0
+offset_top = 564.0
+offset_right = 1370.0
+offset_bottom = 810.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RestartButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_rfle3")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhqht")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ephqy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jiu6u")
+text = " REInTEnTAR "
+
+[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("1_rfle3")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhqht")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ephqy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jiu6u")
+text = " VOLVER AL mEnÚ "
+
+[connection signal="pressed" from="BoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

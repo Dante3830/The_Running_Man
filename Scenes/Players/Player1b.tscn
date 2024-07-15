@@ -1,0 +1,149 @@
+[gd_scene load_steps=12 format=3 uid="uid://byphox7jlp8ky"]
+
+[ext_resource type="Script" path="res://Scripts/player1.gd" id="1_qbd6g"]
+[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Sprites/playerV1.png" id="2_aptmx"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="3_hfpal"]
+[ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/HealthBar.tscn" id="4_mi5y6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
+size = Vector3(0.472412, 1, 0.264038)
+
+[sub_resource type="Animation" id="Animation_l3l5p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ixheh"]
+resource_name = "Hit1"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 7, 15]
+}
+
+[sub_resource type="Animation" id="Animation_pfa3t"]
+resource_name = "Walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_0byhj"]
+resource_name = "Idle"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuam8"]
+_data = {
+"Hit1": SubResource("Animation_ixheh"),
+"Idle": SubResource("Animation_0byhj"),
+"RESET": SubResource("Animation_l3l5p"),
+"Walk": SubResource("Animation_pfa3t")
+}
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2dmw"]
+
+[node name="Player1" type="CharacterBody3D"]
+script = ExtResource("1_qbd6g")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
+texture = ExtResource("2_aptmx")
+hframes = 4
+vframes = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, 0, -0.0431519)
+shape = SubResource("BoxShape3D_ew64w")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tuam8")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
+parameters/current_length = false
+parameters/current_position = false
+parameters/current_delta = false
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = null
+parameters/Start/current_position = null
+parameters/Start/current_delta = null
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Name" type="Label" parent="CanvasLayer"]
+offset_left = 26.0
+offset_top = 21.0
+offset_right = 245.0
+offset_bottom = 82.0
+theme_override_fonts/font = ExtResource("3_hfpal")
+theme_override_font_sizes/font_size = 50
+text = "JUGADOR"
+metadata/_edit_use_anchors_ = true
+
+[node name="LivesDP" type="Label" parent="CanvasLayer"]
+offset_left = 281.0
+offset_top = 21.0
+offset_right = 500.0
+offset_bottom = 82.0
+theme_override_colors/font_color = Color(0, 0.745098, 1, 1)
+theme_override_fonts/font = ExtResource("3_hfpal")
+theme_override_font_sizes/font_size = 50
+text = "X 5"
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource("4_mi5y6")]
+offset_left = 29.0
+offset_top = 96.0
+offset_right = 269.0
+offset_bottom = 121.0
+metadata/_edit_use_anchors_ = true
+
+[node name="ComboDP" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 64.0
+offset_top = 187.0
+offset_right = 392.0
+offset_bottom = 278.0
+theme_override_colors/font_color = Color(0, 0.811765, 0, 1)
+theme_override_fonts/font = ExtResource("3_hfpal")
+theme_override_font_sizes/font_size = 75
+text = "2 golpes"
+
+[node name="CanHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="ComboTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="CanHitTimer" to="." method="_on_can_hit_timer_timeout"]
+[connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]

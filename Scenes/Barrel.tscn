@@ -1,13 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dwfhvrlimq73w"]
+[gd_scene load_steps=4 format=3 uid="uid://dwfhvrlimq73w"]
 
 [ext_resource type="Script" path="res://Scripts/barrel.gd" id="1_t0cmu"]
+[ext_resource type="Texture2D" uid="uid://d08m6v1g0w03l" path="res://Assets/Sprites/copperBarrel .png" id="2_1cwbn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jgb5b"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c12ey"]
+size = Vector2(138, 208)
 
-[node name="Barrel" type="StaticBody2D"]
+[node name="Barrel" type="Node2D"]
 script = ExtResource("1_t0cmu")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_jgb5b")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_1cwbn")
+
+[node name="CollisionArea" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionArea"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_c12ey")
