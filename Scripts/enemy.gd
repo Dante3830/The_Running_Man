@@ -41,7 +41,7 @@ func _physics_process(delta):
 		move_and_collide(velocity * SPEED * delta)
 		if animation == false:
 			animated_sprite.play("walk")
-			
+		
 		if global_position.x >= target.global_position.x:
 			animated_sprite.flip_h = false
 		if global_position.x <= target.global_position.x:

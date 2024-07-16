@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/HealthBar.tscn" id="4_mi5y6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
-size = Vector3(0.472412, 1, 0.264038)
+size = Vector3(0.472412, 0.811401, 0.168747)
 
 [sub_resource type="Animation" id="Animation_ixheh"]
 resource_name = "Hit1"
@@ -22,6 +22,96 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [7, 8, 7, 15]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1, 10],
+"method": &"player_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_egnsu"]
+resource_name = "Hit2"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1, 10],
+"method": &"player_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gg4xd"]
+resource_name = "Hit3"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 6, 7]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1, 10],
+"method": &"player_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3jcrw"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [16, 15]
 }
 
 [sub_resource type="Animation" id="Animation_0byhj"]
@@ -39,6 +129,36 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [13, 14, 15, 14, 13]
+}
+
+[sub_resource type="Animation" id="Animation_bm5d8"]
+resource_name = "Kick"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 10, 11, 12, 11, 10, 9, 15]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1, 10],
+"method": &"player_attack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_l3l5p"]
@@ -70,70 +190,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 4, 5]
-}
-
-[sub_resource type="Animation" id="Animation_3jcrw"]
-resource_name = "Hurt"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [16, 15]
-}
-
-[sub_resource type="Animation" id="Animation_egnsu"]
-resource_name = "Hit2"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-
-[sub_resource type="Animation" id="Animation_gg4xd"]
-resource_name = "Hit3"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [7, 6, 7]
-}
-
-[sub_resource type="Animation" id="Animation_bm5d8"]
-resource_name = "Kick"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [9, 10, 11, 12, 11, 10, 9, 15]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuam8"]
@@ -233,9 +289,10 @@ states/Start/position = Vector2(97, 100)
 states/Walk/node = SubResource("AnimationNodeAnimation_l8hsp")
 states/Walk/position = Vector2(294.19, -36.4274)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1t5pu"), "Hit1", "Idle", SubResource("AnimationNodeStateMachineTransition_ss75b"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_q3qxs"), "Idle", "Hit1", SubResource("AnimationNodeStateMachineTransition_moc3g"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_hhoc2"), "Walk", "Hurt", SubResource("AnimationNodeStateMachineTransition_lggu0"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_vn47l"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_ad7sp"), "Hit3", "Idle", SubResource("AnimationNodeStateMachineTransition_u6t2t"), "Hit2", "Idle", SubResource("AnimationNodeStateMachineTransition_m565v"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_3aju4"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_g1jvw"), "Hit3", "Kick", SubResource("AnimationNodeStateMachineTransition_2dep8"), "Hit1", "Hurt", SubResource("AnimationNodeStateMachineTransition_fvlky"), "Hit2", "Hurt", SubResource("AnimationNodeStateMachineTransition_1kite"), "Hit3", "Hurt", SubResource("AnimationNodeStateMachineTransition_d3u6a"), "Kick", "Hurt", SubResource("AnimationNodeStateMachineTransition_e8k2b"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rmw7i")]
-graph_offset = Vector2(-31.8599, -56.9025)
+graph_offset = Vector2(-2.39648e-05, 20.6475)
 
 [node name="Player1" type="CharacterBody3D"]
+collision_mask = 4
 script = ExtResource("1_qbd6g")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -245,48 +302,21 @@ hframes = 4
 vframes = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, 0, -0.0431519)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.00201416, 0.00449351)
 shape = SubResource("BoxShape3D_ew64w")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_tuam8")
-}
-autoplay = "Idle"
+[node name="RayCast3D" type="RayCast3D" parent="."]
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
-anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.8
-parameters/current_position = 0.11172
-parameters/current_delta = 0.0192607
-parameters/End/current_length = null
-parameters/End/current_position = null
-parameters/End/current_delta = null
-parameters/Hit1/current_length = null
-parameters/Hit1/current_position = null
-parameters/Hit1/current_delta = null
-parameters/Hit2/current_length = null
-parameters/Hit2/current_position = null
-parameters/Hit2/current_delta = null
-parameters/Hit3/current_length = null
-parameters/Hit3/current_position = null
-parameters/Hit3/current_delta = null
-parameters/Hurt/current_length = 0.2
-parameters/Hurt/current_position = 0.2
-parameters/Hurt/current_delta = 0.0
-parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.11172
-parameters/Idle/current_delta = 0.0192607
-parameters/Kick/current_length = null
-parameters/Kick/current_position = null
-parameters/Kick/current_delta = null
-parameters/Start/current_length = 0.0
-parameters/Start/current_position = 0.0
-parameters/Start/current_delta = 0.0
-parameters/Walk/current_length = 1.0
-parameters/Walk/current_position = 0.741386
-parameters/Walk/current_delta = 0.0459258
+[node name="Attack" type="Marker3D" parent="."]
+
+[node name="Spawn" type="Marker3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41625, 0.255369, 0.00658476)
+
+[node name="CanHitTimer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="ComboTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -329,11 +359,45 @@ theme_override_fonts/font = ExtResource("3_hfpal")
 theme_override_font_sizes/font_size = 75
 text = "2 golpes"
 
-[node name="CanHitTimer" type="Timer" parent="."]
-wait_time = 0.2
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tuam8")
+}
+autoplay = "Idle"
 
-[node name="ComboTimer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
+anim_player = NodePath("../AnimationPlayer")
+parameters/current_length = 0.8
+parameters/current_position = 0.0594304
+parameters/current_delta = 0.00694444
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Hit1/current_length = null
+parameters/Hit1/current_position = null
+parameters/Hit1/current_delta = null
+parameters/Hit2/current_length = null
+parameters/Hit2/current_position = null
+parameters/Hit2/current_delta = null
+parameters/Hit3/current_length = null
+parameters/Hit3/current_position = null
+parameters/Hit3/current_delta = null
+parameters/Hurt/current_length = 0.2
+parameters/Hurt/current_position = 0.2
+parameters/Hurt/current_delta = 0.0
+parameters/Idle/current_length = 0.8
+parameters/Idle/current_position = 0.0594304
+parameters/Idle/current_delta = 0.00694444
+parameters/Kick/current_length = null
+parameters/Kick/current_position = null
+parameters/Kick/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+parameters/Walk/current_length = 1.0
+parameters/Walk/current_position = 0.741386
+parameters/Walk/current_delta = 0.0459258
 
 [connection signal="timeout" from="CanHitTimer" to="." method="_on_can_hit_timer_timeout"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]

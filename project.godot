@@ -78,10 +78,15 @@ Jump={
 [layer_names]
 
 2d_physics/layer_1="Players"
+3d_physics/layer_1="Players"
 2d_physics/layer_2="Enemies"
+3d_physics/layer_2="Enemies"
 2d_physics/layer_3="Levels"
+3d_physics/layer_3="Level"
 2d_physics/layer_4="Items"
+3d_physics/layer_4="Item"
 2d_physics/layer_5="Barrel"
+3d_physics/layer_5="Barrel"
 2d_navigation/stretch/mode="disabled"
 
 [physics]
