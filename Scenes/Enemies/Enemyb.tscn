@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dh1qua8a666tc"]
+[gd_scene load_steps=18 format=3 uid="uid://dh1qua8a666tc"]
 
 [ext_resource type="Script" path="res://Scripts/enemy_b.gd" id="1_ytfvn"]
 [ext_resource type="Texture2D" uid="uid://dl6a82ayusl4a" path="res://Assets/Sprites/enemy.png" id="2_hha00"]
@@ -10,6 +10,10 @@ region = Rect2(190, 96, 95, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_05qgf"]
 atlas = ExtResource("2_hha00")
 region = Rect2(0, 96, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5r0ee"]
+atlas = ExtResource("2_hha00")
+region = Rect2(95, 288, 95, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j0y7m"]
 atlas = ExtResource("2_hha00")
@@ -26,6 +30,18 @@ region = Rect2(95, 0, 95, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_eqyy1"]
 atlas = ExtResource("2_hha00")
 region = Rect2(190, 0, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yim02"]
+atlas = ExtResource("2_hha00")
+region = Rect2(95, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e80ri"]
+atlas = ExtResource("2_hha00")
+region = Rect2(0, 288, 95, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xksx"]
+atlas = ExtResource("2_hha00")
+region = Rect2(190, 192, 95, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ovqyp"]
 atlas = ExtResource("2_hha00")
@@ -57,6 +73,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5r0ee")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_j0y7m")
 }],
 "loop": false,
@@ -75,6 +99,20 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yim02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e80ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xksx")
+}],
+"loop": true,
+"name": &"Up",
 "speed": 5.0
 }, {
 "frames": [{
@@ -102,17 +140,18 @@ size = Vector3(0.472412, 0.804321, 0.320892)
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_ytfvn")
-speed = 1
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_l4u7u")
-animation = &"Walk"
-frame = 2
-frame_progress = 0.0688744
+animation = &"Up"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.0055542, -0.0715791)
 shape = SubResource("BoxShape3D_ew64w")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="TakeDamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]

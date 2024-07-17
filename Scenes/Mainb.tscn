@@ -103,6 +103,7 @@ shape = SubResource("ConcavePolygonShape3D_0ilnt")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.24055, 1.16069, 3.55054)
+visible = false
 projection = 1
 size = 2.7
 
