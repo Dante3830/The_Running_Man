@@ -26,7 +26,8 @@ var motion : Vector3
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 @onready var camera = get_parent().get_node("Camera")
 
-func _process(delta: float) -> void:
+func _process(_delta):
+	print("x = " + str("%.2f" % position.x))
 	transform.origin.x = clamp(transform.origin.x, camera.transform.origin.x - 4.5, camera.clamped + 4.5)
 
 func _physics_process(delta):

@@ -21,6 +21,7 @@ func _ready():
 		player_2_section.show()
 	
 	enemy_section.hide()
+	go_sign.hide()
 	
 	if player_1_health_bar:
 		player_1_health_bar.init_health(Global.player_1_health)
@@ -57,3 +58,6 @@ func update_enemy_hud(enemy_name : String, value : int, _max_value : int):
 
 func _on_enemy_hud_timer_timeout():
 	enemy_section.hide()
+
+func show_go_sign():
+	$AnimationPlayer.play("go_animation")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://d30cyth32fx7y"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_spawn.gd" id="1_jtfje"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j21yt"]
+
+[node name="EnemySpawn" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_jtfje")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_j21yt")
+
+[connection signal="body_entered" from="." to="." method="_on_enemy_spawn_body_entered"]

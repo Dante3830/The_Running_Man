@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="The Running Man"
-run/main_scene="res://Scenes/Mainb.tscn"
+run/main_scene="res://Scenes/Main1.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://RunningManIcon.png"
 
@@ -86,7 +86,7 @@ Jump={
 2d_physics/layer_4="Items"
 3d_physics/layer_4="Item"
 2d_physics/layer_5="Barrel"
-3d_physics/layer_5="Barrel"
+3d_physics/layer_5="Destructible"
 2d_navigation/stretch/mode="disabled"
 
 [physics]
