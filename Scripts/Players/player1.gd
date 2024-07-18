@@ -5,32 +5,33 @@ const ATTACK = preload("res://Scenes/Players/PlayerAttack.tscn")
 @export var speed = 5.0
 @export var jump_force = 4.5
 
-var can_hit = false
 var combo : int
 var hitting = false
 var is_dead = false
 var attack_index = -1
 var attack = ["hit1", "hit2", "hit3"]
 
+var in_attack = false
+var can_hit = true
+
+var in_take_damage = false
+var motion : Vector3
+
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite3D
-@onready var health_bar = $CanvasLayer/HealthBar
 @onready var hit_timer = $CanHitTimer
-@onready var combo_text = $CanvasLayer/ComboDP
-@onready var lives_text = $CanvasLayer/LivesDP
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
 
-func _ready():
-	if health_bar:
-		health_bar.init_health(Global.player_1_health)
+@onready var ui_canvas = get_parent().get_node("UICanvas")
+@onready var camera = get_parent().get_node("Camera")
 
-func _process(_delta):
-	lives_text.text = "x " + str(Global.player_1_lives)
+func _process(delta: float) -> void:
+	transform.origin.x = clamp(transform.origin.x, camera.transform.origin.x - 4.5, camera.clamped + 4.5)
 
 func _physics_process(delta):
-	if health_bar:
-		health_bar.health = Global.player_1_health
+	if in_take_damage:
+		return
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -65,23 +66,42 @@ func _physics_process(delta):
 	move_and_slide()
 
 func player_attack(damage_index : int, damage : int):
+	if in_take_damage:
+		return
+	
 	var attk = ATTACK.instantiate()
 	attk.index = damage_index
 	attk.strength = damage
 	get_parent().add_child(attk)
 	attk.transform.origin = get_node("Attack/Spawn").global_transform.origin
 
-func take_damage():
-	Global.player_1_health -= 1
-	if Global.player_1_health <= 0 and not is_dead:
-		is_dead = true
-		Global.player_1_health = 0
-		queue_free()
+func take_damage(damage: int):
+	if is_dead:
+		return
+	
+	Global.player_1_health -= damage
 	state_machine.travel("Hurt")
+	ui_canvas.update_player_1_health()
+	
+	if Global.player_1_health <= 0:
+		_death()
+	else:
+		in_take_damage = true
+		stop_movement()
+		await get_tree().create_timer(1).timeout
+		in_take_damage = false
 
 func _on_can_hit_timer_timeout():
 	can_hit = true
 
 func _on_combo_timer_timeout():
 	combo = 0
-	combo_text.hide()
+
+func stop_movement():
+	speed = 0
+	motion.x = 0
+	motion.z = 0
+
+func _death():
+	stop_movement()
+	is_dead = true

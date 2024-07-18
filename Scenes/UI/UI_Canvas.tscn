@@ -1,0 +1,166 @@
+[gd_scene load_steps=5 format=3 uid="uid://le8uuuu77tny"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ui_canvas.gd" id="1_kjsqa"]
+[ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/HealthBar.tscn" id="2_j6umo"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="3_lt1rs"]
+[ext_resource type="Texture2D" uid="uid://bsi3j8oifhelf" path="res://Assets/Sprites/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="4_cs4xj"]
+
+[node name="UICanvas" type="CanvasLayer"]
+script = ExtResource("1_kjsqa")
+
+[node name="UIGameplay" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="UIPlayers" type="Control" parent="UIGameplay"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Player1" type="Control" parent="UIGameplay/UIPlayers"]
+anchors_preset = 0
+offset_top = 52.0
+offset_right = 40.0
+offset_bottom = 92.0
+
+[node name="HealthBar" parent="UIGameplay/UIPlayers/Player1" instance=ExtResource("2_j6umo")]
+offset_left = 66.0
+offset_top = 81.0
+offset_right = 306.0
+offset_bottom = 106.0
+max_value = 100.0
+value = 60.0
+
+[node name="Label" type="Label" parent="UIGameplay/UIPlayers/Player1"]
+layout_mode = 0
+offset_left = 69.0
+offset_right = 322.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "PLAYER 1"
+
+[node name="Label2" type="Label" parent="UIGameplay/UIPlayers/Player1"]
+layout_mode = 0
+offset_left = 69.0
+offset_right = 322.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "PLAYER 1"
+
+[node name="P1LivesDP" type="Label" parent="UIGameplay/UIPlayers/Player1"]
+layout_mode = 0
+offset_left = 353.0
+offset_right = 609.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0.566667, 1, 1)
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "X 5"
+
+[node name="Player2" type="Control" parent="UIGameplay/UIPlayers"]
+anchors_preset = 0
+offset_left = 1291.0
+offset_top = 52.0
+offset_right = 1331.0
+offset_bottom = 92.0
+
+[node name="HealthBar" parent="UIGameplay/UIPlayers/Player2" instance=ExtResource("2_j6umo")]
+offset_left = 539.0
+offset_top = 131.0
+offset_right = 779.0
+offset_bottom = 156.0
+rotation = 3.14159
+max_value = 100.0
+value = 60.0
+
+[node name="Label" type="Label" parent="UIGameplay/UIPlayers/Player2"]
+layout_mode = 0
+offset_left = 68.0
+offset_right = 324.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "PLAYER 2"
+
+[node name="P2LivesDP" type="Label" parent="UIGameplay/UIPlayers/Player2"]
+layout_mode = 0
+offset_left = 352.0
+offset_right = 608.0
+offset_bottom = 73.0
+theme_override_colors/font_color = Color(0, 0.566667, 1, 1)
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "X 5"
+
+[node name="UIEnemy" type="Control" parent="UIGameplay"]
+anchors_preset = 0
+offset_top = 863.0
+offset_right = 40.0
+offset_bottom = 903.0
+
+[node name="HealthBar" parent="UIGameplay/UIEnemy" instance=ExtResource("2_j6umo")]
+offset_left = 66.0
+offset_top = 81.0
+offset_right = 306.0
+offset_bottom = 106.0
+max_value = 100.0
+value = 60.0
+
+[node name="Name" type="Label" parent="UIGameplay/UIEnemy"]
+offset_left = 69.0
+offset_right = 322.0
+offset_bottom = 73.0
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "ENEMY"
+
+[node name="LevelTimeDP" type="Label" parent="UIGameplay"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 864.0
+offset_right = 1062.0
+offset_bottom = 193.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.916667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 160
+text = "99"
+
+[node name="GO" type="Node2D" parent="UIGameplay"]
+visible = false
+
+[node name="GoArrow" type="Sprite2D" parent="UIGameplay/GO"]
+texture_filter = 1
+position = Vector2(1758, 326)
+scale = Vector2(10, 10)
+texture = ExtResource("4_cs4xj")
+region_enabled = true
+region_rect = Rect2(304.842, 467.59, 19.6579, 15.9198)
+
+[node name="GoText" type="Label" parent="UIGameplay/GO"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1660.0
+offset_top = 397.0
+offset_right = 1858.0
+offset_bottom = 590.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.980392, 0.505882, 0.192157, 1)
+theme_override_colors/font_outline_color = Color(0.7, 0.322, 0.07, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "VAmOS"
+
+[node name="EnemyHUDTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="EnemyHUDTimer" to="." method="_on_enemy_hud_timer_timeout"]

@@ -1,14 +1,22 @@
 extends CharacterBody3D
 
+const ATTACK = preload("res://Scenes/Enemies/EnemyAttack.tscn")
+
 # Velocidad
 @export var speed_default = 1
 
 # Vida
 @export var life_default = 100
 
+@export var cooldown_attack = 1.0
+@export var enemy_name = ""
+
 var death = false
 var facing_right = false
 var take_damage_entry = false
+
+var in_attack = false
+var can_attack = true
 
 var on_hit = false
 
@@ -29,29 +37,37 @@ var life = life_default
 @onready var animated_sprite = $AnimatedSprite3D
 @onready var player = get_parent().get_node("Player1")
 @onready var take_damage_timer = $TakeDamageTimer
+@onready var ui_canvas = get_parent().get_node("UICanvas")
 
 func _ready():
 	randomize()
 
-func _process(delta):
-	# Gravedad
-	motion.y -= 9.8 * delta
-	
-	_movement(delta)
+func _process(_delta):
 	_animations()
 	_flip()
 
 func _physics_process(delta):
 	if death and on_hit or on_hit:
 		_knockback()
-	motion = Vector3(x_direction, motion.y, z_direction) * speed * delta
+
+	# Aplicar gravedad
+	motion.y -= 9.8 * delta
+	
+	# Movimiento
+	if !death and !take_damage_entry:
+		_movement(delta)
+	
+	# Aplicar movimiento
+	move_and_slide()
+	
+	# Actualizar la posición
+	position += motion * delta
 
 func _movement(delta):
-	
 	if take_damage_entry:
 		return
 	
-	if !death:
+	if !in_attack:
 		var target_distance = player.transform.origin - transform.origin
 		x_direction = target_distance.x / abs(target_distance.x)
 		
@@ -63,7 +79,18 @@ func _movement(delta):
 		if abs(target_distance.x) < 1:
 			x_direction = 0
 		
-		motion = Vector3(x_direction, motion.y, z_direction) * speed * delta
+		if abs(target_distance.x) < 1 and abs(target_distance.z) < 0.25 and !in_attack and can_attack:
+			in_attack = true
+			can_attack = false
+			stop_movement()
+			await get_tree().create_timer(0.5).timeout
+			in_attack = false
+			await get_tree().create_timer(cooldown_attack).timeout
+			can_attack = true
+			speed = speed_default
+		
+		motion.x = x_direction * speed
+		motion.z = z_direction * speed
 
 func take_damage(damage_index: int, damage: int):
 	if death:
@@ -80,18 +107,21 @@ func take_damage(damage_index: int, damage: int):
 	
 	life -= damage
 	animated_sprite.play("Hurt")
+	ui_canvas.update_enemy_health(enemy_name, life, life_default)
 	
 	if life <= 0:
 		_death()
 
 func _flip():
-	if take_damage_entry:
+	if take_damage_entry or in_attack:
 		return
 	
 	if player.transform.origin.x > transform.origin.x:
 		facing_right = false
+		#$Attack/Spawn.scale = -1.0
 	else:
 		facing_right = true
+		#$Attack/Spawn.scale = 1.0
 	
 	animated_sprite.flip_h = not facing_right
 
@@ -99,10 +129,13 @@ func _animations():
 	if take_damage_entry:
 		return
 	
-	if motion.x != 0 or motion.z != 0:
-		animated_sprite.play("Walk")
+	if in_attack:
+		animated_sprite.play("Attack")
 	else:
-		animated_sprite.play("Idle")
+		if motion.x != 0 or motion.z != 0:
+			animated_sprite.play("Walk")
+		else:
+			animated_sprite.play("Idle")
 
 func stop_movement():
 	speed = 0
@@ -142,3 +175,9 @@ func _death():
 		animated_sprite.visible = not animated_sprite.visible
 		await get_tree().create_timer(0.1).timeout
 	queue_free()
+
+func enemy_attack(value : int):
+	var attk = ATTACK.instantiate()
+	attk.strength = value
+	get_parent().add_child(attk)
+	attk.transform.origin = $Attack/Spawn.global_transform.origin

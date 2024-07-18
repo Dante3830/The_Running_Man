@@ -3,25 +3,26 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7v3dommuidf0"
-path="res://.godot/imported/Arcade - Pang Buster Bros Pomping World - Food.png-2c32eebbc52e2360da90c2936baebcd7.ctex"
+path.s3tc="res://.godot/imported/Food.png-7b9f23470714969d8eab51d2c20e7342.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/Arcade - Pang Buster Bros Pomping World - Food.png"
-dest_files=["res://.godot/imported/Arcade - Pang Buster Bros Pomping World - Food.png-2c32eebbc52e2360da90c2936baebcd7.ctex"]
+source_file="res://Assets/Sprites/Food.png"
+dest_files=["res://.godot/imported/Food.png-7b9f23470714969d8eab51d2c20e7342.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +32,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
