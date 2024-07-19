@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://glob0sfc608g"]
+[gd_scene load_steps=7 format=3 uid="uid://c2ry71potqaya"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3y42l"]
-[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="1_y2kgp"]
+[ext_resource type="Script" path="res://Scenes/Screens/controls.gd" id="1_ogjcb"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_j38lo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]
 bg_color = Color(0, 0, 0, 1)
@@ -15,59 +15,20 @@ bg_color = Color(0.941504, 0.766989, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2d38"]
 bg_color = Color(0.916159, 0, 0.137502, 1)
 
-[node name="Menu" type="Control"]
+[node name="Controls" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3y42l")
+script = ExtResource("1_ogjcb")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1082.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2whq")
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 363.0
-offset_top = 38.0
-offset_right = 590.0
-offset_bottom = 195.0
-theme_override_fonts/font = ExtResource("1_y2kgp")
-theme_override_font_sizes/font_size = 130
-text = "THE"
-
-[node name="Label2" type="Label" parent="."]
-layout_mode = 0
-offset_left = 521.0
-offset_top = 149.0
-offset_right = 1448.0
-offset_bottom = 426.0
-theme_override_fonts/font = ExtResource("1_y2kgp")
-theme_override_font_sizes/font_size = 230
-text = "RUNNING"
-
-[node name="Label3" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1334.0
-offset_top = 381.0
-offset_right = 1595.0
-offset_bottom = 538.0
-theme_override_fonts/font = ExtResource("1_y2kgp")
-theme_override_font_sizes/font_size = 130
-text = "MAN"
-
-[node name="Label4" type="Label" parent="."]
-layout_mode = 0
-offset_left = 721.0
-offset_top = 556.0
-offset_right = 1291.0
-offset_bottom = 973.0
-theme_override_font_sizes/font_size = 100
-text = "PROTOTIPO"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -77,11 +38,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -179.0
-offset_top = -329.0
+offset_top = -321.0
 offset_right = 180.0
-offset_bottom = -80.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
+alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
 layout_mode = 2
@@ -89,25 +51,25 @@ theme_override_constants/separation = 15
 
 [node name="PlayButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_y2kgp")
+theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = " JUGAR "
 
-[node name="ControlsButton" type="Button" parent="BoxContainer/VBoxContainer"]
+[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_y2kgp")
+theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
-text = " CONTROLES "
+text = " menÚ "
 
 [node name="ExitButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_y2kgp")
+theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
@@ -115,5 +77,5 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = " SALIR "
 
 [connection signal="pressed" from="BoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="BoxContainer/VBoxContainer/ControlsButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

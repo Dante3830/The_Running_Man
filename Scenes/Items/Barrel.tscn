@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwfhvrlimq73w"]
+
+[ext_resource type="Script" path="res://Scripts/barrel.gd" id="1_t0cmu"]
+[ext_resource type="Texture2D" uid="uid://d08m6v1g0w03l" path="res://Assets/Sprites/copperBarrel .png" id="2_1cwbn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6yalg"]
+size = Vector3(0.398438, 0.568115, 0.137543)
+
+[sub_resource type="Animation" id="Animation_yoqon"]
+resource_name = "shake"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_ciown"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f5juo"]
+_data = {
+"RESET": SubResource("Animation_ciown"),
+"shake": SubResource("Animation_yoqon")
+}
+
+[node name="Barrel" type="StaticBody3D"]
+collision_layer = 16
+collision_mask = 2
+script = ExtResource("1_t0cmu")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+texture = ExtResource("2_1cwbn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.003676, -0.00219065, -0.00411892)
+shape = SubResource("BoxShape3D_6yalg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f5juo")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

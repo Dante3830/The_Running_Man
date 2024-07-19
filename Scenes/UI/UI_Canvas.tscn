@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://le8uuuu77tny"]
 
 [ext_resource type="Script" path="res://Scripts/UI/ui_canvas.gd" id="1_kjsqa"]
-[ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/HealthBar.tscn" id="2_j6umo"]
+[ext_resource type="PackedScene" uid="uid://da6vlyia6u10" path="res://Scenes/UI/HealthBar.tscn" id="2_j6umo"]
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="3_lt1rs"]
 [ext_resource type="Texture2D" uid="uid://bsi3j8oifhelf" path="res://Assets/Sprites/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="4_cs4xj"]
 
