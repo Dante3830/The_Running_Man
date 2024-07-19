@@ -138,7 +138,7 @@ size = Vector3(0.579956, 0.804321, 0.151779)
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 script = ExtResource("1_ytfvn")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
