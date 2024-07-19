@@ -49,15 +49,6 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayButton" type="Button" parent="BoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_j38lo")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
-text = " JUGAR "
-
 [node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_j38lo")
@@ -76,6 +67,5 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = " SALIR "
 
-[connection signal="pressed" from="BoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

@@ -21,3 +21,15 @@ func _process(delta):
 	else:
 		if player_1_lives == 0 and player_1_health == 0 and player_2_lives == 0 and player_2_health == 0:
 			get_tree().change_scene_to_file("res://Scenes/Screens/GameOver.tscn")
+
+func start_game_config():
+	if two_players_mode:
+		player_1_health = 100
+		player_1_lives = 5
+		player_2_health = 100
+		player_2_lives = 5
+		level_time = 99
+	else:
+		player_1_health = 100
+		player_1_lives = 5
+		level_time = 99
