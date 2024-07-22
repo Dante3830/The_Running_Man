@@ -2,12 +2,13 @@ extends CanvasLayer
 
 @onready var player_1_health_bar = $UIGameplay/UIPlayers/Player1/HealthBar
 @onready var player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
-@onready var player_1_lives = $UIGameplay/UIPlayers/Player1/P1LivesDP
-@onready var player_2_lives = $UIGameplay/UIPlayers/Player2/P2LivesDP
+@onready var player_1_lives_DP = $UIGameplay/UIPlayers/Player1/P1LivesDP
+@onready var player_2_lives_DP = $UIGameplay/UIPlayers/Player2/P2LivesDP
 @onready var player_2_section = $UIGameplay/UIPlayers/Player2
 
 @onready var go_sign = $UIGameplay/GO
 @onready var level_time_DP = $UIGameplay/LevelTimeDP
+@onready var score_DP = $UIGameplay/ScoreDP
 
 @onready var enemy_health_bar = $UIGameplay/UIEnemy/HealthBar
 @onready var enemy_name_hud = $UIGameplay/UIEnemy/Name
@@ -31,18 +32,19 @@ func _ready():
 
 func _process(_delta):
 	level_time_DP.text = str(int(Global.level_time))
+	score_DP.text = "SCORE: " + str(Global.score)
 	
 	update_player_1_hud()
 	update_player_2_hud()
 
 func update_player_1_hud():
-	player_1_lives.text = "x " + str(Global.player_1_lives)
+	player_1_lives_DP.text = "x " + str(Global.player_1_lives)
 	
 	if player_1_health_bar:
 		player_1_health_bar.health = Global.player_1_health
 
 func update_player_2_hud():
-	player_1_lives.text = "x " + str(Global.player_2_lives)
+	player_2_lives_DP.text = "x " + str(Global.player_2_lives)
 	
 	if player_2_health_bar:
 		player_2_health_bar.health = Global.player_2_health
@@ -53,7 +55,7 @@ func update_enemy_hud(enemy_name : String, value : int, _max_value : int):
 		enemy_health_bar.health = value
 		enemy_name_hud.text = enemy_name
 		
-		#enemy_hud_timer.stop()
+		enemy_hud_timer.stop()
 		enemy_hud_timer.start()
 
 func _on_enemy_hud_timer_timeout():

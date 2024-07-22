@@ -40,8 +40,10 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("Left"):
 		sprite.flip_h = true
+		$Attack/Spawn.position.x = -0.4
 	elif Input.is_action_just_pressed("Right"):
 		sprite.flip_h = false
+		$Attack/Spawn.position.x = 0.4
 	
 	# Movimiento
 	var input_dir := Input.get_vector("Left", "Right", "Up", "Down")

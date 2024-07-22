@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://cmbe70ijcjupk"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/character_select.gd" id="1_2n6h0"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_0syc4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ygol"]
+bg_color = Color(0.999822, 0.151977, 0.199169, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqsti"]
+bg_color = Color(0.941504, 0.766989, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2d38"]
+bg_color = Color(0.916159, 0, 0.137502, 1)
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2n6h0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1082.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_g2whq")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 161.0
+offset_top = 38.0
+offset_right = 1798.0
+offset_bottom = 195.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 130
+text = "SELECCIONA TU PERSONAJE"
+
+[node name="MenuButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 752.5
+offset_top = 927.0
+offset_right = 1168.5
+offset_bottom = 1000.0
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
+text = "mEnÚ"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]

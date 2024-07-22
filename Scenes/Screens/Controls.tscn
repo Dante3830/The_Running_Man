@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2ry71potqaya"]
 
-[ext_resource type="Script" path="res://Scenes/Screens/controls.gd" id="1_ogjcb"]
+[ext_resource type="Script" path="res://Scripts/Screens/controls.gd" id="1_ogjcb"]
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_j38lo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]

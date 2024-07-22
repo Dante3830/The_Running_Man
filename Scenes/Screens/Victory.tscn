@@ -1,0 +1,127 @@
+[gd_scene load_steps=7 format=3 uid="uid://bsui8j3srcond"]
+
+[ext_resource type="Script" path="res://Scripts/Screens/victory.gd" id="1_owkuw"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_hvcr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2xjf"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vhqht"]
+bg_color = Color(1, 0.152941, 0.2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ephqy"]
+bg_color = Color(0.941176, 0.768627, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jiu6u"]
+bg_color = Color(0.917647, 0, 0.137255, 1)
+
+[node name="Victory" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_owkuw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1884.0
+offset_bottom = 1046.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_v2xjf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 224.0
+offset_top = 102.0
+offset_right = 1732.0
+offset_bottom = 308.0
+theme_override_colors/font_color = Color(0, 0.85, 0.17, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_hvcr6")
+theme_override_font_sizes/font_size = 170
+text = "nivel completado"
+
+[node name="YourScore" type="Label" parent="."]
+layout_mode = 1
+offset_left = 708.0
+offset_top = 286.0
+offset_right = 2216.0
+offset_bottom = 492.0
+theme_override_colors/font_color = Color(0.85, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_hvcr6")
+theme_override_font_sizes/font_size = 100
+text = "tu puntaje:"
+
+[node name="ScoreDP" type="Label" parent="."]
+layout_mode = 1
+offset_left = 662.0
+offset_top = 386.0
+offset_right = 2170.0
+offset_bottom = 592.0
+theme_override_colors/font_color = Color(0, 0.1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0.766667, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_hvcr6")
+theme_override_font_sizes/font_size = 170
+text = "000000"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+offset_left = 258.0
+offset_top = 586.0
+offset_right = 1766.0
+offset_bottom = 792.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 70
+text = "Esto es sólo un prototipo. 
+Pronto habrá muchas mejoras."
+horizontal_alignment = 1
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 569.0
+offset_top = 745.0
+offset_right = 1408.0
+offset_bottom = 1002.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="RestartButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hvcr6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhqht")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ephqy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jiu6u")
+text = " RejugAR "
+
+[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_hvcr6")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/hover = SubResource("StyleBoxFlat_vhqht")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ephqy")
+theme_override_styles/normal = SubResource("StyleBoxFlat_jiu6u")
+text = " VOLVER AL mEnÚ "
+
+[connection signal="pressed" from="BoxContainer/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]

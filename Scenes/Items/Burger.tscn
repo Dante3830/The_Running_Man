@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b03sapmouwjyb"]
 
 [ext_resource type="Texture2D" uid="uid://7v3dommuidf0" path="res://Assets/Sprites/Food.png" id="1_sawd4"]
-[ext_resource type="Script" path="res://Scripts/burger.gd" id="1_xteej"]
+[ext_resource type="Script" path="res://Scripts/Items/burger.gd" id="1_xteej"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f4gkj"]
 size = Vector3(0.271484, 0.174454, 0.064209)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://glob0sfc608g"]
 
-[ext_resource type="Script" path="res://Scripts/menu.gd" id="1_3y42l"]
+[ext_resource type="Script" path="res://Scripts/Screens/menu.gd" id="1_3y42l"]
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="1_y2kgp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]
@@ -62,12 +62,12 @@ text = "MAN"
 
 [node name="Label4" type="Label" parent="."]
 layout_mode = 0
-offset_left = 721.0
-offset_top = 556.0
-offset_right = 1291.0
-offset_bottom = 973.0
+offset_left = 483.0
+offset_top = 515.0
+offset_right = 1429.0
+offset_bottom = 932.0
 theme_override_font_sizes/font_size = 100
-text = "PROTOTIPO"
+text = "PROTOTIPO INICIAL"
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
@@ -87,14 +87,23 @@ grow_vertical = 0
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="PlayButton" type="Button" parent="BoxContainer/VBoxContainer"]
+[node name="OnePlayerButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_y2kgp")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
-text = " JUGAR "
+text = " 1 JUGADOR"
+
+[node name="TwoPlayersButton" type="Button" parent="BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_y2kgp")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
+theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
+text = " 2 JUGADORES "
 
 [node name="ControlsButton" type="Button" parent="BoxContainer/VBoxContainer"]
 layout_mode = 2
@@ -114,6 +123,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = " SALIR "
 
-[connection signal="pressed" from="BoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="BoxContainer/VBoxContainer/ControlsButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/OnePlayerButton" to="." method="_on_one_player_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/TwoPlayersButton" to="." method="_on_two_players_button_pressed"]
+[connection signal="pressed" from="BoxContainer/VBoxContainer/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="BoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

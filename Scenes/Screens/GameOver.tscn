@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bu76sfrxy11bw"]
 
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="1_rfle3"]
-[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_t7rd4"]
+[ext_resource type="Script" path="res://Scripts/Screens/game_over.gd" id="1_t7rd4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v2xjf"]
 bg_color = Color(0, 0, 0, 1)
