@@ -1,3 +1,4 @@
+# HEALTH BAR
 extends ProgressBar
 
 @onready var damage_bar = $DamageBar
@@ -7,7 +8,7 @@ var health = 0 : set = set_health
 
 func set_health(new_health):
 	var prev_health = health
-	health = min(max_value, new_health)
+	health = clamp(new_health, 0, max_value)
 	value = health
 	
 	if health <= 0:

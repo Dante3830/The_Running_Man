@@ -1,9 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dowuuhtfn1dgv"]
+[gd_scene load_steps=19 format=3 uid="uid://cggpaukndg53f"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_2.gd" id="1_t16aw"]
 [ext_resource type="Texture2D" uid="uid://sl6ruwgtjetc" path="res://Assets/Sprites/Streets of Fight files/Stage Layers/back.png" id="2_2lvpt"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_7e4ty"]
-[ext_resource type="Texture2D" uid="uid://p7bct1lg8r3v" path="res://Assets/Sprites/Stage 3-2 (SORIII).png" id="3_ltr0u"]
+[ext_resource type="Texture2D" uid="uid://p7bct1lg8r3v" path="res://Assets/Stages/Stage 3-2 (SORIII).png" id="3_ltr0u"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_an3c3"]
 [ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Player1.tscn" id="5_cehjd"]
 [ext_resource type="PackedScene" uid="uid://dh1qua8a666tc" path="res://Scenes/Enemies/Enemy1.tscn" id="6_5th3v"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_g1t8u"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3ejri"]
-size = Vector2(40, 4.75)
+size = Vector2(43, 4.75)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_h5n6x"]
 data = PackedVector3Array(20, 0, 1, -20, 0, 1, 20, 0, -1, -20, 0, 1, -20, 0, -1, 20, 0, -1)
@@ -38,171 +38,105 @@ data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.
 [node name="Main2" type="Node3D"]
 script = ExtResource("1_t16aw")
 
-[node name="BACKGROUND" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.78308, 0, -3.79063)
+[node name="BACKGROUND2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82569, 0, -3.79063)
 
-[node name="BACK" type="Node3D" parent="BACKGROUND"]
+[node name="BACK" type="Node3D" parent="BACKGROUND2"]
 
-[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, -2.91585, 0, 0)
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, -2.91585, 0, 3.51681)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 2.05432, 0.065748, 0.203614)
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 2.05341, 0, 3.517)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 7.08419, 0.065748, 0.203614)
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 7.01642, 0, 3.517)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 12.0822, 0, 0)
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 11.9475, 0, 3.51681)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 17.0524, 0.065748, 0.203614)
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 16.9172, 0, 3.517)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D6" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 22.0822, 0.065748, 0.203614)
+[node name="Sprite3D6" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 21.8802, 0, 3.517)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D7" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 26.1209, 0, 0)
+[node name="Sprite3D7" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 26.1209, 0, 3.51681)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D8" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 31.0911, 0.065748, 0.203614)
+[node name="Sprite3D8" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 31.091, 0, 3.517)
 texture_filter = 2
 texture = ExtResource("2_2lvpt")
 region_enabled = true
 region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
 
-[node name="Sprite3D13" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 56.1782, 0, 0)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+[node name="FORE" type="Node3D" parent="BACKGROUND2"]
 
-[node name="Sprite3D14" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 61.1483, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D15" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 66.1782, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D16" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 71.1762, 0, 0)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D17" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 76.1464, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D18" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 81.1763, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D19" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 85.215, 0, 0)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D20" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 90.1851, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D9" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 36.121, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D10" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 41.119, 0, 0)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D11" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 46.0892, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="Sprite3D12" type="Sprite3D" parent="BACKGROUND/BACK"]
-transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 51.119, 0.065748, 0.203614)
-texture_filter = 2
-texture = ExtResource("2_2lvpt")
-region_enabled = true
-region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
-
-[node name="FORE" type="Node3D" parent="BACKGROUND"]
-
-[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND/FORE"]
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND2/FORE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.98114)
 texture = ExtResource("3_ltr0u")
 region_enabled = true
 region_rect = Rect2(14.7656, 397.893, 1112.46, 212.539)
 
-[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND/FORE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5861, 0, 3.98114)
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.426, 0, 3.981)
 texture = ExtResource("3_ltr0u")
 region_enabled = true
 region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3777, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9555, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3701, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(484, 397.893, 766, 212.539)
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
 visible = false
 
 [node name="Floor" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.50925, -0.684559, 1.1771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6747, -0.684559, 1.1771)
 mesh = SubResource("PlaneMesh_3ejri")
 skeleton = NodePath("../..")
 
@@ -212,7 +146,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_h5n6x")
 
 [node name="Wall1" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77371, -0.333288, 2.34561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3925, -0.343, 2.346)
 mesh = SubResource("BoxMesh_dau60")
 skeleton = NodePath("../..")
 
@@ -222,7 +156,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_2nwg3")
 
 [node name="Wall2" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.774, -0.333, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3589, -0.303, 0.1)
 mesh = SubResource("BoxMesh_dau60")
 skeleton = NodePath("../..")
 
@@ -242,7 +176,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_kpyxp")
 
 [node name="Wall4" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3425, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0593, -0.227952, 0.964336)
 mesh = SubResource("BoxMesh_ak53u")
 skeleton = NodePath("../..")
 
@@ -251,21 +185,25 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0ilnt")
 
-[node name="Burger" parent="." instance=ExtResource("3_7e4ty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54034, -0.375557, 1.14202)
-
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -7.68122, 1.43784, 3.551)
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, 28.8623, 1.161, 3.551)
 projection = 1
 size = 2.7
 script = ExtResource("4_an3c3")
-clamped = 18.5
+clamped = 28.862
+
+[node name="Burger" parent="." instance=ExtResource("3_7e4ty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
 
 [node name="Player1" parent="." instance=ExtResource("5_cehjd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16832, -0.192603, 0.613657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6902, -0.192603, 0.613657)
 collision_mask = 5
 speed = 1.42
 jump_force = 3.46
+
+[node name="Barrel" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 0.579296)
+drop_object = ExtResource("3_7e4ty")
 
 [node name="Enemy" parent="." instance=ExtResource("6_5th3v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47224, -0.183742, 0.480935)
@@ -275,14 +213,10 @@ enemy_name = "Jeremy"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73028, -0.183742, 1.30595)
 enemy_name = "Jeff"
 
+[node name="EnemySpawn" parent="." instance=ExtResource("8_j5ula")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
+
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_4bpe5")]
-
-[node name="EnemySpawn" parent="." instance=ExtResource("8_j5ula")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
-enemy_amount = 4
-
-[node name="Barrel" parent="." instance=ExtResource("9_g1t8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55406, 0, 2.57784)

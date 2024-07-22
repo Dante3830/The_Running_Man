@@ -84,14 +84,13 @@ func take_damage(damage: int):
 	
 	Global.player_1_health -= damage
 	state_machine.travel("Hurt")
-	ui_canvas.update_player_1_health()
+	ui_canvas.update_player_1_hud()
 	
 	if Global.player_1_health <= 0:
 		_death()
 	else:
 		in_take_damage = true
-		stop_movement()
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.3).timeout
 		in_take_damage = false
 
 func _on_can_hit_timer_timeout():

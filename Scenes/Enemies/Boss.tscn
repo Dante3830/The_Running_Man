@@ -1,9 +1,83 @@
 [gd_scene load_steps=12 format=3 uid="uid://gke1wycfsp2g"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/boss.gd" id="1_5gb2j"]
-[ext_resource type="Texture2D" uid="uid://duj03gfroo6ii" path="res://Assets/Sprites/Damnd.png" id="2_xeuty"]
+[ext_resource type="Texture2D" uid="uid://duj03gfroo6ii" path="res://Assets/Characters/Damnd.png" id="2_xeuty"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_a4k18"]
+
+[sub_resource type="Animation" id="Animation_scvgx"]
+resource_name = "Death"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.4, 1.8, 2.2, 2.6, 3, 3.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(258, 250, 88, 104), Rect2(517, 289, 125, 66), Rect2(8, 392, 151, 51), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(8, 392, 151, 51)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4, 4.2, 4.4, 4.6, 4.8, 5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_wrsel"]
+resource_name = "Down"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(258, 250, 88, 104), Rect2(517, 289, 125, 66), Rect2(8, 392, 151, 51)]
+}
+
+[sub_resource type="Animation" id="Animation_jvtts"]
+resource_name = "Hit"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(546, 21, 108, 106), Rect2(5, 127, 100, 106), Rect2(103, 127, 97, 106), Rect2(198, 127, 126, 106), Rect2(103, 127, 97, 106), Rect2(5, 127, 100, 106), Rect2(546, 21, 108, 106), Rect2(277, 7, 91, 120)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [17],
+"method": &"enemy_attack"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_4dsc3"]
 resource_name = "Idle"
@@ -49,6 +123,22 @@ tracks/1/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_a4du4"]
+resource_name = "Up"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(158, 376, 152, 69), Rect2(308, 368, 131, 77), Rect2(346, 260, 89, 91), Rect2(274, 7, 93, 122)]
+}
+
 [sub_resource type="Animation" id="Animation_2m650"]
 resource_name = "Walk"
 length = 0.8
@@ -66,96 +156,6 @@ tracks/0/keys = {
 "values": [Rect2(277, 4, 90, 125), Rect2(366, 4, 91, 125), Rect2(456, 4, 92, 125), Rect2(366, 4, 91, 125), Rect2(277, 4, 90, 125)]
 }
 
-[sub_resource type="Animation" id="Animation_jvtts"]
-resource_name = "Hit"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(546, 21, 108, 106), Rect2(5, 127, 100, 106), Rect2(103, 127, 97, 106), Rect2(198, 127, 126, 106), Rect2(103, 127, 97, 106), Rect2(5, 127, 100, 106), Rect2(546, 21, 108, 106), Rect2(277, 7, 91, 120)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.6),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [17],
-"method": &"enemy_attack"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_wrsel"]
-resource_name = "Down"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [Rect2(258, 250, 88, 104), Rect2(517, 289, 125, 66), Rect2(8, 392, 151, 51)]
-}
-
-[sub_resource type="Animation" id="Animation_a4du4"]
-resource_name = "Up"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(158, 376, 152, 69), Rect2(308, 368, 131, 77), Rect2(346, 260, 89, 91), Rect2(274, 7, 93, 122)]
-}
-
-[sub_resource type="Animation" id="Animation_scvgx"]
-resource_name = "Death"
-length = 5.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.4, 1.8, 2.2, 2.6, 3, 3.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Rect2(258, 250, 88, 104), Rect2(517, 289, 125, 66), Rect2(8, 392, 151, 51), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(439, 367, 133, 76), Rect2(571, 359, 135, 84), Rect2(8, 392, 151, 51)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(4, 4.2, 4.4, 4.6, 4.8, 5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [true, false, true, false, true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tg6g3"]
 _data = {
 "Death": SubResource("Animation_scvgx"),
@@ -171,6 +171,7 @@ _data = {
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_5gb2j")
+speed_default = 1.5
 cooldown_attack = 0.7
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

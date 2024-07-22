@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dqymetfb4c562"]
+[gd_scene load_steps=18 format=3 uid="uid://dlfs8lbyxefsv"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
-[ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/Sprites/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="2_58gpi"]
+[ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/Stages/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="2_58gpi"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_yq853"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_rvo6f"]
 [ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Player1.tscn" id="5_1isqn"]
@@ -71,7 +71,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_h5n6x")
 
 [node name="Wall1" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.77371, -0.333288, 2.34561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.774, -0.343, 2.346)
 mesh = SubResource("BoxMesh_dau60")
 skeleton = NodePath("../..")
 
@@ -81,7 +81,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_2nwg3")
 
 [node name="Wall2" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.774, -0.333, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.774, -0.303, 0.1)
 mesh = SubResource("BoxMesh_dau60")
 skeleton = NodePath("../..")
 
@@ -110,21 +110,25 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0ilnt")
 
-[node name="Burger" parent="." instance=ExtResource("3_yq853")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.54034, -0.375557, 1.14202)
-
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, 30.6896, 1.161, 3.551)
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.17149, 1.161, 3.551)
 projection = 1
 size = 2.7
 script = ExtResource("4_rvo6f")
 clamped = 18.5
+
+[node name="Burger" parent="." instance=ExtResource("3_yq853")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
 
 [node name="Player1" parent="." instance=ExtResource("5_1isqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6902, -0.192603, 0.613657)
 collision_mask = 5
 speed = 1.42
 jump_force = 3.46
+
+[node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 0.579296)
+drop_object = ExtResource("3_yq853")
 
 [node name="Enemy" parent="." instance=ExtResource("6_0eh6h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47224, -0.183742, 0.480935)
@@ -134,14 +138,10 @@ enemy_name = "Jeremy"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73028, -0.183742, 1.30595)
 enemy_name = "Jeff"
 
+[node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
+
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_8hehy")]
-
-[node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
-enemy_amount = 4
-
-[node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55406, 0, 2.57784)

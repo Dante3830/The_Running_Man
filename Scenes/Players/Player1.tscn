@@ -1,10 +1,10 @@
 [gd_scene load_steps=39 format=3 uid="uid://byphox7jlp8ky"]
 
 [ext_resource type="Script" path="res://Scripts/Players/player_1.gd" id="1_qbd6g"]
-[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Sprites/playerV1.png" id="2_aptmx"]
+[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Characters/playerV1.png" id="2_aptmx"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
-size = Vector3(0.472412, 0.811401, 0.0526893)
+size = Vector3(0.472412, 0.811401, 0.124989)
 
 [sub_resource type="Animation" id="Animation_ixheh"]
 resource_name = "Hit1"
@@ -300,10 +300,8 @@ hframes = 4
 vframes = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.00201416, -0.00115794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.00201416, -0.0167773)
 shape = SubResource("BoxShape3D_ew64w")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
 
 [node name="Attack" type="Marker3D" parent="."]
 
@@ -326,8 +324,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.725501
-parameters/current_delta = 0.0558187
+parameters/current_position = 0.337858
+parameters/current_delta = 0.00666667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -344,8 +342,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.0
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.725501
-parameters/Idle/current_delta = 0.0558187
+parameters/Idle/current_position = 0.337858
+parameters/Idle/current_delta = 0.00666667
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

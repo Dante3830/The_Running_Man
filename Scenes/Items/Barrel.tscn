@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dwfhvrlimq73w"]
 
 [ext_resource type="Script" path="res://Scripts/Items/barrel.gd" id="1_t0cmu"]
-[ext_resource type="Texture2D" uid="uid://d08m6v1g0w03l" path="res://Assets/Sprites/copperBarrel .png" id="2_1cwbn"]
+[ext_resource type="Texture2D" uid="uid://d08m6v1g0w03l" path="res://Assets/Items/copperBarrel .png" id="2_1cwbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yalg"]
 size = Vector3(0.808655, 0.795898, 0.50338)

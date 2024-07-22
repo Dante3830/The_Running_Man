@@ -1,140 +1,149 @@
-[gd_scene load_steps=18 format=3 uid="uid://dh1qua8a666tc"]
+[gd_scene load_steps=12 format=3 uid="uid://dh1qua8a666tc"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_ojeul"]
-[ext_resource type="Texture2D" uid="uid://dl6a82ayusl4a" path="res://Assets/Sprites/enemy.png" id="2_0vbbm"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l1y6p"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(190, 96, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_05qgf"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(0, 96, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5r0ee"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(95, 288, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j0y7m"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(95, 96, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l2poe"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(0, 0, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oeiba"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(95, 0, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqyy1"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(190, 0, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yim02"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(95, 288, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e80ri"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(0, 288, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0xksx"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(190, 192, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ovqyp"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(0, 192, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8jhg4"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(95, 192, 95, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_krpa6"]
-atlas = ExtResource("2_0vbbm")
-region = Rect2(190, 192, 95, 96)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_l4u7u"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l1y6p")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_05qgf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l1y6p")
-}],
-"loop": true,
-"name": &"Attack",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5r0ee")
-}],
-"loop": true,
-"name": &"Down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j0y7m")
-}],
-"loop": false,
-"name": &"Hurt",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l2poe")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oeiba")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqyy1")
-}],
-"loop": true,
-"name": &"Idle",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yim02")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e80ri")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0xksx")
-}],
-"loop": true,
-"name": &"Up",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ovqyp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8jhg4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_krpa6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8jhg4")
-}],
-"loop": true,
-"name": &"Walk",
-"speed": 5.0
-}]
+[ext_resource type="Texture2D" uid="uid://dl6a82ayusl4a" path="res://Assets/Characters/enemy.png" id="2_0vbbm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
 size = Vector3(0.579956, 0.776672, 0.151779)
+
+[sub_resource type="Animation" id="Animation_6hxkx"]
+resource_name = "Attack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 2, 3, 2]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [8],
+"method": &"enemy_attack"
+}, {
+"args": [8],
+"method": &"enemy_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_v1fhm"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_o5n8m"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_4gahj"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_3a5rk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_e73fs"]
+resource_name = "Up"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [10, 9, 0]
+}
+
+[sub_resource type="Animation" id="Animation_ecg14"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 7, 8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wvd2j"]
+_data = {
+"Attack": SubResource("Animation_6hxkx"),
+"Down": SubResource("Animation_v1fhm"),
+"Hurt": SubResource("Animation_o5n8m"),
+"Idle": SubResource("Animation_4gahj"),
+"RESET": SubResource("Animation_3a5rk"),
+"Up": SubResource("Animation_e73fs"),
+"Walk": SubResource("Animation_ecg14")
+}
 
 [node name="Enemy" type="CharacterBody3D"]
 collision_layer = 2
@@ -142,13 +151,11 @@ collision_mask = 5
 up_direction = Vector3(0, 0, 1)
 script = ExtResource("1_ojeul")
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-flip_h = true
+[node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_l4u7u")
-animation = &"Attack"
-frame = 1
-frame_progress = 0.6702
+texture = ExtResource("2_0vbbm")
+hframes = 3
+vframes = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463257, 0.00827017, 0.0129774)
@@ -162,5 +169,11 @@ one_shot = true
 
 [node name="Spawn" type="Marker3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313247, 0.219024, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wvd2j")
+}
+autoplay = "Idle"
 
 [connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]

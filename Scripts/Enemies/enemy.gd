@@ -32,7 +32,8 @@ var z_direction = 0.0
 
 @onready var speed = speed_default
 @onready var life = life_default
-@onready var animated_sprite = $AnimatedSprite3D
+@onready var sprite = $Sprite3D
+@onready var animation_player = $AnimationPlayer
 @onready var player = get_parent().get_node("Player1")
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
@@ -63,7 +64,7 @@ func _movement(delta):
 	if take_damage_entry:
 		return
 	
-	if !death and !in_attack:
+	if not death and not in_attack:
 		var target_distance = player.transform.origin - transform.origin
 		x_direction = target_distance.x / abs(target_distance.x)
 		
@@ -103,7 +104,7 @@ func take_damage(damage_index: int, damage: int):
 		set_collision_layer_value(2, false)
 	
 	life = max(0, life - damage)
-	animated_sprite.play("Hurt")
+	animation_player.play("Hurt")
 	ui_canvas.update_enemy_hud(enemy_name, life, life_default)
 	
 	if life <= 0:
@@ -117,31 +118,31 @@ func _flip():
 	
 	if player.transform.origin.x > transform.origin.x:
 		facing_right = false
-		$Attack/Spawn.position.x = -0.308
+		$Attack/Spawn.position.x = 0.308
 	else:
 		facing_right = true
-		$Attack/Spawn.position.x = 0.313
+		$Attack/Spawn.position.x = -0.313
 	
-	animated_sprite.flip_h = not facing_right
+	sprite.flip_h = not facing_right
 
 func _animations():
 	if take_damage_entry:
 		return
 	
 	if in_attack:
-		animated_sprite.play("Attack")
+		animation_player.play("Attack")
 	else:
 		if motion.x != 0 or motion.z != 0:
-			animated_sprite.play("Walk")
+			animation_player.play("Walk")
 		else:
-			animated_sprite.play("Idle")
+			animation_player.play("Idle")
 
 func _on_take_damage_timer_timeout():
 	if take_damage_index >= 3:
 		await get_tree().create_timer(1).timeout
-		animated_sprite.play("Up")
+		animation_player.play("Up")
 		await get_tree().create_timer(1).timeout
-		animated_sprite.play("Idle")
+		animation_player.play("Idle")
 		set_collision_layer_value(2, true)
 		restart_movement()
 	else:
@@ -149,7 +150,7 @@ func _on_take_damage_timer_timeout():
 
 func _knockback():
 	var direction = global_transform.origin.x - player.global_transform.origin.x
-	knockback.x = direction.x * knockback_speed
+	knockback.x = direction * knockback_speed
 	knockback.y = knockback_speed * 4
 	move_and_collide(knockback)
 	
@@ -161,13 +162,14 @@ func _death():
 	death = true
 	on_hit = true
 	Global.score += 100
-	animated_sprite.play("Down")
+	animation_player.play("Down")
 	set_collision_layer_value(2, false)
 	await get_tree().create_timer(0.7).timeout
 	
 	for i in range(10):
-		animated_sprite.visible = not animated_sprite.visible
+		sprite.visible = not sprite.visible
 		await get_tree().create_timer(0.1).timeout
+	ui_canvas.update_enemy_hud("", 0, 0)  # Clear HUD when enemy dies
 	get_parent().enemy_death()
 	queue_free()
 
@@ -183,6 +185,6 @@ func stop_movement():
 	motion.z = 0
 
 func restart_movement():
-	animated_sprite.play("Walk")
+	animation_player.play("Walk")
 	speed = speed_default
 	take_damage_entry = false

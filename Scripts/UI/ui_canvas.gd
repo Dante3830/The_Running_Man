@@ -1,19 +1,24 @@
 extends CanvasLayer
 
+# Jugador 1
 @onready var player_1_health_bar = $UIGameplay/UIPlayers/Player1/HealthBar
-@onready var player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
 @onready var player_1_lives_DP = $UIGameplay/UIPlayers/Player1/P1LivesDP
+
+# Jugador 2
+@onready var player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
 @onready var player_2_lives_DP = $UIGameplay/UIPlayers/Player2/P2LivesDP
 @onready var player_2_section = $UIGameplay/UIPlayers/Player2
 
-@onready var go_sign = $UIGameplay/GO
-@onready var level_time_DP = $UIGameplay/LevelTimeDP
-@onready var score_DP = $UIGameplay/ScoreDP
-
+# Enemigos
 @onready var enemy_health_bar = $UIGameplay/UIEnemy/HealthBar
 @onready var enemy_name_hud = $UIGameplay/UIEnemy/Name
 @onready var enemy_section = $UIGameplay/UIEnemy
 @onready var enemy_hud_timer = $EnemyHUDTimer
+
+# Nivel
+@onready var go_sign = $UIGameplay/GO
+@onready var level_time_DP = $UIGameplay/LevelTimeDP
+@onready var score_DP = $UIGameplay/ScoreDP
 
 func _ready():
 	if !Global.two_players_mode:
@@ -49,14 +54,17 @@ func update_player_2_hud():
 	if player_2_health_bar:
 		player_2_health_bar.health = Global.player_2_health
 
-func update_enemy_hud(enemy_name : String, value : int, _max_value : int):
-	if enemy_health_bar:
-		enemy_health_bar.init_health(value)
+func update_enemy_hud(enemy_name: String, value: int, max_value: int):
+	if enemy_health_bar and is_instance_valid(enemy_health_bar):
+		enemy_health_bar.init_health(max_value)
 		enemy_health_bar.health = value
 		enemy_name_hud.text = enemy_name
 		
+		enemy_section.show()
 		enemy_hud_timer.stop()
 		enemy_hud_timer.start()
+	else:
+		print("Error: enemy_health_bar is not valid")
 
 func _on_enemy_hud_timer_timeout():
 	enemy_section.hide()
