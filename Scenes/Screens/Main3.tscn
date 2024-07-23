@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlfs8lbyxefsv"]
+[gd_scene load_steps=19 format=3 uid="uid://dlfs8lbyxefsv"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
-[ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/Stages/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="2_58gpi"]
+[ext_resource type="Texture2D" uid="uid://bogmok5vu2aqh" path="res://Assets/Stages/Stage 4D (Sailor Moon).png" id="3_maedm"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_yq853"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_rvo6f"]
 [ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Player1.tscn" id="5_1isqn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_8hehy"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_rixxx"]
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_otm7f"]
+[ext_resource type="PackedScene" uid="uid://gke1wycfsp2g" path="res://Scenes/Enemies/Boss.tscn" id="10_p5cl5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_3ejri"]
 size = Vector2(40, 4.75)
@@ -37,24 +38,45 @@ data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.
 [node name="Main3" type="Node3D"]
 script = ExtResource("1_ixssj")
 
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -7.38743, 1.161, 3.551)
+projection = 1
+size = 2.7
+script = ExtResource("4_rvo6f")
+clamped = 18.4
+
 [node name="BACKGROUND" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.2136, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="BACKGROUND"]
-texture = ExtResource("2_58gpi")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.322, 0, 0)
+texture = ExtResource("3_maedm")
 region_enabled = true
-region_rect = Rect2(0, 56.5519, 1408, 283.341)
+region_rect = Rect2(5, 732, 1527, 236)
 
 [node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, 0)
-texture = ExtResource("2_58gpi")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02807, 0, 0)
+texture = ExtResource("3_maedm")
 region_enabled = true
-region_rect = Rect2(0, 56.5519, 1408, 283.341)
+region_rect = Rect2(5, 732, 528, 236)
 
 [node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0711, 0, 0)
-texture = ExtResource("2_58gpi")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21218, 0, 0)
+texture = ExtResource("3_maedm")
 region_enabled = true
-region_rect = Rect2(0, 56.5519, 1408, 283.341)
+region_rect = Rect2(5, 732, 528, 236)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.49328, 0, 0)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(5, 732, 528, 236)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1.37504, 0, 0, 0, 1, 12.2964, 0.28107, 1.59189)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(644, 489, 42, 228)
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
@@ -91,7 +113,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_hhdpe")
 
 [node name="Wall3" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09275, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.82786, -0.227952, 0.964336)
 mesh = SubResource("BoxMesh_ak53u")
 skeleton = NodePath("../..")
 
@@ -101,7 +123,7 @@ skeleton = NodePath("../..")
 shape = SubResource("ConcavePolygonShape3D_kpyxp")
 
 [node name="Wall4" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3425, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7646, -0.227952, 0.964336)
 mesh = SubResource("BoxMesh_ak53u")
 skeleton = NodePath("../..")
 
@@ -110,18 +132,11 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0ilnt")
 
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.17149, 1.161, 3.551)
-projection = 1
-size = 2.7
-script = ExtResource("4_rvo6f")
-clamped = 18.5
-
 [node name="Burger" parent="." instance=ExtResource("3_yq853")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
 
 [node name="Player1" parent="." instance=ExtResource("5_1isqn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6902, -0.192603, 0.613657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.07222, -0.193, 0.614)
 collision_mask = 5
 speed = 1.42
 jump_force = 3.46
@@ -145,3 +160,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_8hehy")]
+
+[node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6752, 3.93404, 1.10362)
