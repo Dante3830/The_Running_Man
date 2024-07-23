@@ -1,7 +1,7 @@
 [gd_scene load_steps=39 format=3 uid="uid://ejsi5wc0vtv"]
 
 [ext_resource type="Script" path="res://Scripts/Players/player_1.gd" id="1_mlukg"]
-[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Characters/playerV1.png" id="2_ot238"]
+[ext_resource type="Texture2D" uid="uid://cxmbfmjebj2rj" path="res://Assets/Characters/Streets of Rage 2 - Blaze.png" id="2_twjpw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
 size = Vector3(0.472412, 0.811401, 0.168747)
@@ -115,18 +115,17 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_0byhj"]
 resource_name = "Idle"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("Sprite3D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [13, 14, 15, 14, 13]
+"values": [Rect2(5, 14, 56, 90), Rect2(62, 14, 56, 90), Rect2(117.52, 14, 56, 90), Rect2(62, 14, 56, 90), Rect2(5, 14, 56, 90)]
 }
 
 [sub_resource type="Animation" id="Animation_bm5d8"]
@@ -173,6 +172,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 14, 56, 90)]
+}
 
 [sub_resource type="Animation" id="Animation_pfa3t"]
 resource_name = "Walk"
@@ -180,14 +191,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/path = NodePath("Sprite3D:region_rect")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 4, 5]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(5, 14, 56, 90)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tuam8"]
@@ -295,9 +306,9 @@ script = ExtResource("1_mlukg")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 2
-texture = ExtResource("2_ot238")
-hframes = 4
-vframes = 5
+texture = ExtResource("2_twjpw")
+region_enabled = true
+region_rect = Rect2(5, 14, 56, 90)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.00201416, 0.00449351)
@@ -326,8 +337,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.25
-parameters/current_delta = 0.00761522
+parameters/current_position = 0.8
+parameters/current_delta = 0.0
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -344,8 +355,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.0
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.25
-parameters/Idle/current_delta = 0.00761522
+parameters/Idle/current_position = 0.8
+parameters/Idle/current_delta = 0.0
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

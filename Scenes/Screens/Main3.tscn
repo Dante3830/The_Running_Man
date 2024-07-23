@@ -156,10 +156,10 @@ enemy_name = "Jeff"
 [node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
 
+[node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5992, 3.93404, 1.10362)
+
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_8hehy")]
-
-[node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6752, 3.93404, 1.10362)

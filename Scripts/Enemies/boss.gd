@@ -45,6 +45,8 @@ func _process(delta):
 	# Gravedad
 	if player_1.global_transform.origin.x >= 17.0:
 		motion.y -= 9.8 * delta
+	else:
+		motion.y = 0
 	
 	_movement(delta)
 	_animations()
@@ -101,7 +103,7 @@ func take_damage(damage_index: int, damage: int):
 		set_collision_layer_value(2, false)
 	
 	life = max(0, life - damage)
-	#animation_player.play("Hurt")
+	animation_player.play("Hurt")
 	ui_canvas.update_enemy_hud("Frost", life, life_default)
 	
 	if life <= 0:
@@ -114,11 +116,11 @@ func _flip():
 		return
 	
 	if player_1.transform.origin.x > transform.origin.x:
-		facing_right = false
-		$Attack/Spawn.position.x = -0.512
-	else:
 		facing_right = true
 		$Attack/Spawn.position.x = 0.512
+	else:
+		facing_right = false
+		$Attack/Spawn.position.x = -0.512
 	
 	sprite.flip_h = not facing_right
 

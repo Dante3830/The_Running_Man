@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2ry71potqaya"]
+[gd_scene load_steps=9 format=3 uid="uid://c2ry71potqaya"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/controls.gd" id="1_ogjcb"]
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_j38lo"]
+[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Characters/playerV1.png" id="3_r463t"]
+[ext_resource type="Texture2D" uid="uid://bl7j7qscff5sq" path="res://Assets/Characters/Streets of Rage 2 - Axel.png" id="4_84j1l"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]
 bg_color = Color(0, 0, 0, 1)
@@ -30,6 +32,185 @@ offset_right = 1920.0
 offset_bottom = 1082.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2whq")
 
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -556.0
+offset_top = 32.0
+offset_right = 556.0
+offset_bottom = 287.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 211
+text = "CONTROLES"
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -781.0
+offset_top = 554.0
+offset_right = 331.0
+offset_bottom = 809.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 81
+text = "caminar"
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -201.0
+offset_top = 606.0
+offset_right = 911.0
+offset_bottom = 861.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 81
+text = "golpear"
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 405.0
+offset_top = 578.0
+offset_right = 1517.0
+offset_bottom = 833.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 81
+text = "saltar"
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -788.0
+offset_top = 649.0
+offset_right = -466.0
+offset_bottom = 844.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "wasd
+
+las flechas"
+horizontal_alignment = 1
+
+[node name="Or" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -651.0
+offset_top = 709.0
+offset_right = -591.0
+offset_bottom = 773.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "o"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = 708.0
+offset_right = 119.0
+offset_bottom = 903.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "z     n"
+horizontal_alignment = 1
+
+[node name="Or2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -72.0
+offset_top = 708.0
+offset_right = -12.0
+offset_bottom = 772.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "o"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 395.0
+offset_top = 677.0
+offset_right = 717.0
+offset_bottom = 872.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "x    m"
+horizontal_alignment = 1
+
+[node name="Or3" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 521.0
+offset_top = 676.0
+offset_right = 581.0
+offset_bottom = 740.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "o"
+horizontal_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(354, 420)
+scale = Vector2(3.72, 3.34604)
+texture = ExtResource("3_r463t")
+region_enabled = true
+region_rect = Rect2(192, 0, 57, 91)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(934, 479)
+scale = Vector2(3.72, 3.34604)
+texture = ExtResource("3_r463t")
+region_enabled = true
+region_rect = Rect2(183, 94, 74, 93)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1515, 435)
+scale = Vector2(3.72, 3.34604)
+texture = ExtResource("4_84j1l")
+flip_h = true
+region_enabled = true
+region_rect = Rect2(52, 103, 46, 95)
+
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -37,10 +218,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -179.0
-offset_top = -321.0
-offset_right = 180.0
-offset_bottom = -72.0
+offset_left = -179.5
+offset_top = -249.0
+offset_right = 179.5
 grow_horizontal = 2
 grow_vertical = 0
 alignment = 1

@@ -34,7 +34,7 @@ var z_direction = 0.0
 @onready var life = life_default
 @onready var sprite = $Sprite3D
 @onready var animation_player = $AnimationPlayer
-@onready var player = get_parent().get_node("Player1")
+@onready var player_1 = get_parent().get_node("Player1")
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 
@@ -65,7 +65,7 @@ func _movement(delta):
 		return
 	
 	if not death and not in_attack:
-		var target_distance = player.transform.origin - transform.origin
+		var target_distance = player_1.transform.origin - transform.origin
 		x_direction = target_distance.x / abs(target_distance.x)
 		
 		walk_timer += delta
@@ -116,7 +116,7 @@ func _flip():
 	if take_damage_entry or in_attack:
 		return
 	
-	if player.transform.origin.x > transform.origin.x:
+	if player_1.transform.origin.x > transform.origin.x:
 		facing_right = false
 		$Attack/Spawn.position.x = 0.308
 	else:
@@ -149,7 +149,7 @@ func _on_take_damage_timer_timeout():
 		restart_movement()
 
 func _knockback():
-	var direction = global_transform.origin.x - player.global_transform.origin.x
+	var direction = global_transform.origin.x - player_1.global_transform.origin.x
 	knockback.x = direction * knockback_speed
 	knockback.y = knockback_speed * 4
 	move_and_collide(knockback)

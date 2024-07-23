@@ -19,6 +19,7 @@ var motion : Vector3
 
 @onready var animation = $AnimationPlayer
 @onready var sprite = $Sprite3D
+@onready var jump_sprite = $JumpSprite
 @onready var hit_timer = $CanHitTimer
 
 @onready var state_machine = $AnimationTree.get("parameters/playback")
@@ -37,12 +38,19 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		jump_sprite.visible = true
+		sprite.visible = false
+	else:
+		jump_sprite.visible = false
+		sprite.visible = true
 	
 	if Input.is_action_just_pressed("Left"):
 		sprite.flip_h = true
+		jump_sprite.flip_h = false
 		$Attack/Spawn.position.x = -0.4
 	elif Input.is_action_just_pressed("Right"):
 		sprite.flip_h = false
+		jump_sprite.flip_h = true
 		$Attack/Spawn.position.x = 0.4
 	
 	# Movimiento

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cggpaukndg53f"]
+[gd_scene load_steps=20 format=3 uid="uid://cggpaukndg53f"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_2.gd" id="1_t16aw"]
 [ext_resource type="Texture2D" uid="uid://sl6ruwgtjetc" path="res://Assets/Sprites/Streets of Fight files/Stage Layers/back.png" id="2_2lvpt"]
@@ -34,6 +34,9 @@ data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0ilnt"]
 data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.4, 0.05, 0.985, 1.4, 0.05, -0.985, 1.4, -0.05, -0.985, 1.4, 0.05, 0.985, -1.4, -0.05, 0.985, -1.4, 0.05, -0.985, -1.4, -0.05, 0.985, -1.4, -0.05, -0.985, -1.4, 0.05, -0.985, -1.4, 0.05, 0.985, 1.4, 0.05, 0.985, -1.4, 0.05, -0.985, 1.4, 0.05, 0.985, -1.4, 0.05, -0.985, -1.4, 0.05, -0.985, 1.4, -0.05, 0.985, -1.4, -0.05, 0.985, 1.4, -0.05, -0.985, -1.4, -0.05, 0.985, 1.4, -0.05, -0.985, 1.4, -0.05, -0.985, -1.4, 0.05, 0.985, 1.4, -0.05, 0.985, 1.4, 0.05, 0.985, -1.4, -0.05, 0.985, 1.4, -0.05, 0.985, -1.4, 0.05, 0.985, -1.4, -0.05, -0.985, 1.4, 0.05, -0.985, 1.4, -0.05, -0.985, -1.4, 0.05, -0.985, 1.4, 0.05, -0.985, -1.4, -0.05, -0.985, -1.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xhw33"]
+size = Vector3(1.15436, 1.9502, 3.78662)
 
 [node name="Main2" type="Node3D"]
 script = ExtResource("1_t16aw")
@@ -220,3 +223,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.71076, 0, 1.43511)
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_4bpe5")]
+
+[node name="NextAreaDoor" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4718, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NextAreaDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24326, 0.286318, 1.39331)
+shape = SubResource("BoxShape3D_xhw33")
+
+[connection signal="body_entered" from="NextAreaDoor" to="." method="_on_next_area_door_body_entered"]
