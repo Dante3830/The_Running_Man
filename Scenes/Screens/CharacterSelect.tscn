@@ -1,7 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmbe70ijcjupk"]
+[gd_scene load_steps=10 format=3 uid="uid://cmbe70ijcjupk"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/character_select.gd" id="1_2n6h0"]
 [ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="2_0syc4"]
+[ext_resource type="Texture2D" uid="uid://dy5p4x7v2y3l" path="res://Assets/Characters/playerV1.png" id="3_ja1f6"]
+[ext_resource type="Texture2D" uid="uid://bsi3j8oifhelf" path="res://Assets/Sprites/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="4_1scc8"]
+[ext_resource type="Texture2D" uid="uid://cxmbfmjebj2rj" path="res://Assets/Characters/Streets of Rage 2 - Blaze.png" id="4_dpq6m"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2whq"]
 bg_color = Color(0, 0, 0, 1)
@@ -54,4 +57,178 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = "mEnÚ"
 
+[node name="Character1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 497.0
+offset_top = 251.0
+offset_right = 903.0
+offset_bottom = 784.0
+
+[node name="ColorRect" type="ColorRect" parent="Character1"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 27.0
+offset_right = 382.0
+offset_bottom = 505.0
+color = Color(0.1224, 0.25188, 0.72, 1)
+
+[node name="Button" type="Button" parent="Character1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Character1"]
+texture_filter = 1
+position = Vector2(204, 258)
+scale = Vector2(4.48864, 4.84409)
+texture = ExtResource("3_ja1f6")
+hframes = 4
+vframes = 5
+frame = 15
+
+[node name="Label" type="Label" parent="Character1"]
+offset_left = 23.0
+offset_top = 539.0
+offset_right = 403.0
+offset_bottom = 696.0
+theme_override_colors/font_color = Color(0, 0.408, 0.68, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "richard"
+
+[node name="Player1" type="Node2D" parent="Character1"]
+visible = false
+position = Vector2(-313, 51)
+
+[node name="Label" type="Label" parent="Character1/Player1"]
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 398.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0, 0.408, 0.68, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "jug 1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Character1/Player1"]
+texture_filter = 1
+position = Vector2(151, 166)
+scale = Vector2(7.81579, 6.5)
+texture = ExtResource("4_1scc8")
+region_enabled = true
+region_rect = Rect2(448.904, 465.054, 19, 22)
+
+[node name="Player2" type="Node2D" parent="Character1"]
+visible = false
+position = Vector2(-313, 272)
+
+[node name="Label" type="Label" parent="Character1/Player2"]
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 398.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0.68, 0.396667, 0, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "jug 2"
+
+[node name="Sprite2D" type="Sprite2D" parent="Character1/Player2"]
+texture_filter = 1
+position = Vector2(151, 166)
+scale = Vector2(7.81579, 6.5)
+texture = ExtResource("4_1scc8")
+region_enabled = true
+region_rect = Rect2(341.381, 467.612, 17.5617, 16.8593)
+
+[node name="Character2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1032.0
+offset_top = 251.0
+offset_right = 1438.0
+offset_bottom = 784.0
+
+[node name="ColorRect" type="ColorRect" parent="Character2"]
+offset_left = 25.0
+offset_top = 27.0
+offset_right = 382.0
+offset_bottom = 505.0
+color = Color(0.72, 0.1224, 0.1224, 1)
+
+[node name="Button" type="Button" parent="Character2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Character2"]
+texture_filter = 1
+position = Vector2(192, 251)
+scale = Vector2(5.61111, 5.03012)
+texture = ExtResource("4_dpq6m")
+region_enabled = true
+region_rect = Rect2(116.476, 18.44, 54.5, 83)
+
+[node name="Label" type="Label" parent="Character2"]
+offset_left = 69.0
+offset_top = 539.0
+offset_right = 449.0
+offset_bottom = 696.0
+theme_override_colors/font_color = Color(0.68, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "amber"
+
+[node name="Player1" type="Node2D" parent="Character2"]
+visible = false
+position = Vector2(465, 51)
+
+[node name="Label" type="Label" parent="Character2/Player1"]
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 398.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0, 0.408, 0.68, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "jug 1"
+
+[node name="Sprite2D" type="Sprite2D" parent="Character2/Player1"]
+texture_filter = 1
+position = Vector2(119, 166)
+rotation = 3.14159
+scale = Vector2(7.81579, 6.5)
+texture = ExtResource("4_1scc8")
+region_enabled = true
+region_rect = Rect2(448.904, 465.054, 19, 22)
+
+[node name="Player2" type="Node2D" parent="Character2"]
+visible = false
+position = Vector2(465, 272)
+
+[node name="Label" type="Label" parent="Character2/Player2"]
+offset_left = 18.0
+offset_top = 9.0
+offset_right = 398.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0.68, 0.396667, 0, 1)
+theme_override_fonts/font = ExtResource("2_0syc4")
+theme_override_font_sizes/font_size = 93
+text = "jug 2"
+
+[node name="Sprite2D" type="Sprite2D" parent="Character2/Player2"]
+texture_filter = 1
+position = Vector2(121, 168)
+rotation = 3.14159
+scale = Vector2(7.81579, 6.5)
+texture = ExtResource("4_1scc8")
+region_enabled = true
+region_rect = Rect2(341.381, 467.612, 17.5617, 16.8593)
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Character1/Button" to="." method="_on_character_1_button_pressed"]
+[connection signal="pressed" from="Character2/Button" to="." method="_on_character_2_button_pressed"]

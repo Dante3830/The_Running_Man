@@ -1,5 +1,6 @@
 extends Node
 
+var one_player_mode = true
 var two_players_mode = false
 
 var player_1_health = 100

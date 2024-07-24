@@ -73,9 +73,6 @@ func _physics_process(delta):
 		hitting = true
 		state_machine.travel("Hit1")
 		attack_index = (attack_index + 1) % attack.size()
-		
-		if attack_index > 3:
-			attack_index = 0
 	
 	move_and_slide()
 

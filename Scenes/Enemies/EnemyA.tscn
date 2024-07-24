@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dh1qua8a666tc"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/enemy.gd" id="1_ojeul"]
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_a.gd" id="1_ojeul"]
 [ext_resource type="Texture2D" uid="uid://dl6a82ayusl4a" path="res://Assets/Characters/enemy.png" id="2_0vbbm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
@@ -145,7 +145,7 @@ _data = {
 "Walk": SubResource("Animation_ecg14")
 }
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="EnemyA" type="CharacterBody3D" groups=["Enemies"]]
 collision_layer = 2
 collision_mask = 5
 up_direction = Vector3(0, 0, 1)

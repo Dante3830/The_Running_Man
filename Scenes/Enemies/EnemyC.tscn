@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cautyiqux8ops"]
+
+[ext_resource type="Script" path="res://Scripts/Enemies/enemy_c.gd" id="1_f6unc"]
+[ext_resource type="Texture2D" uid="uid://dtt4c5yu8xxej" path="res://Assets/Characters/Streets of Rage 2 - Hakuyo.png" id="2_1rr0y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
+size = Vector3(0.579956, 0.776672, 0.151779)
+
+[node name="EnemyC" type="CharacterBody3D" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 5
+up_direction = Vector3(0, 0, 1)
+script = ExtResource("1_f6unc")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("2_1rr0y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463257, 0.00827017, 0.0129774)
+shape = SubResource("BoxShape3D_ew64w")
+
+[node name="TakeDamageTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Attack" type="Marker3D" parent="."]
+
+[node name="Spawn" type="Marker3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313247, 0.219024, 0)
+
+[connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]
