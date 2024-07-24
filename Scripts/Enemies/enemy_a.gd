@@ -75,24 +75,14 @@ func _movement(delta):
 	
 	if not death and not in_attack:
 		if player:
-			var direction
-			var target_distance = player.transform.origin - transform.origin
-			x_direction = target_distance.x / abs(target_distance.x)
+			var direction = position.direction_to(player.position)
+			motion.x = direction.x * speed
+			motion.z = direction.z * speed
 			
-			if player != null:
-				direction = (player.position - position).normalized()
-				motion.x = direction.x * speed * delta
-				motion.z = direction.z * speed * delta
-			
-			walk_timer += delta
-			if walk_timer > randf_range(1.0, 2.0):
-				z_direction = randi() % 3 - 1
-				walk_timer = 0.0
-			
-			if abs(target_distance.x) < 1:
+			if abs(player.position.x - position.x) < 0.5:
 				x_direction = 0
 			
-			if abs(target_distance.x) < 1 and abs(target_distance.z) < 0.25 and !in_attack and can_attack:
+			if abs(player.position.x - position.x) < 0.5 and abs(player.position.z - position.z) < 0.5 and !in_attack and can_attack:
 				in_attack = true
 				can_attack = false
 				stop_movement()
@@ -101,8 +91,14 @@ func _movement(delta):
 				await get_tree().create_timer(cooldown_attack).timeout
 				can_attack = true
 				speed = speed_default
-			
-			move_and_collide(motion)
+		
+		walk_timer += delta
+		if walk_timer > randf_range(1.0, 2.0):
+			z_direction = randi() % 3 - 1
+			walk_timer = 0.0
+		
+		move_and_collide(motion)
+
 
 func take_damage(damage_index: int, damage: int):
 	if death:

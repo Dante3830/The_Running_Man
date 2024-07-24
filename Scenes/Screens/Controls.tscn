@@ -211,26 +211,12 @@ flip_h = true
 region_enabled = true
 region_rect = Rect2(52, 103, 46, 95)
 
-[node name="BoxContainer" type="BoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -179.5
-offset_top = -249.0
-offset_right = 179.5
-grow_horizontal = 2
-grow_vertical = 0
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="BoxContainer"]
+[node name="MenuButton" type="Button" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 15
-
-[node name="MenuButton" type="Button" parent="BoxContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 861.0
+offset_top = 949.0
+offset_right = 1060.0
+offset_bottom = 1022.0
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 60
 theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
@@ -238,14 +224,4 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
 theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
 text = " menÚ "
 
-[node name="ExitButton" type="Button" parent="BoxContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_j38lo")
-theme_override_font_sizes/font_size = 60
-theme_override_styles/hover = SubResource("StyleBoxFlat_0ygol")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_yqsti")
-theme_override_styles/normal = SubResource("StyleBoxFlat_q2d38")
-text = " SALIR "
-
-[connection signal="pressed" from="BoxContainer/VBoxContainer/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="BoxContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MenuButton" to="." method="_on_menu_button_pressed"]
