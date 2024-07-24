@@ -290,7 +290,7 @@ states/Walk/position = Vector2(294.19, -36.4274)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1t5pu"), "Hit1", "Idle", SubResource("AnimationNodeStateMachineTransition_ss75b"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_q3qxs"), "Idle", "Hit1", SubResource("AnimationNodeStateMachineTransition_moc3g"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_hhoc2"), "Walk", "Hurt", SubResource("AnimationNodeStateMachineTransition_lggu0"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_vn47l"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_ad7sp"), "Hit3", "Idle", SubResource("AnimationNodeStateMachineTransition_u6t2t"), "Hit2", "Idle", SubResource("AnimationNodeStateMachineTransition_m565v"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_3aju4"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_g1jvw"), "Hit3", "Kick", SubResource("AnimationNodeStateMachineTransition_2dep8"), "Hit1", "Hurt", SubResource("AnimationNodeStateMachineTransition_fvlky"), "Hit2", "Hurt", SubResource("AnimationNodeStateMachineTransition_1kite"), "Hit3", "Hurt", SubResource("AnimationNodeStateMachineTransition_d3u6a"), "Kick", "Hurt", SubResource("AnimationNodeStateMachineTransition_e8k2b"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rmw7i")]
 graph_offset = Vector2(-2.39648e-05, 20.6475)
 
-[node name="Player1" type="CharacterBody3D"]
+[node name="Player1" type="CharacterBody3D" groups=["Players"]]
 collision_mask = 4
 script = ExtResource("1_qbd6g")
 
@@ -333,8 +333,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.653571
-parameters/current_delta = 0.0266667
+parameters/current_position = 0.312205
+parameters/current_delta = 0.0173457
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -351,8 +351,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.0
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.653571
-parameters/Idle/current_delta = 0.0266667
+parameters/Idle/current_position = 0.312205
+parameters/Idle/current_delta = 0.0173457
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

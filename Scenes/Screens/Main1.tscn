@@ -130,7 +130,7 @@ distance_z_2 = 0.76
 [node name="Burger" parent="." instance=ExtResource("7_klrbr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
 
-[node name="Player1" parent="." instance=ExtResource("4_570ta")]
+[node name="Player1" parent="." groups=["Players"] instance=ExtResource("4_570ta")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.6902, -0.192603, 0.613657)
 collision_mask = 5
 speed = 1.42

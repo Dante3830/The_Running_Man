@@ -18,7 +18,6 @@ var can_attack = true
 var on_hit = false
 
 var motion : Vector3
-
 var knockback : Vector3
 var knockback_speed = 0.5
 
@@ -34,12 +33,23 @@ var z_direction = 0.0
 @onready var life = life_default
 @onready var sprite = $Sprite3D
 @onready var animation_player = $AnimationPlayer
-@onready var player_1 = get_parent().get_node("Player1")
+
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 
+@onready var detection_area = $Detection
+@onready var player = null
+
 func _ready():
 	randomize()
+
+func _on_detection_body_entered(body):
+	if body.is_in_group("Players"):
+		player = body
+
+func _on_detection_body_exited(body: Node3D) -> void:
+	if body.is_in_group("Players"):
+		player = null
 
 func _process(delta):
 	# Gravedad
@@ -57,7 +67,6 @@ func _physics_process(_delta):
 	if death and on_hit or on_hit:
 		_knockback()
 	
-	# Aplicar movimiento
 	move_and_collide(motion)
 
 func _movement(delta):
@@ -65,29 +74,35 @@ func _movement(delta):
 		return
 	
 	if not death and not in_attack:
-		var target_distance = player_1.transform.origin - transform.origin
-		x_direction = target_distance.x / abs(target_distance.x)
-		
-		walk_timer += delta
-		if walk_timer > randf_range(1.0, 2.0):
-			z_direction = randi() % 3 - 1
-			walk_timer = 0.0
-		
-		if abs(target_distance.x) < 1:
-			x_direction = 0
-		
-		if abs(target_distance.x) < 1 and abs(target_distance.z) < 0.25 and !in_attack and can_attack:
-			in_attack = true
-			can_attack = false
-			stop_movement()
-			await get_tree().create_timer(0.5).timeout
-			in_attack = false
-			await get_tree().create_timer(cooldown_attack).timeout
-			can_attack = true
-			speed = speed_default
-		
-		motion.x = x_direction * speed * delta
-		motion.z = z_direction * speed * delta
+		if player:
+			var direction
+			var target_distance = player.transform.origin - transform.origin
+			x_direction = target_distance.x / abs(target_distance.x)
+			
+			if player != null:
+				direction = (player.position - position).normalized()
+				motion.x = direction.x * speed * delta
+				motion.z = direction.z * speed * delta
+			
+			walk_timer += delta
+			if walk_timer > randf_range(1.0, 2.0):
+				z_direction = randi() % 3 - 1
+				walk_timer = 0.0
+			
+			if abs(target_distance.x) < 1:
+				x_direction = 0
+			
+			if abs(target_distance.x) < 1 and abs(target_distance.z) < 0.25 and !in_attack and can_attack:
+				in_attack = true
+				can_attack = false
+				stop_movement()
+				await get_tree().create_timer(0.5).timeout
+				in_attack = false
+				await get_tree().create_timer(cooldown_attack).timeout
+				can_attack = true
+				speed = speed_default
+			
+			move_and_collide(motion)
 
 func take_damage(damage_index: int, damage: int):
 	if death:
@@ -116,7 +131,7 @@ func _flip():
 	if take_damage_entry or in_attack:
 		return
 	
-	if player_1.transform.origin.x > transform.origin.x:
+	if player and player.transform.origin.x > transform.origin.x:
 		facing_right = false
 		$Attack/Spawn.position.x = 0.308
 	else:
@@ -149,7 +164,7 @@ func _on_take_damage_timer_timeout():
 		restart_movement()
 
 func _knockback():
-	var direction = global_transform.origin.x - player_1.global_transform.origin.x
+	var direction = global_transform.origin.x - player.global_transform.origin.x
 	knockback.x = direction * knockback_speed
 	knockback.y = knockback_speed * 4
 	move_and_collide(knockback)
