@@ -19,7 +19,7 @@ func _process(delta):
 	player_1_health = clamp(player_1_health, 0, 100)
 	player_2_health = clamp(player_2_health, 0, 100)
 	
-	level_time -= (1.0 / 3.0) * delta
+	level_time -= (1.0 / 5.0) * delta
 	
 	if !two_players_mode:
 		if player_1_lives == 0 and player_1_health == 0:
@@ -28,6 +28,7 @@ func _process(delta):
 		if player_1_lives == 0 and player_1_health == 0 and player_2_lives == 0 and player_2_health == 0:
 			get_tree().change_scene_to_file("res://Scenes/Screens/GameOver.tscn")
 	
+	time_up()
 	check_for_extra_life()
 
 func start_game_config():
@@ -52,3 +53,12 @@ func check_for_extra_life():
 			player_1_lives += 1
 			player_2_lives += 1
 			next_life_score_threshold += 10000
+
+func time_up():
+	if level_time <= 0:
+		player_1_lives -= 1
+		player_1_health = 0
+		
+		if two_players_mode:
+			player_2_lives -= 1
+			player_2_health = 0

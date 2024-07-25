@@ -6,7 +6,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
 size = Vector3(0.579956, 0.776672, 0.151779)
 
-[node name="EnemyC" type="CharacterBody3D" groups=["Enemies"]]
+[node name="EnemyC" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 5
 up_direction = Vector3(0, 0, 1)

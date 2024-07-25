@@ -7,6 +7,8 @@ var enemies_deaths = 0
 @onready var spawn_point_1 = $"SPAWN POINTS/SpawnPoint1"
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
 
+@export var enable_spawn = true
+
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()
@@ -15,28 +17,38 @@ func spawn_players():
 	var player_1 = null
 	var player_2 = null
 	
-	if Global.player_1_name == "Richard":
-		player_1 = preload("res://Scenes/Players/Richard.tscn").instantiate()
-		player_1.name = "Player1"
-		player_1.position = spawn_point_1.position
-		add_child(player_1)
-	elif Global.player_1_name == "Amber":
-		player_1 = preload("res://Scenes/Players/Amber.tscn").instantiate()
-		player_1.name = "Player1"
-		player_1.position = spawn_point_1.position
-		add_child(player_1)
+	if enable_spawn:
+		if Global.player_1_name == "Richard":
+			player_1 = preload("res://Scenes/Players/Richard.tscn").instantiate()
+			player_1.name = "Player1"
+			player_1.position = spawn_point_1.position
+			add_child(player_1)
+		elif Global.player_1_name == "Amber":
+			player_1 = preload("res://Scenes/Players/Amber.tscn").instantiate()
+			player_1.name = "Player1"
+			player_1.position = spawn_point_1.position
+			add_child(player_1)
+		
+		if Global.two_players_mode:
+			if Global.player_2_name == "Richard":
+				player_2 = preload("res://Scenes/Players/Richard.tscn").instantiate()
+				player_2.name = "Player2"
+				player_2.position = spawn_point_2.position
+				add_child(player_2)
+			elif Global.player_2_name == "Amber":
+				player_2 = preload("res://Scenes/Players/Amber.tscn").instantiate()
+				player_2.name = "Player2"
+				player_2.position = spawn_point_2.position
+				add_child(player_2)
 	
-	if Global.two_players_mode:
-		if Global.player_2_name == "Richard":
-			player_2 = preload("res://Scenes/Players/Richard.tscn").instantiate()
-			player_2.name = "Player2"
-			player_2.position = spawn_point_2.position
-			add_child(player_2)
-		elif Global.player_2_name == "Amber":
-			player_2 = preload("res://Scenes/Players/Amber.tscn").instantiate()
-			player_2.name = "Player2"
-			player_2.position = spawn_point_2.position
-			add_child(player_2)
+	 # Agregar un pequeño retraso
+	#await get_tree().create_timer(0.1).timeout
+	
+	# Colocar los jugadores en su posición
+	if player_1:
+		player_1.global_position = spawn_point_1.global_position
+	if player_2:
+		player_2.global_position = spawn_point_2.global_position
 	
 	# Notificar a la cámara que los jugadores han sido instanciados
 	camera.set_players(player_1, player_2)
@@ -53,5 +65,5 @@ func next_area(limit : float):
 	ui_canvas.show_go_sign()
 
 func _on_next_area_door_body_entered(body):
-	if body.is_in_group("Players"):
+	if body.get_collision_layer() == 2:
 		get_tree().change_scene_to_file("res://Scenes/Screens/Main2.tscn")

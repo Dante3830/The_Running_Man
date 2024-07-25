@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://unvsttawc0aq"]
+[gd_scene load_steps=19 format=3 uid="uid://unvsttawc0aq"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_1.gd" id="1_8lbn4"]
 [ext_resource type="Texture2D" uid="uid://co51s4v4m2mli" path="res://Assets/Stages/SNES-Spider-Man-and-Venom-Maximum-Carnage-New-York-Streets-2.png" id="2_ywkie"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="3_44wx6"]
+[ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Richard.tscn" id="4_rgrp3"]
 [ext_resource type="PackedScene" uid="uid://dh1qua8a666tc" path="res://Scenes/Enemies/EnemyA.tscn" id="5_u4g8l"]
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="6_2v7r1"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="7_klrbr"]
@@ -38,6 +39,7 @@ size = Vector3(1.15436, 1.9502, 3.78662)
 
 [node name="Main1" type="Node3D"]
 script = ExtResource("1_8lbn4")
+enable_spawn = false
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.17149, 1.161, 3.551)
@@ -127,6 +129,9 @@ skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0ilnt")
+
+[node name="Richard" parent="." instance=ExtResource("4_rgrp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.35463, 1.674, 1.52461)
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_dks80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92918, 0, 1.43511)

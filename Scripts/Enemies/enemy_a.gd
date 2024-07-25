@@ -44,11 +44,11 @@ func _ready():
 	randomize()
 
 func _on_detection_body_entered(body):
-	if body.is_in_group("Players"):
+	if body.get_collision_layer() == 2:
 		player = body
 
-func _on_detection_body_exited(body: Node3D) -> void:
-	if body.is_in_group("Players"):
+func _on_detection_body_exited(body):
+	if body.get_collision_layer() == 2:
 		player = null
 
 func _process(delta):
@@ -59,46 +59,47 @@ func _process(delta):
 	if enemy_name == "":
 		enemy_name = "Jim"
 	
-	_movement(delta)
 	_animations()
 	_flip()
 
-func _physics_process(_delta):
-	if death and on_hit or on_hit:
+# Asegúrate de que esta función sea llamada en _physics_process en lugar de _process
+func _physics_process(delta):
+	if not death and not on_hit:
+		_movement(delta)
+	elif on_hit:
 		_knockback()
-	
-	move_and_collide(motion)
 
 func _movement(delta):
-	if take_damage_entry:
+	if take_damage_entry or death or in_attack:
 		return
 	
-	if not death and not in_attack:
-		if player:
-			var direction = position.direction_to(player.position)
-			motion.x = direction.x * speed
-			motion.z = direction.z * speed
-			
-			if abs(player.position.x - position.x) < 0.5:
-				x_direction = 0
-			
-			if abs(player.position.x - position.x) < 0.5 and abs(player.position.z - position.z) < 0.5 and !in_attack and can_attack:
-				in_attack = true
-				can_attack = false
-				stop_movement()
-				await get_tree().create_timer(0.5).timeout
-				in_attack = false
-				await get_tree().create_timer(cooldown_attack).timeout
-				can_attack = true
-				speed = speed_default
+	if player:
+		var direction = (player.position - position).normalized()
+		var desired_velocity = direction * speed
 		
+		# Aplicar una interpolación suave al movimiento
+		motion = motion.lerp(Vector3(desired_velocity.x, motion.y, desired_velocity.z), delta * 5.0)
+		
+		# Ajustar la velocidad vertical (gravedad) por separado
+		motion.y -= 9.8 * delta
+		
+		# Mover al enemigo
+		move_and_slide()
+		
+		# Actualizar las direcciones para la animación
+		x_direction = sign(motion.x)
+		z_direction = sign(motion.z)
+	else:
+		# Comportamiento cuando no hay jugador detectado
 		walk_timer += delta
 		if walk_timer > randf_range(1.0, 2.0):
-			z_direction = randi() % 3 - 1
+			x_direction = randf_range(-1, 1)
+			z_direction = randf_range(-1, 1)
 			walk_timer = 0.0
 		
-		move_and_collide(motion)
-
+		motion = Vector3(x_direction, motion.y, z_direction).normalized() * speed
+		motion.y -= 9.8 * delta
+		move_and_slide()
 
 func take_damage(damage_index: int, damage: int):
 	if death:

@@ -90,11 +90,11 @@ func take_damage(damage: int):
 	if is_dead:
 		return
 	
-	Global.player_1_health -= damage
+	Global.player_2_health -= damage
 	state_machine.travel("Hurt")
 	ui_canvas.update_player_1_hud()
 	
-	if Global.player_1_health <= 0:
+	if Global.player_2_health <= 0:
 		_death()
 	else:
 		in_take_damage = true

@@ -43,7 +43,7 @@ _data = {
 "shake": SubResource("Animation_yoqon")
 }
 
-[node name="Area3D" type="Area3D"]
+[node name="Barrel" type="StaticBody3D"]
 collision_layer = 16
 script = ExtResource("1_t0cmu")
 

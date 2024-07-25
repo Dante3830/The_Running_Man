@@ -36,7 +36,7 @@ one_shot = true
 [node name="Spawn" type="Marker3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313247, 0.219024, 0)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["Enemies"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_emy76")
 }

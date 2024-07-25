@@ -1,8 +1,8 @@
-extends Area3D
+extends StaticBody3D
 
 @export var drop_object : PackedScene = null
 
-func take_damage(damage_index : int, damage : int):
+func take_damage(_damage_index : int, _damage : int):
 	drop_item()
 	$AnimationPlayer.play("shake")
 

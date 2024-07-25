@@ -53,5 +53,5 @@ func next_area(limit : float):
 	ui_canvas.show_go_sign()
 
 func _on_next_area_door_body_entered(body):
-	if body.is_in_group("Players"):
+	if body.get_collision_layer() == 2:
 		get_tree().change_scene_to_file("res://Scenes/Screens/Main3.tscn")
