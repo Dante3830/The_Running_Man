@@ -305,8 +305,10 @@ graph_offset = Vector2(-44.79, -68.535)
 [node name="Amber" type="CharacterBody3D"]
 collision_mask = 6
 script = ExtResource("1_l85gw")
+speed = 2.6
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+flip_h = true
 texture_filter = 2
 texture = ExtResource("2_6558b")
 region_enabled = true
@@ -322,8 +324,6 @@ region_rect = Rect2(502.734, 7.59, 45.5, 97.5)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00744629, -0.00201416, 0.00449351)
 shape = SubResource("BoxShape3D_ew64w")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
 
 [node name="Attack" type="Marker3D" parent="."]
 
@@ -346,8 +346,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_hu4ur")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.235217
-parameters/current_delta = 0.00694444
+parameters/current_position = 0.748101
+parameters/current_delta = 0.020005
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -364,8 +364,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.0
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.235217
-parameters/Idle/current_delta = 0.00694444
+parameters/Idle/current_position = 0.748101
+parameters/Idle/current_delta = 0.020005
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

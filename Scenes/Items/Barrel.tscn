@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d08m6v1g0w03l" path="res://Assets/Items/copperBarrel .png" id="2_1cwbn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6yalg"]
-size = Vector3(0.808655, 0.795898, 0.50338)
+size = Vector3(0.49466, 0.888245, 0.180533)
 
 [sub_resource type="Animation" id="Animation_ciown"]
 length = 0.001
@@ -52,7 +52,7 @@ transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 texture = ExtResource("2_1cwbn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0524126, 0.111701, 0.0308122)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0102564, 0.157874, 0.0118696)
 shape = SubResource("BoxShape3D_6yalg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

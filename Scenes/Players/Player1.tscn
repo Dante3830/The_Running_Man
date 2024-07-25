@@ -291,9 +291,9 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-2.39648e-05, 20.6475)
 
 [node name="Player1" type="CharacterBody3D"]
-collision_mask = 4
+collision_mask = 20
 script = ExtResource("1_bjpfv")
-speed = 1.0
+speed = 1.9
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 2
@@ -334,8 +334,8 @@ autoplay = "Idle"
 tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
 anim_player = NodePath("../AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.479981
-parameters/current_delta = 0.147363
+parameters/current_position = 0.701099
+parameters/current_delta = 0.0170653
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -352,8 +352,8 @@ parameters/Hurt/current_length = 0.2
 parameters/Hurt/current_position = 0.2
 parameters/Hurt/current_delta = 0.0
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.479981
-parameters/Idle/current_delta = 0.147363
+parameters/Idle/current_position = 0.701099
+parameters/Idle/current_delta = 0.0170653
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null
