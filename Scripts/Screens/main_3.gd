@@ -17,30 +17,18 @@ func spawn_players():
 	var player_1 = null
 	var player_2 = null
 	
-	if Global.one_player_mode:
-		if Global.player_1_name == "Richard":
-			player_1 = preload("res://Scenes/Players/Richard.tscn").instantiate()
-			player_1.name = "Player1"
-			player_1.position = spawn_point_1.position
-			add_child(player_1)
-		elif Global.player_1_name == "Amber":
-			player_1 = preload("res://Scenes/Players/Amber.tscn").instantiate()
-			player_1.name = "Player1"
-			player_1.position = spawn_point_1.position
-			add_child(player_1)
+	if Global.player_1_name == "Richard":
+		player_1 = preload("res://Scenes/Players/Richard.tscn").instantiate()
+		player_1.name = "Player1"
+		player_1.position = spawn_point_1.position
+		add_child(player_1)
+	elif Global.player_1_name == "Amber":
+		player_1 = preload("res://Scenes/Players/Amber.tscn").instantiate()
+		player_1.name = "Player1"
+		player_1.position = spawn_point_1.position
+		add_child(player_1)
 	
 	if Global.two_players_mode:
-		if Global.player_1_name == "Richard":
-			player_1 = preload("res://Scenes/Players/Richard.tscn").instantiate()
-			player_1.name = "Player1"
-			player_1.position = spawn_point_1.position
-			add_child(player_1)
-		elif Global.player_1_name == "Amber":
-			player_1 = preload("res://Scenes/Players/Amber.tscn").instantiate()
-			player_1.name = "Player1"
-			player_1.position = spawn_point_1.position
-			add_child(player_1)
-		
 		if Global.player_2_name == "Richard":
 			player_2 = preload("res://Scenes/Players/Richard.tscn").instantiate()
 			player_2.name = "Player2"

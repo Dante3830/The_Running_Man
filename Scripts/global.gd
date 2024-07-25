@@ -3,7 +3,7 @@ extends Node
 var one_player_mode = true
 var two_players_mode = false
 
-var player_1_health = 100
+var player_1_health = 0
 var player_1_lives = 5
 var player_1_name : String = ""
 
