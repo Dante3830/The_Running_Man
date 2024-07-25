@@ -49,8 +49,8 @@ func update_player_1_hud():
 	player_1_name_DP.text = Global.player_1_name
 	player_1_lives_DP.text = "x " + str(Global.player_1_lives)
 	
-	if player_1_health_bar:
-		player_1_health_bar.health = Global.player_1_health
+	#if player_1_health_bar:
+	#	player_1_health_bar.health = Global.player_1_health
 
 func update_player_2_hud():
 	player_2_name_DP.text = Global.player_2_name

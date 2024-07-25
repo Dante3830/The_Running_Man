@@ -44,11 +44,11 @@ func _ready():
 	randomize()
 
 func _on_detection_body_entered(body):
-	if body.get_collision_layer() == 2:
+	if body.get_collision_layer() == 1:
 		player = body
 
 func _on_detection_body_exited(body):
-	if body.get_collision_layer() == 2:
+	if body.get_collision_layer() == 1:
 		player = null
 
 func _process(delta):
@@ -181,7 +181,7 @@ func _death():
 	for i in range(10):
 		sprite.visible = not sprite.visible
 		await get_tree().create_timer(0.1).timeout
-	ui_canvas.update_enemy_hud("", 0, 0)  # Clear HUD when enemy dies
+	ui_canvas.update_enemy_hud("", 0, 0)
 	get_parent().enemy_death()
 	queue_free()
 
