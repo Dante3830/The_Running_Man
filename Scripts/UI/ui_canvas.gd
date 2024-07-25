@@ -3,10 +3,13 @@ extends CanvasLayer
 # Jugador 1
 @onready var player_1_health_bar = $UIGameplay/UIPlayers/Player1/HealthBar
 @onready var player_1_lives_DP = $UIGameplay/UIPlayers/Player1/P1LivesDP
+@onready var player_1_name_DP = $UIGameplay/UIPlayers/Player1/P1Name
 
 # Jugador 2
 @onready var player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
 @onready var player_2_lives_DP = $UIGameplay/UIPlayers/Player2/P2LivesDP
+@onready var player_2_name_DP = $UIGameplay/UIPlayers/Player2/P2Name
+
 @onready var player_2_section = $UIGameplay/UIPlayers/Player2
 
 # Enemigos
@@ -43,12 +46,14 @@ func _process(_delta):
 	update_player_2_hud()
 
 func update_player_1_hud():
+	player_1_name_DP.text = Global.player_1_name
 	player_1_lives_DP.text = "x " + str(Global.player_1_lives)
 	
 	if player_1_health_bar:
 		player_1_health_bar.health = Global.player_1_health
 
 func update_player_2_hud():
+	player_2_name_DP.text = Global.player_2_name
 	player_2_lives_DP.text = "x " + str(Global.player_2_lives)
 	
 	if player_2_health_bar:

@@ -71,7 +71,7 @@ offset_bottom = 106.0
 max_value = 100.0
 value = 60.0
 
-[node name="Label" type="Label" parent="UIGameplay/UIPlayers/Player1"]
+[node name="P1Name" type="Label" parent="UIGameplay/UIPlayers/Player1"]
 layout_mode = 0
 offset_left = 69.0
 offset_right = 322.0
@@ -107,7 +107,7 @@ rotation = 3.14159
 max_value = 100.0
 value = 60.0
 
-[node name="Label" type="Label" parent="UIGameplay/UIPlayers/Player2"]
+[node name="P2Name" type="Label" parent="UIGameplay/UIPlayers/Player2"]
 layout_mode = 0
 offset_left = 68.0
 offset_right = 324.0

@@ -5,9 +5,11 @@ var two_players_mode = false
 
 var player_1_health = 100
 var player_1_lives = 5
+var player_1_name : String = ""
 
 var player_2_health = 100
 var player_2_lives = 5
+var player_2_name : String = ""
 
 var level_time = 99
 var score : int = 000000

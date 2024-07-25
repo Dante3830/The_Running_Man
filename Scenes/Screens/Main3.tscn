@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlfs8lbyxefsv"]
+[gd_scene load_steps=18 format=3 uid="uid://dlfs8lbyxefsv"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
 [ext_resource type="Texture2D" uid="uid://bogmok5vu2aqh" path="res://Assets/Stages/Stage 4D (Sailor Moon).png" id="3_maedm"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_yq853"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_rvo6f"]
-[ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Player1.tscn" id="5_1isqn"]
 [ext_resource type="PackedScene" uid="uid://dh1qua8a666tc" path="res://Scenes/Enemies/EnemyA.tscn" id="6_0eh6h"]
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_8hehy"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_rixxx"]
@@ -78,6 +77,14 @@ texture = ExtResource("3_maedm")
 region_enabled = true
 region_rect = Rect2(644, 489, 42, 228)
 
+[node name="SPAWN POINTS" type="Node3D" parent="."]
+
+[node name="SpawnPoint1" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21566, 0.401269, 0.742203)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
+
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
 visible = false
@@ -134,12 +141,6 @@ shape = SubResource("ConcavePolygonShape3D_0ilnt")
 
 [node name="Burger" parent="." instance=ExtResource("3_yq853")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
-
-[node name="Player1" parent="." instance=ExtResource("5_1isqn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.07222, -0.193, 0.614)
-collision_mask = 5
-speed = 1.42
-jump_force = 3.46
 
 [node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 0.579296)

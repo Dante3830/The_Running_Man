@@ -13,12 +13,15 @@ func _ready():
 # Botón de Richard (personaje 1)
 func _on_character_1_button_pressed():
 	if Global.one_player_mode:
+		Global.player_1_name = "Richard"
 		get_tree().change_scene_to_file("res://Scenes/Screens/Main1.tscn")
 	elif Global.two_players_mode:
 		if not player1_selected:
+			Global.player_1_name = "Richard"
 			player1_selected = true
 			$Character1/Player1.show()
 		elif not player2_selected:
+			Global.player_2_name = "Richard"
 			player2_selected = true
 			$Character1/Player2.show()
 		if player1_selected and player2_selected:
@@ -28,12 +31,15 @@ func _on_character_1_button_pressed():
 # Botón de Amber (personaje 2)
 func _on_character_2_button_pressed():
 	if Global.one_player_mode:
+		Global.player_1_name = "Amber"
 		get_tree().change_scene_to_file("res://Scenes/Screens/Main1.tscn")
 	elif Global.two_players_mode:
 		if not player1_selected:
+			Global.player_1_name = "Amber"
 			player1_selected = true
 			$Character2/Player1.show()
 		elif not player2_selected:
+			Global.player_2_name = "Amber"
 			player2_selected = true
 			$Character2/Player2.show()
 		if player1_selected and player2_selected:
