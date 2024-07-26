@@ -235,10 +235,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_moc3g"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhoc2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lggu0"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vn47l"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ad7sp"]
@@ -251,15 +247,21 @@ advance_mode = 2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3aju4"]
-switch_mode = 2
-advance_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g1jvw"]
 switch_mode = 2
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2dep8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmw7i"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hhoc2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lggu0"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3aju4"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fvlky"]
 
@@ -268,8 +270,6 @@ advance_mode = 2
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d3u6a"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e8k2b"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rmw7i"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_m2dmw"]
 states/Hit1/node = SubResource("AnimationNodeAnimation_ndpxb")
@@ -287,8 +287,8 @@ states/Kick/position = Vector2(575.72, 113.408)
 states/Start/position = Vector2(97, 100)
 states/Walk/node = SubResource("AnimationNodeAnimation_l8hsp")
 states/Walk/position = Vector2(294.19, -36.4274)
-transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1t5pu"), "Hit1", "Idle", SubResource("AnimationNodeStateMachineTransition_ss75b"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_q3qxs"), "Idle", "Hit1", SubResource("AnimationNodeStateMachineTransition_moc3g"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_hhoc2"), "Walk", "Hurt", SubResource("AnimationNodeStateMachineTransition_lggu0"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_vn47l"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_ad7sp"), "Hit3", "Idle", SubResource("AnimationNodeStateMachineTransition_u6t2t"), "Hit2", "Idle", SubResource("AnimationNodeStateMachineTransition_m565v"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_3aju4"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_g1jvw"), "Hit3", "Kick", SubResource("AnimationNodeStateMachineTransition_2dep8"), "Hit1", "Hurt", SubResource("AnimationNodeStateMachineTransition_fvlky"), "Hit2", "Hurt", SubResource("AnimationNodeStateMachineTransition_1kite"), "Hit3", "Hurt", SubResource("AnimationNodeStateMachineTransition_d3u6a"), "Kick", "Hurt", SubResource("AnimationNodeStateMachineTransition_e8k2b"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rmw7i")]
-graph_offset = Vector2(-2.39648e-05, 20.6475)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1t5pu"), "Hit1", "Idle", SubResource("AnimationNodeStateMachineTransition_ss75b"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_q3qxs"), "Idle", "Hit1", SubResource("AnimationNodeStateMachineTransition_moc3g"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_vn47l"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_ad7sp"), "Hit3", "Idle", SubResource("AnimationNodeStateMachineTransition_u6t2t"), "Hit2", "Idle", SubResource("AnimationNodeStateMachineTransition_m565v"), "Kick", "Idle", SubResource("AnimationNodeStateMachineTransition_g1jvw"), "Hit3", "Kick", SubResource("AnimationNodeStateMachineTransition_2dep8"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_rmw7i"), "Idle", "Hurt", SubResource("AnimationNodeStateMachineTransition_hhoc2"), "Walk", "Hurt", SubResource("AnimationNodeStateMachineTransition_lggu0"), "Hurt", "Idle", SubResource("AnimationNodeStateMachineTransition_3aju4"), "Hit1", "Hurt", SubResource("AnimationNodeStateMachineTransition_fvlky"), "Hit2", "Hurt", SubResource("AnimationNodeStateMachineTransition_1kite"), "Hit3", "Hurt", SubResource("AnimationNodeStateMachineTransition_d3u6a"), "Kick", "Hurt", SubResource("AnimationNodeStateMachineTransition_e8k2b")]
+graph_offset = Vector2(55.9874, -2.61751)
 
 [node name="Player1" type="CharacterBody3D"]
 collision_mask = 20
@@ -333,9 +333,9 @@ autoplay = "Idle"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_m2dmw")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.8
-parameters/current_position = 0.701099
-parameters/current_delta = 0.0170653
+parameters/current_length = 0.0
+parameters/current_position = 0.0
+parameters/current_delta = 0.0
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -348,12 +348,12 @@ parameters/Hit2/current_delta = null
 parameters/Hit3/current_length = null
 parameters/Hit3/current_position = null
 parameters/Hit3/current_delta = null
-parameters/Hurt/current_length = 0.2
-parameters/Hurt/current_position = 0.2
-parameters/Hurt/current_delta = 0.0
+parameters/Hurt/current_length = null
+parameters/Hurt/current_position = null
+parameters/Hurt/current_delta = null
 parameters/Idle/current_length = 0.8
-parameters/Idle/current_position = 0.701099
-parameters/Idle/current_delta = 0.0170653
+parameters/Idle/current_position = 0.0434408
+parameters/Idle/current_delta = 0.0583422
 parameters/Kick/current_length = null
 parameters/Kick/current_position = null
 parameters/Kick/current_delta = null

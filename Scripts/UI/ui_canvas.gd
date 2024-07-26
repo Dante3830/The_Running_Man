@@ -45,19 +45,113 @@ func _process(_delta):
 	update_player_1_hud()
 	update_player_2_hud()
 
+func recreate_player_health_bar(player_number: int):
+	var ui_players = $UIGameplay/UIPlayers
+	var player_section = ui_players.get_node("Player" + str(player_number))
+	
+	# Eliminar la barra de salud existente si aún existe
+	var old_health_bar = player_section.get_node_or_null("HealthBar")
+	if old_health_bar:
+		old_health_bar.queue_free()
+	
+	# Crear una nueva barra de salud
+	var new_health_bar = preload("res://Scenes/UI/HealthBar.tscn").instantiate()
+	player_section.add_child(new_health_bar)
+	new_health_bar.name = "HealthBar"
+	
+	# Inicializar la nueva barra de salud
+	new_health_bar.init_health(Global.get("player_{n}_health".format({"n": player_number})))
+	
+	# Configurar tamaño, rotación y posición
+	if player_number == 1:
+		new_health_bar.scale = Vector2(1.2, 0.8)  # Ejemplo de tamaño para jugador 1
+		new_health_bar.rotation_degrees = 0  # Sin rotación para jugador 1
+		new_health_bar.position = Vector2(50, 20)  # Ejemplo de posición para jugador 1
+	else:
+		new_health_bar.scale = Vector2(1.0, 1.0)  # Ejemplo de tamaño para jugador 2
+		new_health_bar.rotation_degrees = -10  # Ligera rotación para jugador 2
+		new_health_bar.position = Vector2(200, 20)  # Ejemplo de posición para jugador 2
+	
+	# Actualizar la referencia a la barra de salud
+	if player_number == 1:
+		player_1_health_bar = new_health_bar
+	else:
+		player_2_health_bar = new_health_bar
+
+func recreate_enemy_health_bar():
+	# ... (código existente para recrear la barra de salud del enemigo) ...
+	
+	# Configurar tamaño, rotación y posición para el enemigo
+	enemy_health_bar.scale = Vector2(0.8, 0.6)  # Ejemplo de tamaño para enemigo
+	enemy_health_bar.rotation_degrees = 5  # Ligera rotación para enemigo
+	enemy_health_bar.position = Vector2(400, 50)  # Ejemplo de posición para enemigo
+
+# ... (resto del código existente) ...
+
+func get_player_health_bar_properties(player_number: int) -> Dictionary:
+	var health_bar = player_1_health_bar if player_number == 1 else player_2_health_bar
+	if is_instance_valid(health_bar):
+		return {
+			"size": health_bar.scale,
+			"rotation": health_bar.rotation_degrees,
+			"position": health_bar.position
+		}
+	return {}
+
+func set_player_health_bar_properties(player_number: int, properties: Dictionary):
+	var health_bar = player_1_health_bar if player_number == 1 else player_2_health_bar
+	if is_instance_valid(health_bar):
+		if "size" in properties:
+			health_bar.scale = properties["size"]
+		if "rotation" in properties:
+			health_bar.rotation_degrees = properties["rotation"]
+		if "position" in properties:
+			health_bar.position = properties["position"]
+
+# Funciones similares para la barra de salud del enemigo
+func get_enemy_health_bar_properties() -> Dictionary:
+	if is_instance_valid(enemy_health_bar):
+		return {
+			"size": enemy_health_bar.scale,
+			"rotation": enemy_health_bar.rotation_degrees,
+			"position": enemy_health_bar.position
+		}
+	return {}
+
+func set_enemy_health_bar_properties(properties: Dictionary):
+	if is_instance_valid(enemy_health_bar):
+		if "size" in properties:
+			enemy_health_bar.scale = properties["size"]
+		if "rotation" in properties:
+			enemy_health_bar.rotation_degrees = properties["rotation"]
+		if "position" in properties:
+			enemy_health_bar.position = properties["position"]
+
 func update_player_1_hud():
 	player_1_name_DP.text = Global.player_1_name
 	player_1_lives_DP.text = "x " + str(Global.player_1_lives)
 	
-	#if player_1_health_bar:
-	#	player_1_health_bar.health = Global.player_1_health
+	if is_instance_valid(player_1_health_bar):
+		player_1_health_bar.health = Global.player_1_health
+	else:
+		recreate_player_health_bar(1)
 
 func update_player_2_hud():
 	player_2_name_DP.text = Global.player_2_name
 	player_2_lives_DP.text = "x " + str(Global.player_2_lives)
 	
-	if player_2_health_bar:
+	if is_instance_valid(player_2_health_bar):
 		player_2_health_bar.health = Global.player_2_health
+	else:
+		recreate_player_health_bar(2)
+	
+	if is_instance_valid(player_2_health_bar):
+		player_2_health_bar.health = Global.player_2_health
+	else:
+		# Si la barra de salud no es válida, intentamos encontrarla de nuevo
+		player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
+		if is_instance_valid(player_2_health_bar):
+			player_2_health_bar.init_health(Global.player_2_health)
 
 func update_enemy_hud(enemy_name: String, value: int, max_value: int):
 	if enemy_health_bar and is_instance_valid(enemy_health_bar):

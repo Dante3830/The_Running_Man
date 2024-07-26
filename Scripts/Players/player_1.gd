@@ -27,8 +27,10 @@ var motion : Vector3
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 @onready var camera = get_parent().get_node("Camera")
 
+signal player_died(player)
+
 func _process(_delta):
-	#print("x = " + str("%.2f" % position.x))
+	print("Posición del jugador: ", global_position)
 	transform.origin.x = clamp(transform.origin.x, camera.transform.origin.x - 4.5, camera.clamped + 4.5)
 
 func _physics_process(delta):
@@ -101,7 +103,7 @@ func take_damage(damage: int):
 		_death()
 	else:
 		in_take_damage = true
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.2).timeout
 		in_take_damage = false
 
 func _on_can_hit_timer_timeout():
@@ -118,3 +120,21 @@ func stop_movement():
 func _death():
 	stop_movement()
 	is_dead = true
+	Global.player_1_lives -= 1
+	state_machine.travel("Death")  # Asumiendo que tienes una animación de muerte
+	
+	# Emitir señal de muerte
+	emit_signal("player_died", self)
+	
+	# Esperar a que termine la animación de muerte
+	#await animation.animation_finished
+	
+	# Auto-destruirse
+	queue_free()
+
+func respawn():
+	Global.player_1_health = 100
+	is_dead = false
+	in_take_damage = false
+	ui_canvas.update_player_1_hud()
+	state_machine.travel("Idle")

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_attack.gd" id="1_u13jf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uheus"]
+size = Vector3(1, 1, 4.85065)
 
 [node name="EnemyAttack" type="Area3D"]
 collision_layer = 0

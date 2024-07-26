@@ -39,8 +39,17 @@ size = Vector3(1.15436, 1.9502, 3.78662)
 [node name="Main1" type="Node3D"]
 script = ExtResource("1_8lbn4")
 
+[node name="SPAWN POINTS" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.144541, 0.285424, -0.234973)
+
+[node name="SpawnPoint1" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21749, 0.287056, 1.09067)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
+
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.17149, 1.161, 3.551)
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.02695, 1.161, 3.551)
 projection = 1
 size = 2.7
 script = ExtResource("3_44wx6")
@@ -64,15 +73,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.0711, 0, 0)
 texture = ExtResource("2_ywkie")
 region_enabled = true
 region_rect = Rect2(0, 56.5519, 1408, 283.341)
-
-[node name="SPAWN POINTS" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285424, -0.234973)
-
-[node name="SpawnPoint1" type="Marker3D" parent="SPAWN POINTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21749, 1.21478, 0.895659)
-
-[node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
@@ -154,10 +154,14 @@ drop_object = ExtResource("7_klrbr")
 
 [node name="Enemy" parent="." instance=ExtResource("5_u4g8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47224, -0.0263361, 1.40736)
+speed_default = 5.0
+life_default = 50
 enemy_name = "Jeremy"
 
 [node name="Enemy2" parent="." instance=ExtResource("5_u4g8l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73028, -0.0561618, 0.594106)
+speed_default = 5.0
+life_default = 50
 enemy_name = "Jeff"
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_dks80")]
