@@ -13,16 +13,26 @@ func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()
 	
-	# Configurar las barras de salud al inicio del juego
-	ui_canvas.set_player_health_bar_properties(1, {
-		"size": Vector2(240, 25),
-		"rotation": 0,
-		"position": Vector2(66, 81)
-	})
+	# Para obtener las propiedades de la barra de salud del jugador 1
+	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)
+	print("Jugador 1 barra de salud:", player1_bar_props)
+
+	# Para modificar las propiedades de la barra de salud del jugador 2
 	ui_canvas.set_player_health_bar_properties(2, {
 		"size": Vector2(240, 25),
 		"rotation": 180,
 		"position": Vector2(539, 131)
+	})
+	
+	# Para obtener las propiedades de la barra de salud del enemigo
+	var enemy_bar_props = ui_canvas.get_enemy_health_bar_properties()
+	print("Enemigo barra de salud:", enemy_bar_props)
+	
+	# Para modificar las propiedades de la barra de salud del enemigo
+	ui_canvas.set_enemy_health_bar_properties({
+		"size": Vector2(240, 25),
+		"rotation": 0,
+		"position": Vector2(66, 81)
 	})
 
 func spawn_players():

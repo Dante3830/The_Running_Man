@@ -1,10 +1,163 @@
-[gd_scene load_steps=4 format=3 uid="uid://cautyiqux8ops"]
+[gd_scene load_steps=13 format=3 uid="uid://cautyiqux8ops"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_c.gd" id="1_f6unc"]
 [ext_resource type="Texture2D" uid="uid://dtt4c5yu8xxej" path="res://Assets/Characters/Streets of Rage 2 - Hakuyo.png" id="2_1rr0y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ew64w"]
 size = Vector3(0.579956, 0.776672, 0.151779)
+
+[sub_resource type="Animation" id="Animation_f204w"]
+resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(4.93671, 12.2238, 73.1713, 94.8688)]
+}
+
+[sub_resource type="Animation" id="Animation_u0uvu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(4.93671, 12.2238, 73.1713, 94.8688)]
+}
+
+[sub_resource type="Animation" id="Animation_dvv5w"]
+resource_name = "Walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(77.4093, 12.2238, 65.8504, 94.8688), Rect2(149.494, 12.2238, 69.8821, 94.8688)]
+}
+
+[sub_resource type="Animation" id="Animation_vb1yd"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(11.2348, 118.077, 49.2758, 77.4975)]
+}
+
+[sub_resource type="Animation" id="Animation_71hco"]
+resource_name = "Attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Rect2(549.748, 10.7579, 64.0586, 95.8639), Rect2(618.557, 10.7579, 90.0404, 95.8639)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [12],
+"method": &"enemy_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wgnhp"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(176.939, 107.995, 65.8504, 95.8639), Rect2(243.402, 107.995, 83.3209, 95.8639), Rect2(331.15, 107.995, 99.4476, 95.8639)]
+}
+
+[sub_resource type="Animation" id="Animation_mwqil"]
+resource_name = "Up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(434.752, 107.995, 86.9047, 95.8639), Rect2(515.386, 107.995, 72.5698, 95.8639), Rect2(8.33541, 207.259, 66.7464, 86.0087), Rect2(70.8631, 306.252, 95.8639, 81.9771)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [10],
+"method": &"enemy_attack"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hvwph"]
+_data = {
+"Attack": SubResource("Animation_71hco"),
+"Down": SubResource("Animation_wgnhp"),
+"Hurt": SubResource("Animation_vb1yd"),
+"Idle": SubResource("Animation_f204w"),
+"RESET": SubResource("Animation_u0uvu"),
+"Up": SubResource("Animation_mwqil"),
+"Walk": SubResource("Animation_dvv5w")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ed2pb"]
+radius = 2.36237
 
 [node name="EnemyC" type="CharacterBody3D"]
 collision_layer = 2
@@ -13,7 +166,10 @@ up_direction = Vector3(0, 0, 1)
 script = ExtResource("1_f6unc")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
 texture = ExtResource("2_1rr0y")
+region_enabled = true
+region_rect = Rect2(4.93671, 12.2238, 73.1713, 94.8688)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463257, 0.00827017, 0.0129774)
@@ -26,6 +182,18 @@ one_shot = true
 [node name="Attack" type="Marker3D" parent="."]
 
 [node name="Spawn" type="Marker3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313247, 0.219024, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.359592, 0.219024, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hvwph")
+}
+
+[node name="Detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+shape = SubResource("SphereShape3D_ed2pb")
 
 [connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]

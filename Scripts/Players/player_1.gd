@@ -30,7 +30,7 @@ var motion : Vector3
 signal player_died(player)
 
 func _process(_delta):
-	print("Posición del jugador: ", global_position)
+	#print("Posición del jugador: ", global_position)
 	transform.origin.x = clamp(transform.origin.x, camera.transform.origin.x - 4.5, camera.clamped + 4.5)
 
 func _physics_process(delta):

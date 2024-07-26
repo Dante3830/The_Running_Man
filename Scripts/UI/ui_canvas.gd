@@ -64,13 +64,13 @@ func recreate_player_health_bar(player_number: int):
 	
 	# Configurar tamaño, rotación y posición
 	if player_number == 1:
-		new_health_bar.scale = Vector2(1.2, 0.8)  # Ejemplo de tamaño para jugador 1
+		new_health_bar.custom_minimum_size = Vector2(240, 25)  # Tamaño para jugador 1
 		new_health_bar.rotation_degrees = 0  # Sin rotación para jugador 1
-		new_health_bar.position = Vector2(50, 20)  # Ejemplo de posición para jugador 1
+		new_health_bar.position = Vector2(66, 81)  # Posición para jugador 1
 	else:
-		new_health_bar.scale = Vector2(1.0, 1.0)  # Ejemplo de tamaño para jugador 2
-		new_health_bar.rotation_degrees = -10  # Ligera rotación para jugador 2
-		new_health_bar.position = Vector2(200, 20)  # Ejemplo de posición para jugador 2
+		new_health_bar.custom_minimum_size = Vector2(240, 25)  # Tamaño para jugador 2
+		new_health_bar.rotation_degrees = 180  # Ligera rotación para jugador 2
+		new_health_bar.position = Vector2(539, 131)  # Posición para jugador 2
 	
 	# Actualizar la referencia a la barra de salud
 	if player_number == 1:
@@ -79,20 +79,16 @@ func recreate_player_health_bar(player_number: int):
 		player_2_health_bar = new_health_bar
 
 func recreate_enemy_health_bar():
-	# ... (código existente para recrear la barra de salud del enemigo) ...
-	
 	# Configurar tamaño, rotación y posición para el enemigo
-	enemy_health_bar.scale = Vector2(0.8, 0.6)  # Ejemplo de tamaño para enemigo
-	enemy_health_bar.rotation_degrees = 5  # Ligera rotación para enemigo
-	enemy_health_bar.position = Vector2(400, 50)  # Ejemplo de posición para enemigo
-
-# ... (resto del código existente) ...
+	enemy_health_bar.custom_minimum_size = Vector2(240, 25)  # Tamaño para enemigo
+	enemy_health_bar.rotation_degrees = 0  # Ligera rotación para enemigo
+	enemy_health_bar.position = Vector2(66, 81)  # Posición para enemigo
 
 func get_player_health_bar_properties(player_number: int) -> Dictionary:
 	var health_bar = player_1_health_bar if player_number == 1 else player_2_health_bar
 	if is_instance_valid(health_bar):
 		return {
-			"size": health_bar.scale,
+			"size": health_bar.custom_minimum_size,
 			"rotation": health_bar.rotation_degrees,
 			"position": health_bar.position
 		}
@@ -102,7 +98,7 @@ func set_player_health_bar_properties(player_number: int, properties: Dictionary
 	var health_bar = player_1_health_bar if player_number == 1 else player_2_health_bar
 	if is_instance_valid(health_bar):
 		if "size" in properties:
-			health_bar.scale = properties["size"]
+			health_bar.custom_minimum_size = properties["size"]
 		if "rotation" in properties:
 			health_bar.rotation_degrees = properties["rotation"]
 		if "position" in properties:
@@ -112,7 +108,7 @@ func set_player_health_bar_properties(player_number: int, properties: Dictionary
 func get_enemy_health_bar_properties() -> Dictionary:
 	if is_instance_valid(enemy_health_bar):
 		return {
-			"size": enemy_health_bar.scale,
+			"size": enemy_health_bar.custom_minimum_size,
 			"rotation": enemy_health_bar.rotation_degrees,
 			"position": enemy_health_bar.position
 		}
@@ -121,7 +117,7 @@ func get_enemy_health_bar_properties() -> Dictionary:
 func set_enemy_health_bar_properties(properties: Dictionary):
 	if is_instance_valid(enemy_health_bar):
 		if "size" in properties:
-			enemy_health_bar.scale = properties["size"]
+			enemy_health_bar.custom_minimum_size = properties["size"]
 		if "rotation" in properties:
 			enemy_health_bar.rotation_degrees = properties["rotation"]
 		if "position" in properties:

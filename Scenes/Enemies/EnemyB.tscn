@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://br58lnaa5yma0"]
+[gd_scene load_steps=13 format=3 uid="uid://br58lnaa5yma0"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/enemy_b.gd" id="1_cui8f"]
 [ext_resource type="Texture2D" uid="uid://bvwu5c5fdc3wf" path="res://Assets/Characters/Electra (SOR2).png" id="2_mduca"]
@@ -8,11 +8,143 @@ size = Vector3(0.579956, 0.776672, 0.151779)
 
 [sub_resource type="Animation" id="Animation_cp6rx"]
 resource_name = "Idle"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(9.298, 10.944, 44.5, 93.5)]
+}
+
+[sub_resource type="Animation" id="Animation_ol7tx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(9.298, 10.944, 44.5, 93.5)]
+}
+
+[sub_resource type="Animation" id="Animation_os06l"]
+resource_name = "Walk"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(9.298, 10.944, 44.5, 93.5), Rect2(58.914, 10.944, 54.5, 93.5), Rect2(114.946, 10.944, 48.5, 93.5), Rect2(162.656, 10.944, 47, 93.5), Rect2(9.298, 10.944, 44.5, 93.5)]
+}
+
+[sub_resource type="Animation" id="Animation_o4hq7"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(295.772, 10.944, 68, 93.5)]
+}
+
+[sub_resource type="Animation" id="Animation_2gnvx"]
+resource_name = "Down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(395.312, 10.944, 37.644, 93.5), Rect2(438.436, 10.944, 69, 93.5), Rect2(514.796, 10.944, 104.5, 93.5)]
+}
+
+[sub_resource type="Animation" id="Animation_edn4n"]
+resource_name = "Attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Rect2(198.872, 229.772, 59, 112.5), Rect2(259, 229.772, 72, 112.5), Rect2(334, 229.772, 52.5, 112.5), Rect2(388.5, 229.772, 62, 112.5), Rect2(450.5, 229.772, 124, 112.5)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [15],
+"method": &"enemy_attack"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_aslot"]
+resource_name = "Up"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Rect2(620.934, 17.988, 89.5, 81), Rect2(715.82, 17.988, 70, 81), Rect2(9.15273, 5.68875, 48.9216, 97.8431)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_emy76"]
 _data = {
-"Idle": SubResource("Animation_cp6rx")
+"Attack": SubResource("Animation_edn4n"),
+"Down": SubResource("Animation_2gnvx"),
+"Hurt": SubResource("Animation_o4hq7"),
+"Idle": SubResource("Animation_cp6rx"),
+"RESET": SubResource("Animation_ol7tx"),
+"Up": SubResource("Animation_aslot"),
+"Walk": SubResource("Animation_os06l")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8plko"]
+radius = 2.36237
 
 [node name="EnemyB" type="CharacterBody3D"]
 collision_layer = 2
@@ -21,7 +153,10 @@ up_direction = Vector3(0, 0, 1)
 script = ExtResource("1_cui8f")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
 texture = ExtResource("2_mduca")
+region_enabled = true
+region_rect = Rect2(9.298, 10.944, 44.5, 93.5)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0463257, 0.00827017, 0.0129774)
@@ -34,11 +169,18 @@ one_shot = true
 [node name="Attack" type="Marker3D" parent="."]
 
 [node name="Spawn" type="Marker3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.313247, 0.219024, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.498805, 0.00816059, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_emy76")
 }
 
+[node name="Detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+shape = SubResource("SphereShape3D_8plko")
+
 [connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]
