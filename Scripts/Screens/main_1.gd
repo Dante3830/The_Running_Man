@@ -1,13 +1,13 @@
 extends Node3D
 
+const RESPAWN_HEIGHT_OFFSET = 2.0 
+
 var enemies_deaths = 0
 
 @onready var camera = $Camera
 @onready var ui_canvas = $UICanvas
 @onready var spawn_point_1 = $"SPAWN POINTS/SpawnPoint1"
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
-
-const RESPAWN_HEIGHT_OFFSET = 2.0 
 
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
@@ -69,6 +69,9 @@ func create_player(player_number, spawn_position):
 
 func enemy_death():
 	enemies_deaths += 1
+	
+	# Recrear la barra de vida del enemigo
+	ui_canvas.recreate_enemy_health_bar()
 	
 	match enemies_deaths:
 		2: next_area(2.0)

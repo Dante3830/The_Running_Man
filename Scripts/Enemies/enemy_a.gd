@@ -182,7 +182,7 @@ func _death():
 	for i in range(10):
 		sprite.visible = not sprite.visible
 		await get_tree().create_timer(0.1).timeout
-	ui_canvas.update_enemy_hud("", 0, 0)
+	#ui_canvas.update_enemy_hud("", 0, 0)
 	get_parent().enemy_death()
 	queue_free()
 

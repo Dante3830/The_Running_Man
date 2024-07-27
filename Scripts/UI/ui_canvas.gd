@@ -18,6 +18,7 @@ extends CanvasLayer
 @onready var enemy_health_bar = $UIGameplay/UIEnemy/HealthBar
 @onready var enemy_name_hud = $UIGameplay/UIEnemy/Name
 @onready var enemy_section = $UIGameplay/UIEnemy
+@onready var enemy_health_int = $UIGameplay/UIEnemy/EnemyHealth
 @onready var enemy_hud_timer = $EnemyHUDTimer
 
 # Nivel
@@ -85,10 +86,26 @@ func recreate_player_health_bar(player_number: int):
 		player_2_health_bar = new_health_bar
 
 func recreate_enemy_health_bar():
-	# Configurar tamaño, rotación y posición para el enemigo
-	enemy_health_bar.custom_minimum_size = Vector2(240, 25)  # Tamaño para enemigo
-	enemy_health_bar.rotation_degrees = 0  # Ligera rotación para enemigo
-	enemy_health_bar.position = Vector2(66, 81)  # Posición para enemigo
+	# Eliminar la barra de salud existente si aún existe
+	var old_health_bar = $UIGameplay/UIEnemy/HealthBar
+	if old_health_bar:
+		old_health_bar.queue_free()
+	
+	# Crear una nueva barra de salud
+	var new_health_bar = preload("res://Scenes/UI/HealthBar.tscn").instantiate()
+	$UIGameplay/UIEnemy.add_child(new_health_bar)
+	new_health_bar.name = "HealthBar"
+	
+	# Inicializar la nueva barra de salud
+	new_health_bar.init_health(100)  # Asumimos que la salud máxima del enemigo es 100
+	
+	# Configurar tamaño, rotación y posición
+	new_health_bar.custom_minimum_size = Vector2(240, 25)
+	new_health_bar.rotation_degrees = 0
+	new_health_bar.position = Vector2(66, 81)
+	
+	# Actualizar la referencia a la barra de salud
+	enemy_health_bar = new_health_bar
 
 func get_player_health_bar_properties(player_number: int) -> Dictionary:
 	var health_bar = player_1_health_bar if player_number == 1 else player_2_health_bar
@@ -164,6 +181,11 @@ func update_player_2_hud():
 			player_2_health_bar.init_health(Global.player_2_health)
 
 func update_enemy_hud(enemy_name: String, value: int, max_value: int):
+	if not is_instance_valid(enemy_health_bar):
+		recreate_enemy_health_bar()
+	
+	enemy_health_int.text = str(value)
+	
 	if enemy_health_bar and is_instance_valid(enemy_health_bar):
 		enemy_health_bar.init_health(max_value)
 		enemy_health_bar.health = value

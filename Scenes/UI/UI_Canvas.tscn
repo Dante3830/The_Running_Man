@@ -136,6 +136,7 @@ theme_override_font_sizes/font_size = 60
 text = "X 5"
 
 [node name="P2Health" type="Label" parent="UIGameplay/UIPlayers/Player2"]
+layout_mode = 0
 offset_left = 435.0
 offset_top = 131.0
 offset_right = 742.0
@@ -166,6 +167,14 @@ offset_bottom = 73.0
 theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 60
 text = "ENEMY_Name"
+
+[node name="EnemyHealth" type="Label" parent="UIGameplay/UIEnemy"]
+offset_left = 69.0
+offset_top = 118.0
+offset_right = 376.0
+offset_bottom = 201.0
+theme_override_font_sizes/font_size = 60
+text = "100"
 
 [node name="UITime" type="Control" parent="UIGameplay"]
 layout_mode = 1
