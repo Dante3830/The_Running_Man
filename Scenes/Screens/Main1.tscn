@@ -35,10 +35,17 @@ data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.
 data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.4, 0.05, 0.985, 1.4, 0.05, -0.985, 1.4, -0.05, -0.985, 1.4, 0.05, 0.985, -1.4, -0.05, 0.985, -1.4, 0.05, -0.985, -1.4, -0.05, 0.985, -1.4, -0.05, -0.985, -1.4, 0.05, -0.985, -1.4, 0.05, 0.985, 1.4, 0.05, 0.985, -1.4, 0.05, -0.985, 1.4, 0.05, 0.985, -1.4, 0.05, -0.985, -1.4, 0.05, -0.985, 1.4, -0.05, 0.985, -1.4, -0.05, 0.985, 1.4, -0.05, -0.985, -1.4, -0.05, 0.985, 1.4, -0.05, -0.985, 1.4, -0.05, -0.985, -1.4, 0.05, 0.985, 1.4, -0.05, 0.985, 1.4, 0.05, 0.985, -1.4, -0.05, 0.985, 1.4, -0.05, 0.985, -1.4, 0.05, 0.985, -1.4, -0.05, -0.985, 1.4, 0.05, -0.985, 1.4, -0.05, -0.985, -1.4, 0.05, -0.985, 1.4, 0.05, -0.985, -1.4, -0.05, -0.985, -1.4)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nwfos"]
-size = Vector3(1.15436, 1.9502, 3.78662)
+size = Vector3(1.15436, 2.42206, 3.78662)
 
 [node name="Main1" type="Node3D"]
 script = ExtResource("1_8lbn4")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -3.69188, 1.161, 3.551)
+projection = 1
+size = 2.7
+script = ExtResource("3_44wx6")
+clamped = 32.0
 
 [node name="SPAWN POINTS" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285, -0.235)
@@ -48,13 +55,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21749, 0.287056, 1.09067)
 
 [node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
-
-[node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.02695, 1.161, 3.551)
-projection = 1
-size = 2.7
-script = ExtResource("3_44wx6")
-clamped = 18.5
 
 [node name="BACKGROUND" type="Node3D" parent="."]
 
@@ -155,16 +155,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.77799, -0.257351, 0.810549)
 drop_object = ExtResource("11_ipty8")
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_dks80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92918, 0.387485, 1.43511)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0.387, 1.435)
 enemy_a_amount = 4
-distance_from_camera = 0.5
-distance_z_1 = 1.0
+
+[node name="EnemySpawn2" parent="." instance=ExtResource("8_dks80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0.387, 1.435)
+enemy_a_amount = 5
+
+[node name="EnemySpawn3" parent="." instance=ExtResource("8_dks80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.387, 1.435)
+enemy_a_amount = 7
+
+[node name="EnemySpawn4" parent="." instance=ExtResource("8_dks80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27, 0.387, 1.435)
+enemy_a_amount = 8
 
 [node name="NextAreaDoor" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.4718, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6892, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NextAreaDoor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24326, 0.286318, 1.39331)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20617, 0.234286, 1.39331)
 shape = SubResource("BoxShape3D_nwfos")
 
 [node name="RespawnTimer" type="Timer" parent="."]

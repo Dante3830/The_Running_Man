@@ -1,17 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://dlfs8lbyxefsv"]
+[gd_scene load_steps=17 format=3 uid="uid://dlfs8lbyxefsv"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
 [ext_resource type="Texture2D" uid="uid://bogmok5vu2aqh" path="res://Assets/Stages/Stage 4D (Sailor Moon).png" id="3_maedm"]
 [ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_yq853"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_rvo6f"]
-[ext_resource type="PackedScene" uid="uid://dh1qua8a666tc" path="res://Scenes/Enemies/EnemyA.tscn" id="6_0eh6h"]
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_8hehy"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_rixxx"]
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_otm7f"]
 [ext_resource type="PackedScene" uid="uid://gke1wycfsp2g" path="res://Scenes/Enemies/Boss.tscn" id="10_p5cl5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klyig"]
-size = Vector2(40, 4.75)
+size = Vector2(44.45, 4.75)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_eiot8"]
 data = PackedVector3Array(20, 0, 1, -20, 0, 1, 20, 0, -1, -20, 0, 1, -20, 0, -1, 20, 0, -1)
@@ -38,83 +37,11 @@ data = PackedVector3Array(-0.05, 0.985, 1.4, 0.05, 0.985, 1.4, -0.05, -0.985, 1.
 script = ExtResource("1_ixssj")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -7.38743, 1.161, 3.551)
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -7.27613, 1.161, 3.551)
 projection = 1
 size = 2.7
 script = ExtResource("4_rvo6f")
 clamped = 18.4
-
-[node name="BACKGROUND" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1.2136, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.322, 0, 0)
-texture = ExtResource("3_maedm")
-region_enabled = true
-region_rect = Rect2(5, 732, 1527, 236)
-
-[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.02807, 0, 0)
-texture = ExtResource("3_maedm")
-region_enabled = true
-region_rect = Rect2(5, 732, 528, 236)
-
-[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21218, 0, 0)
-texture = ExtResource("3_maedm")
-region_enabled = true
-region_rect = Rect2(5, 732, 528, 236)
-
-[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.49328, 0, 0)
-texture = ExtResource("3_maedm")
-region_enabled = true
-region_rect = Rect2(5, 732, 528, 236)
-
-[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND"]
-transform = Transform3D(1, 0, 0, 0, 1.37504, 0, 0, 0, 1, 12.2964, 0.28107, 1.59189)
-texture = ExtResource("3_maedm")
-region_enabled = true
-region_rect = Rect2(644, 489, 42, 228)
-
-[node name="SPAWN POINTS" type="Node3D" parent="."]
-
-[node name="SpawnPoint1" type="Marker3D" parent="SPAWN POINTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21566, 0.401269, 0.742203)
-
-[node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
-
-[node name="Burger" parent="." instance=ExtResource("3_yq853")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.73371, -0.375557, 1.84388)
-
-[node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 0.579296)
-drop_object = ExtResource("3_yq853")
-
-[node name="Enemy" parent="." instance=ExtResource("6_0eh6h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47224, -0.183742, 0.480935)
-speed_default = 1.0
-enemy_name = "Jeremy"
-
-[node name="Enemy2" parent="." instance=ExtResource("6_0eh6h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73028, -0.183742, 1.30595)
-speed_default = 1.0
-enemy_name = "Jeff"
-
-[node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51903, 0, 1.43511)
-enemy_a_amount = 1
-enemy_b_amount = 1
-enemy_c_amount = 2
-
-[node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5992, 3.93404, 1.10362)
-
-[node name="RespawnTimer" type="Timer" parent="."]
-wait_time = 1.5
-
-[node name="UICanvas" parent="." instance=ExtResource("7_8hehy")]
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
@@ -132,43 +59,43 @@ collision_mask = 27
 shape = SubResource("ConcavePolygonShape3D_eiot8")
 
 [node name="Wall1" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0591, -0.335104, 2.346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0875, -0.335104, 2.346)
 mesh = SubResource("BoxMesh_fwbwb")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SURFACE/Wall1"]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall1/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_vmoo1")
 
 [node name="Wall2" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1607, -0.303, 0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0512, -0.303, 0.1)
 mesh = SubResource("BoxMesh_fwbwb")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SURFACE/Wall2"]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall2/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_5ypik")
 
 [node name="Wall3" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.09275, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.67216, -0.227952, 0.964336)
 mesh = SubResource("BoxMesh_2o51o")
 skeleton = NodePath("../..")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="SURFACE/Wall3"]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_haqvi")
 
 [node name="Wall4" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1296, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9289, -0.227952, 1.29465)
 mesh = SubResource("BoxMesh_2o51o")
 skeleton = NodePath("../..")
 
@@ -178,3 +105,84 @@ collision_mask = 27
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SURFACE/Wall4/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_0pyuv")
+
+[node name="BACKGROUND" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.2136, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.322, 0, 0)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(5, 732, 1527, 236)
+
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.071, 0, 0)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(5, 732, 528, 236)
+
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.21218, 0, 0)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(5, 732, 528, 236)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.393, 0, 0)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(5, 732, 528, 236)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND"]
+transform = Transform3D(1, 0, 0, 0, 1.37504, 0, 0, 0, 1, 12.2964, 0.28107, 1.59189)
+texture = ExtResource("3_maedm")
+region_enabled = true
+region_rect = Rect2(644, 489, 42, 228)
+
+[node name="SPAWN POINTS" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53684, 0, 0)
+
+[node name="SpawnPoint1" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21566, 0.401269, 0.742203)
+
+[node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
+
+[node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.998, -0.257, 1.36297)
+drop_object = ExtResource("3_yq853")
+
+[node name="Barrel2" parent="." instance=ExtResource("9_otm7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4363, -0.257351, 0.579296)
+
+[node name="Barrel3" parent="." instance=ExtResource("9_otm7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7522, -0.257351, 1.30754)
+
+[node name="Barrel4" parent="." instance=ExtResource("9_otm7f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1123, -0.257351, 2.02988)
+
+[node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51903, 0, 1.43511)
+enemy_a_amount = 2
+enemy_b_amount = 2
+enemy_c_amount = 2
+
+[node name="EnemySpawn2" parent="." instance=ExtResource("8_rixxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.435)
+enemy_a_amount = 2
+enemy_b_amount = 3
+enemy_c_amount = 4
+
+[node name="EnemySpawn3" parent="." instance=ExtResource("8_rixxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1.435)
+enemy_a_amount = 1
+enemy_b_amount = 1
+enemy_c_amount = 1
+
+[node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5992, 3.93404, 1.10362)
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="UICanvas" parent="." instance=ExtResource("7_8hehy")]

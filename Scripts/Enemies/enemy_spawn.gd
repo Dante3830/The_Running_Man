@@ -4,13 +4,11 @@ extends Area3D
 @export var enemy_b_amount = 0
 @export var enemy_c_amount = 0
 
-@export var distance_from_camera = 0.0
-@export var distance_z_1 = 0.0
-@export var distance_z_2 = 1.0
-
 const ENEMIES_A = [preload("res://Scenes/Enemies/EnemyA.tscn")]
 const ENEMIES_B = [preload("res://Scenes/Enemies/EnemyB.tscn")]
 const ENEMIES_C = [preload("res://Scenes/Enemies/EnemyC.tscn")]
+
+@onready var camera = get_parent().get_node("Camera")
 
 func _ready():
 	randomize()
@@ -37,6 +35,6 @@ func set_enemy_random_position() -> Vector3:
 	var side = randi() % 2
 	var new_position : Vector3
 	match side:
-		0: new_position = Vector3(get_parent().get_node("Camera").transform.origin.x - distance_from_camera, -0.184, randf_range(distance_z_1, distance_z_2))
-		1: new_position = Vector3(get_parent().get_node("Camera").transform.origin.x + distance_from_camera, -0.184, randf_range(distance_z_1, distance_z_2))
+		0: new_position = Vector3(camera.transform.origin.x - 4, -0.184, randf_range(0.444, 2.2))
+		1: new_position = Vector3(camera.transform.origin.x + 4, -0.184, randf_range(0.444, 2.2))
 	return new_position

@@ -151,6 +151,7 @@ collision_layer = 2
 collision_mask = 5
 up_direction = Vector3(0, 0, 1)
 script = ExtResource("1_cui8f")
+speed_default = 0.8
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 texture_filter = 2
@@ -177,6 +178,7 @@ libraries = {
 }
 
 [node name="Detection" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
 shape = SubResource("SphereShape3D_8plko")

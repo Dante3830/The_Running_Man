@@ -74,10 +74,11 @@ func enemy_death():
 	ui_canvas.recreate_enemy_health_bar()
 	
 	match enemies_deaths:
-		2: next_area(2.0)
-		6: next_area(7.0)
-		13: next_area(13.0)
-		18: next_area(16.0)
+		0: next_area(0.0)
+		4: next_area(7.0)
+		13: next_area(15.0)
+		22: next_area(23.0)
+		30: next_area(28.862)
 
 func next_area(limit : float):
 	camera.set_camera_limit(limit)
@@ -111,5 +112,6 @@ func on_player_died(player, last_position):
 	camera.set_players(new_player, null) if player_number == 1 else camera.set_players(null, new_player)
 
 func _on_next_area_door_body_entered(body):
-	if body.get_collision_layer() == 2:
+	if body.get_collision_layer() == 1:
 		get_tree().change_scene_to_file("res://Scenes/Screens/Main3.tscn")
+		Global.level_time = 99

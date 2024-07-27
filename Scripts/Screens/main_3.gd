@@ -76,10 +76,10 @@ func enemy_death():
 	ui_canvas.recreate_enemy_health_bar()
 	
 	match enemies_deaths:
-		2: next_area(2.0)
+		0: next_area(1.0)
 		6: next_area(7.0)
-		13: next_area(13.0)
-		18: next_area(16.0)
+		15: next_area(13.0)
+		18: next_area(18.4)
 
 func next_area(limit : float):
 	camera.set_camera_limit(limit)
