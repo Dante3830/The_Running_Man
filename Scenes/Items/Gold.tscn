@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://6bmfe8g83q4t"]
+
+[ext_resource type="Script" path="res://Scripts/Items/gold.gd" id="1_b6eox"]
+[ext_resource type="Texture2D" uid="uid://bdux8syedgrqa" path="res://Assets/Items/goldIngot.png" id="2_wf5ff"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4gkj"]
+size = Vector3(0.49411, 0.273628, 0.064209)
+
+[node name="Gold" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_b6eox")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+texture_filter = 2
+texture = ExtResource("2_wf5ff")
+region_enabled = true
+region_rect = Rect2(-2.70749, 0.708971, 165.774, 158.582)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134122, -0.0262531, 0.0175889)
+shape = SubResource("BoxShape3D_f4gkj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

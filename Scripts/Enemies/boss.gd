@@ -9,6 +9,8 @@ const ATTACK = preload("res://Scenes/Enemies/EnemyAttack.tscn")
 # Vida
 @export var life_default = 200
 
+@export var fall_duration = 2.0
+
 var death = false
 var facing_right = false
 var take_damage_entry = false
@@ -38,78 +40,86 @@ var z_direction = 0.0
 @onready var animation_player = $AnimationPlayer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 
+@onready var detection_area = $Detection
+@onready var player = null
+
+@export var attk_distance_x = 0.5
+@export var attk_distance_z = 0.5
+
 func _ready():
 	randomize()
 
 func _process(delta):
 	# Gravedad
 	if player_1.global_transform.origin.x >= 17.0:
-		motion.y -= 9.8 * delta
+		velocity.y -= 9.8 * delta
 	else:
-		motion.y = 0
+		velocity.y -= 0
 	
 	_movement(delta)
 	_animations()
 	_flip()
 
-func _physics_process(_delta):
-	if death and on_hit or on_hit:
+func _physics_process(delta):
+	if not death and not on_hit:
+		_movement(delta)
+	elif on_hit:
 		_knockback()
-	
-	# Aplicar movimiento
-	move_and_collide(motion)
 
-func _movement(delta):
-	if take_damage_entry:
+func _movement(_delta):
+	if take_damage_entry or death:
 		return
 	
-	if !death and !in_attack:
-		var target_distance = player_1.transform.origin - transform.origin
-		x_direction = target_distance.x / abs(target_distance.x)
+	if player and not take_damage_entry:
+		var direction = (player.global_position - global_position).normalized()
+		var distance = global_position.distance_to(player.global_position)
+		var distance_x = abs(player.global_position.x - global_position.x)
+		var distance_z = abs(player.global_position.z - global_position.z)
+		var stop_distance = max(attk_distance_x, attk_distance_z)
 		
-		walk_timer += delta
-		if walk_timer > randf_range(1.0, 2.0):
-			z_direction = randi() % 3 - 1
-			walk_timer = 0.0
-		
-		if abs(target_distance.x) < 1:
-			x_direction = 0
-		
-		if abs(target_distance.x) < 1 and abs(target_distance.z) < 0.25 and !in_attack and can_attack:
-			in_attack = true
-			can_attack = false
+		if not in_attack:
+			if distance > stop_distance:
+				# Moverse hacia el jugador
+				velocity.x = direction.x * speed_default
+				velocity.z = direction.z * speed_default
+			else:
+				# Detenerse cerca del jugador
+				stop_movement()
+			
+			# Atacar cuando esté lo suficientemente cerca en ambos ejes
+			if distance_x <= attk_distance_x and distance_z <= attk_distance_z and can_attack:
+				_start_attack()
+		else:
 			stop_movement()
-			await get_tree().create_timer(0.5).timeout
-			in_attack = false
-			await get_tree().create_timer(cooldown_attack).timeout
-			can_attack = true
-			speed = speed_default
-		
-		motion.x = x_direction * speed * delta
-		motion.z = z_direction * speed * delta
+	else:
+		stop_movement()
+	
+	# Mover al enemigo
+	move_and_slide()
 
 func take_damage(damage_index: int, damage: int):
 	if death:
 		return
 	
 	take_damage_timer.stop()
-	take_damage_index = damage_index
+	take_damage_index += damage_index
 	take_damage_entry = true
 	stop_movement()
 	
-	if take_damage_index >= 3:
-		on_hit = true
-		take_damage_timer.start()
-		set_collision_layer_value(2, false)
-	
 	life = max(0, life - damage)
-	animation_player.play("Hurt")
 	ui_canvas.update_enemy_hud("Frost", life, life_default)
+	
+	if take_damage_index >= 6:
+		on_hit = true
+		animation_player.play("Down")
+		set_collision_layer_value(2, false)
+		get_tree().create_timer(fall_duration).timeout.connect(_get_up)
+	else:
+		animation_player.play("Hurt")
+		take_damage_timer.start()
 	
 	if life <= 0:
 		_death()
-	else:
-		take_damage_timer.start()
 
 func _flip():
 	if take_damage_entry or in_attack:
@@ -129,17 +139,16 @@ func _animations():
 		return
 	
 	if in_attack:
-		animation_player.play("Hit")
+		animation_player.play("Attack")
 	else:
-		if motion.x != 0 or motion.z != 0:
+		if velocity.length() > 0.0:
 			animation_player.play("Walk")
 		else:
 			animation_player.play("Idle")
 
 func stop_movement():
-	speed = 0
-	motion.x = 0
-	motion.z = 0
+	velocity.x = 0
+	velocity.z = 0
 
 func restart_movement():
 	animation_player.play("Walk")
@@ -147,10 +156,10 @@ func restart_movement():
 	take_damage_entry = false
 
 func _knockback():
-	var direction = global_transform.origin.x - player_1.global_transform.origin.x
+	var direction = global_transform.origin.x - player.global_transform.origin.x
 	knockback.x = direction * knockback_speed
 	knockback.y = knockback_speed * 4
-	move_and_collide(knockback)
+	move_and_slide()
 	
 	await get_tree().create_timer(0.3).timeout
 	on_hit = false
@@ -170,16 +179,38 @@ func enemy_attack(value : int):
 	attk.transform.origin = $Attack/Spawn.global_transform.origin
 
 func _on_take_damage_timer_timeout():
-	if take_damage_index >= 3:
-		await get_tree().create_timer(1).timeout
-		animation_player.play("Up")
-		await get_tree().create_timer(1).timeout
-		animation_player.play("Idle")
-		set_collision_layer_value(2, true)
-		restart_movement()
-	else:
-		restart_movement()
+	restart_movement()
 
 func _on_death_animation_finished(anim_name: StringName):
 	if anim_name == "Death":
 		queue_free()
+
+func _on_detection_body_entered(body):
+	if body.get_collision_layer() == 1:
+		player = body
+
+func _on_detection_body_exited(body):
+	if body.get_collision_layer() == 1:
+		player = null
+
+func _get_up():
+	animation_player.play("Up")
+	await animation_player.animation_finished
+	animation_player.play("Idle")
+	set_collision_layer_value(2, true)
+	take_damage_index = 0
+	on_hit = false
+	restart_movement()
+
+func _start_attack():
+	in_attack = true
+	can_attack = false
+	stop_movement()
+	get_tree().create_timer(0.5).timeout.connect(_end_attack)
+
+func _end_attack():
+	in_attack = false
+	get_tree().create_timer(cooldown_attack).timeout.connect(_reset_attack)
+
+func _reset_attack():
+	can_attack = true

@@ -4,11 +4,13 @@ extends CanvasLayer
 @onready var player_1_health_bar = $UIGameplay/UIPlayers/Player1/HealthBar
 @onready var player_1_lives_DP = $UIGameplay/UIPlayers/Player1/P1LivesDP
 @onready var player_1_name_DP = $UIGameplay/UIPlayers/Player1/P1Name
+@onready var player_1_health_int = $UIGameplay/UIPlayers/Player1/P1Health
 
 # Jugador 2
 @onready var player_2_health_bar = $UIGameplay/UIPlayers/Player2/HealthBar
 @onready var player_2_lives_DP = $UIGameplay/UIPlayers/Player2/P2LivesDP
 @onready var player_2_name_DP = $UIGameplay/UIPlayers/Player2/P2Name
+@onready var player_2_health_int = $UIGameplay/UIPlayers/Player2/P2Health
 
 @onready var player_2_section = $UIGameplay/UIPlayers/Player2
 
@@ -20,7 +22,8 @@ extends CanvasLayer
 
 # Nivel
 @onready var go_sign = $UIGameplay/GO
-@onready var level_time_DP = $UIGameplay/LevelTimeDP
+@onready var level_time_DP = $UIGameplay/UITime/LevelTimeDP
+@onready var time_up = $UIGameplay/UITime/TimeUp
 @onready var score_DP = $UIGameplay/ScoreDP
 
 func _ready():
@@ -39,9 +42,12 @@ func _ready():
 		player_2_health_bar.init_health(Global.player_2_health)
 
 func _process(_delta):
-	level_time_DP.text = str(int(Global.level_time))
 	score_DP.text = "SCORE: " + str(Global.score)
 	
+	player_1_health_int.text = str(Global.player_1_health)
+	player_2_health_int.text = str(Global.player_2_health)
+	
+	update_time_hud()
 	update_player_1_hud()
 	update_player_2_hud()
 
@@ -131,6 +137,14 @@ func update_player_1_hud():
 		player_1_health_bar.health = Global.player_1_health
 	else:
 		recreate_player_health_bar(1)
+	
+	if is_instance_valid(player_1_health_bar):
+		player_1_health_bar.health = Global.player_1_health
+	else:
+		# Si la barra de salud no es válida, intentamos encontrarla de nuevo
+		player_1_health_bar = $UIGameplay/UIPlayers/Player1/HealthBar
+		if is_instance_valid(player_1_health_bar):
+			player_1_health_bar.init_health(Global.player_1_health)
 
 func update_player_2_hud():
 	player_2_name_DP.text = Global.player_2_name
@@ -163,6 +177,17 @@ func update_enemy_hud(enemy_name: String, value: int, max_value: int):
 
 func _on_enemy_hud_timer_timeout():
 	enemy_section.hide()
+
+func update_time_hud():
+	if Global.level_time > 9:
+		level_time_DP.text = str(int(Global.level_time))
+	else:
+		level_time_DP.text = "0" + str(int(Global.level_time))
+	
+	if Global.is_time_up or Global.level_time <= 0:
+		time_up.show()
+	else:
+		time_up.hide()
 
 func show_go_sign():
 	$AnimationPlayer.play("go_animation")

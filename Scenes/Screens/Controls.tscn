@@ -93,33 +93,47 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -788.0
-offset_top = 649.0
-offset_right = -466.0
-offset_bottom = 844.0
+offset_left = -609.0
+offset_top = 647.0
+offset_right = -287.0
+offset_bottom = 836.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
 text = "wasd
-
 las flechas"
-horizontal_alignment = 1
 
-[node name="Or" type="Label" parent="."]
+[node name="P1" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -651.0
-offset_top = 709.0
-offset_right = -591.0
-offset_bottom = 773.0
+offset_left = -885.0
+offset_top = 647.0
+offset_right = -598.0
+offset_bottom = 711.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
+theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "o"
+text = "jugador 1: "
+horizontal_alignment = 1
+
+[node name="P2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -886.0
+offset_top = 711.0
+offset_right = -597.0
+offset_bottom = 775.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "jugador 2: "
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="."]
@@ -127,63 +141,95 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -203.0
-offset_top = 708.0
-offset_right = 119.0
-offset_bottom = 903.0
+offset_left = 61.0
+offset_top = 697.0
+offset_right = 383.0
+offset_bottom = 886.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "z     n"
-horizontal_alignment = 1
-
-[node name="Or2" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -72.0
-offset_top = 708.0
-offset_right = -12.0
-offset_bottom = 772.0
-grow_horizontal = 2
-theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
-theme_override_fonts/font = ExtResource("2_j38lo")
-theme_override_font_sizes/font_size = 50
-text = "o"
-horizontal_alignment = 1
+text = "C
+N"
 
 [node name="Label7" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 395.0
-offset_top = 677.0
-offset_right = 717.0
-offset_bottom = 872.0
+offset_left = 675.0
+offset_top = 679.0
+offset_right = 997.0
+offset_bottom = 868.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 1, 0.916667, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "x    m"
-horizontal_alignment = 1
+text = "V
+M"
 
-[node name="Or3" type="Label" parent="."]
+[node name="P3" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 521.0
-offset_top = 676.0
-offset_right = 581.0
-offset_bottom = 740.0
+offset_left = -215.0
+offset_top = 697.0
+offset_right = 72.0
+offset_bottom = 761.0
 grow_horizontal = 2
-theme_override_colors/font_color = Color(0.466667, 0, 1, 1)
+theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "o"
+text = "jugador 1: "
+horizontal_alignment = 1
+
+[node name="P4" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -216.0
+offset_top = 761.0
+offset_right = 73.0
+offset_bottom = 825.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "jugador 2: "
+horizontal_alignment = 1
+
+[node name="P5" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 389.0
+offset_top = 679.0
+offset_right = 676.0
+offset_bottom = 743.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "jugador 1: "
+horizontal_alignment = 1
+
+[node name="P6" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 388.0
+offset_top = 743.0
+offset_right = 677.0
+offset_bottom = 807.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
+theme_override_fonts/font = ExtResource("2_j38lo")
+theme_override_font_sizes/font_size = 50
+text = "jugador 2: "
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

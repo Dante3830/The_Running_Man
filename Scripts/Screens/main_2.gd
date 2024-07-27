@@ -7,8 +7,6 @@ var enemies_deaths = 0
 @onready var spawn_point_1 = $"SPAWN POINTS/SpawnPoint1"
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
 
-#@export var enable_spawn = true
-
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()

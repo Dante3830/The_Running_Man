@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw7iyhvnlkm"]
+
+[ext_resource type="Script" path="res://Scripts/Items/chicken.gd" id="1_l024n"]
+[ext_resource type="Texture2D" uid="uid://7v3dommuidf0" path="res://Assets/Items/Food.png" id="2_6akki"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f4gkj"]
+size = Vector3(0.271484, 0.174454, 0.064209)
+
+[node name="Cake" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_l024n")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture_filter = 2
+texture = ExtResource("2_6akki")
+region_enabled = true
+region_rect = Rect2(288.78, 104.859, 34.5213, 26.2506)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00292969, 0.0096817, -0.00817871)
+shape = SubResource("BoxShape3D_f4gkj")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -9,8 +9,6 @@ var enemies_deaths = 0
 
 @onready var boss = get_parent().get_node("Boss")
 
-#@export var enable_spawn = true
-
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()

@@ -94,10 +94,12 @@ drop_object = ExtResource("3_yq853")
 
 [node name="Enemy" parent="." instance=ExtResource("6_0eh6h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.47224, -0.183742, 0.480935)
+speed_default = 1.0
 enemy_name = "Jeremy"
 
 [node name="Enemy2" parent="." instance=ExtResource("6_0eh6h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.73028, -0.183742, 1.30595)
+speed_default = 1.0
 enemy_name = "Jeff"
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]

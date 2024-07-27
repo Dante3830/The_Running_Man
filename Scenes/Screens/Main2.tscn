@@ -40,7 +40,6 @@ size = Vector3(1.15436, 1.9502, 3.78662)
 
 [node name="Main2" type="Node3D"]
 script = ExtResource("1_t16aw")
-enable_spawn = false
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.73472, 1.4132, 3.551)

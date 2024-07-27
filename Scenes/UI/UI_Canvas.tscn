@@ -90,6 +90,15 @@ theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 60
 text = "X 5"
 
+[node name="P1Health" type="Label" parent="UIGameplay/UIPlayers/Player1"]
+layout_mode = 0
+offset_left = 69.0
+offset_top = 142.0
+offset_right = 376.0
+offset_bottom = 225.0
+theme_override_font_sizes/font_size = 60
+text = "100"
+
 [node name="Player2" type="Control" parent="UIGameplay/UIPlayers"]
 anchors_preset = 0
 offset_left = 1291.0
@@ -126,6 +135,14 @@ theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 60
 text = "X 5"
 
+[node name="P2Health" type="Label" parent="UIGameplay/UIPlayers/Player2"]
+offset_left = 435.0
+offset_top = 131.0
+offset_right = 742.0
+offset_bottom = 214.0
+theme_override_font_sizes/font_size = 60
+text = "100"
+
 [node name="UIEnemy" type="Control" parent="UIGameplay"]
 anchors_preset = 0
 offset_top = 863.0
@@ -150,7 +167,21 @@ theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 60
 text = "ENEMY_Name"
 
-[node name="LevelTimeDP" type="Label" parent="UIGameplay"]
+[node name="UITime" type="Control" parent="UIGameplay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelTimeDP" type="Label" parent="UIGameplay/UITime"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -167,7 +198,7 @@ theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 160
 text = "99"
 
-[node name="LevelTimeDP2" type="Label" parent="UIGameplay"]
+[node name="LevelTimeDP2" type="Label" parent="UIGameplay/UITime"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -183,6 +214,19 @@ theme_override_constants/outline_size = 12
 theme_override_fonts/font = ExtResource("3_lt1rs")
 theme_override_font_sizes/font_size = 60
 text = "TIEMPO"
+
+[node name="TimeUp" type="Label" parent="UIGameplay/UITime"]
+layout_mode = 1
+offset_left = 705.0
+offset_top = 487.0
+offset_right = 1279.0
+offset_bottom = 680.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 0.916667, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_fonts/font = ExtResource("3_lt1rs")
+theme_override_font_sizes/font_size = 60
+text = "SE ACABÓ EL TIEMPO"
 
 [node name="ScoreDP" type="Label" parent="UIGameplay"]
 layout_mode = 1
