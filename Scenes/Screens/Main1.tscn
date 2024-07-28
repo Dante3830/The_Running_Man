@@ -197,7 +197,7 @@ enemy_a_amount = 6
 enemy_b_amount = 3
 
 [node name="EnemySpawn8" parent="." instance=ExtResource("8_dks80")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51, 0.387, 1.435)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53, 0.387, 1.435)
 enemy_a_amount = 3
 enemy_b_amount = 4
 

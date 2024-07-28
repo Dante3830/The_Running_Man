@@ -82,7 +82,7 @@ func enemy_death():
 		26: next_area(32.0)
 		34: next_area(38.0)
 		42: next_area(46.0)
-		53: next_area(51.0)
+		53: next_area(53.0)
 		60: next_area(59.195)
 
 func next_area(limit : float):
