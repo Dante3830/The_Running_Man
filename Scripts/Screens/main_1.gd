@@ -10,26 +10,19 @@ var enemies_deaths = 0
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
 
 func _ready():
-	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()
 	$SURFACE.hide()
 	
-	# Para obtener las propiedades de la barra de salud del jugador 1
 	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)
-	#print("Jugador 1 barra de salud:", player1_bar_props)
 	
-	# Para modificar las propiedades de la barra de salud del jugador 2
 	ui_canvas.set_player_health_bar_properties(2, {
 		"size": Vector2(240, 25),
 		"rotation": 180,
 		"position": Vector2(539, 131)
 	})
 	
-	# Para obtener las propiedades de la barra de salud del enemigo
 	var enemy_bar_props = ui_canvas.get_enemy_health_bar_properties()
-	#print("Enemigo barra de salud:", enemy_bar_props)
 	
-	# Para modificar las propiedades de la barra de salud del enemigo
 	ui_canvas.set_enemy_health_bar_properties({
 		"size": Vector2(240, 25),
 		"rotation": 0,
@@ -43,9 +36,6 @@ func spawn_players():
 	player_1 = create_player(1, spawn_point_1.position)
 	if Global.two_players_mode:
 		player_2 = create_player(2, spawn_point_2.position)
-	
-	 # Agregar un pequeño retraso
-	#await get_tree().create_timer(0.1).timeout
 	
 	# Colocar los jugadores en su posición
 	if player_1:
@@ -71,7 +61,6 @@ func create_player(player_number, spawn_position):
 func enemy_death():
 	enemies_deaths += 1
 	
-	# Recrear la barra de vida del enemigo
 	ui_canvas.recreate_enemy_health_bar()
 	
 	match enemies_deaths:

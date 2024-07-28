@@ -183,7 +183,7 @@ func enemy_attack(value : int):
 	attk.strength = value
 	get_parent().add_child(attk)
 	attk.transform.origin = $Attack/Spawn.global_transform.origin
-	attk.scale = 1.0
+	attk.scale = 3.0
 
 func stop_movement():
 	velocity.x = 0

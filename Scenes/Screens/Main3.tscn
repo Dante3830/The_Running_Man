@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlfs8lbyxefsv"]
+[gd_scene load_steps=18 format=3 uid="uid://dlfs8lbyxefsv"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
 [ext_resource type="Texture2D" uid="uid://bogmok5vu2aqh" path="res://Assets/Stages/Stage 4D (Sailor Moon).png" id="3_maedm"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_8hehy"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_rixxx"]
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_otm7f"]
-[ext_resource type="PackedScene" uid="uid://byphox7jlp8ky" path="res://Scenes/Players/Richard.tscn" id="10_7ybrk"]
 [ext_resource type="PackedScene" uid="uid://gke1wycfsp2g" path="res://Scenes/Enemies/Boss.tscn" id="10_p5cl5"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_klyig"]
@@ -149,9 +148,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21566, 0.401269, 0.742203)
 
 [node name="SpawnPoint2" type="Marker3D" parent="SPAWN POINTS"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
-
-[node name="Richard" parent="." instance=ExtResource("10_7ybrk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6631, 0, 0.694237)
 
 [node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5992, 0.786057, 1.10362)

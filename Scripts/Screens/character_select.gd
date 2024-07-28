@@ -1,6 +1,5 @@
 extends Control
 
-# Variables para rastrear las elecciones de los jugadores
 var player1_selected = false
 var player2_selected = false
 
