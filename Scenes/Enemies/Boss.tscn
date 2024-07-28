@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://gke1wycfsp2g"]
+[gd_scene load_steps=14 format=3 uid="uid://gke1wycfsp2g"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/boss.gd" id="1_5gb2j"]
 [ext_resource type="Texture2D" uid="uid://duj03gfroo6ii" path="res://Assets/Characters/Damnd.png" id="2_xeuty"]
@@ -80,6 +80,22 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_kq4vg"]
+resource_name = "Hurt"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Rect2(261, 246, 86, 108)]
+}
+
 [sub_resource type="Animation" id="Animation_4dsc3"]
 resource_name = "Idle"
 length = 0.8
@@ -157,22 +173,6 @@ tracks/0/keys = {
 "values": [Rect2(277, 4, 90, 125), Rect2(366, 4, 91, 125), Rect2(456, 4, 92, 125), Rect2(366, 4, 91, 125), Rect2(277, 4, 90, 125)]
 }
 
-[sub_resource type="Animation" id="Animation_kq4vg"]
-resource_name = "Hurt"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Rect2(261, 246, 86, 108)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tg6g3"]
 _data = {
 "Death": SubResource("Animation_scvgx"),
@@ -184,6 +184,9 @@ _data = {
 "Up": SubResource("Animation_a4du4"),
 "Walk": SubResource("Animation_2m650")
 }
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mpex5"]
+radius = 44.5595
 
 [node name="Boss" type="CharacterBody3D"]
 collision_layer = 2
@@ -216,5 +219,12 @@ one_shot = true
 [node name="Spawn" type="Marker3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.512231, 0.325368, 0)
 
+[node name="Detection" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Detection"]
+shape = SubResource("SphereShape3D_mpex5")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_death_animation_finished"]
 [connection signal="timeout" from="TakeDamageTimer" to="." method="_on_take_damage_timer_timeout"]
+[connection signal="body_entered" from="Detection" to="." method="_on_detection_body_entered"]
+[connection signal="body_exited" from="Detection" to="." method="_on_detection_body_exited"]

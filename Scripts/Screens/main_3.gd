@@ -14,6 +14,7 @@ var enemies_deaths = 0
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()
+	$SURFACE.hide()
 	
 	# Para obtener las propiedades de la barra de salud del jugador 1
 	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)

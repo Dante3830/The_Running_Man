@@ -8,14 +8,14 @@ func _on_player_attack_body_entered(body):
 	
 	# Enemigo
 	if body.get_collision_layer() == 2:
-		Global.score += 100
+		Global.score += 50
 		body.take_damage(index, strength)
 		#print("Enemigo golpeado")
 	
 	# Barril
 	if body.get_collision_layer() == 16:
 		#print("Barril golpeado")
-		Global.score += 500
+		Global.score += 300
 		body.take_damage(index, strength)
 
 func _on_timer_timeout():

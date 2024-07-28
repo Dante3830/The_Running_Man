@@ -12,6 +12,7 @@ var enemies_deaths = 0
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
 	spawn_players()
+	$SURFACE.hide()
 	
 	# Para obtener las propiedades de la barra de salud del jugador 1
 	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)
@@ -75,6 +76,7 @@ func enemy_death():
 	
 	match enemies_deaths:
 		0: next_area(-3.874)
+		1: next_area(-3.874)
 		2: next_area(7.0)
 		6: next_area(13.0)
 		11: next_area(20.0)
@@ -82,8 +84,8 @@ func enemy_death():
 		26: next_area(32.0)
 		34: next_area(38.0)
 		42: next_area(46.0)
-		53: next_area(53.0)
-		60: next_area(59.195)
+		50: next_area(53.0)
+		55: next_area(59.195)
 
 func next_area(limit : float):
 	camera.set_camera_limit(limit)
