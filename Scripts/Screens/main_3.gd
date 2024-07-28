@@ -4,12 +4,12 @@ const RESPAWN_HEIGHT_OFFSET = 2.0
 
 var enemies_deaths = 0
 
-@onready var camera = $Camera
+@onready var camera = get_node("Camera")
 @onready var ui_canvas = $UICanvas
 @onready var spawn_point_1 = $"SPAWN POINTS/SpawnPoint1"
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
 
-@onready var boss = get_parent().get_node("Boss")
+@onready var boss = get_node("Boss")
 
 func _ready():
 	# Spawnear jugadores en las posiciones iniciales
@@ -17,8 +17,8 @@ func _ready():
 	
 	# Para obtener las propiedades de la barra de salud del jugador 1
 	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)
-	print("Jugador 1 barra de salud:", player1_bar_props)
-
+	#print("Jugador 1 barra de salud:", player1_bar_props)
+	
 	# Para modificar las propiedades de la barra de salud del jugador 2
 	ui_canvas.set_player_health_bar_properties(2, {
 		"size": Vector2(240, 25),
@@ -28,7 +28,7 @@ func _ready():
 	
 	# Para obtener las propiedades de la barra de salud del enemigo
 	var enemy_bar_props = ui_canvas.get_enemy_health_bar_properties()
-	print("Enemigo barra de salud:", enemy_bar_props)
+	#print("Enemigo barra de salud:", enemy_bar_props)
 	
 	# Para modificar las propiedades de la barra de salud del enemigo
 	ui_canvas.set_enemy_health_bar_properties({
@@ -60,9 +60,9 @@ func spawn_players():
 func create_player(player_number, spawn_position):
 	var player
 	if Global.get("player_{n}_name".format({"n": player_number})) == "Richard":
-		player = preload("res://Scenes/Players/Player1.tscn").instantiate()
-	else:
-		player = preload("res://Scenes/Players/Player2.tscn").instantiate()
+		player = preload("res://Scenes/Players/Richard.tscn").instantiate()
+	elif Global.get("player_{n}_name".format({"n": player_number})) == "Amber":
+		player = preload("res://Scenes/Players/Amber.tscn").instantiate()
 	
 	player.position = spawn_position
 	add_child(player)
@@ -77,16 +77,24 @@ func enemy_death():
 	
 	match enemies_deaths:
 		0: next_area(1.0)
-		6: next_area(7.0)
-		15: next_area(13.0)
-		18: next_area(18.4)
+		12: next_area(7.0)
+		24: next_area(13.0)
+		35: next_area(18.4)
 
 func next_area(limit : float):
 	camera.set_camera_limit(limit)
 	ui_canvas.show_go_sign()
 
 func on_player_died(player, last_position):
-	var player_number = 1 if player.name == "Player1" else 2
+	var player_number
+	
+	if player.name == "Player1":
+		player_number = 1
+	else:
+		player_number = 2
+	
+	# Eliminar el jugador actual
+	player.queue_free()
 	
 	# Esperar un poco antes de hacer respawn
 	await get_tree().create_timer(1.0).timeout
@@ -110,7 +118,10 @@ func on_player_died(player, last_position):
 		ui_canvas.update_player_2_hud()
 	
 	# Notificar a la cámara del nuevo jugador
-	camera.set_players(new_player, null) if player_number == 1 else camera.set_players(null, new_player)
+	if player_number == 1:
+		camera.set_players(new_player, camera.player_2)
+	else:
+		camera.set_players(camera.player_1, new_player)
 
 # Condicion para terminar el nivel
 func finish_level():

@@ -48,12 +48,12 @@ var take_damage_index = 0
 func _on_detection_body_entered(body):
 	if body.get_collision_layer() == 1:
 		player = body
-		print("Jugador detectado")
+		#print("Jugador detectado")
 
 func _on_detection_body_exited(body):
 	if body.get_collision_layer() == 1:
 		player = null
-		print("Jugador salió del rango")
+		#print("Jugador salió del rango")
 
 func _process(delta):
 	# Gravedad
@@ -117,7 +117,7 @@ func take_damage(damage_index: int, damage: int):
 	
 	if take_damage_index >= 3:
 		on_hit = true
-		animation_player.play("Down")
+		animation_player.play("Fall")
 		set_collision_layer_value(2, false)
 		get_tree().create_timer(fall_duration).timeout.connect(_get_up)
 	else:
@@ -178,14 +178,13 @@ func _death():
 	death = true
 	on_hit = true
 	Global.score += 100
-	animation_player.play("Down")
+	animation_player.play("Fall")
 	set_collision_layer_value(2, false)
 	await get_tree().create_timer(0.7).timeout
 	
 	for i in range(10):
 		sprite.visible = not sprite.visible
 		await get_tree().create_timer(0.1).timeout
-	ui_canvas.update_enemy_hud("", 0, 0)
 	get_parent().enemy_death()
 	queue_free()
 

@@ -2,13 +2,15 @@ extends CharacterBody3D
 
 const ATTACK = preload("res://Scenes/Players/PlayerAttack.tscn")
 
+var player_number = 0
+
 @export var speed = 1.0
 @export var jump_force = 4.5
 
 var combo : int
 var hitting = false
 var is_dead = false
-var attack_index = -1
+var attack_index = 0
 
 var in_attack = false
 var can_hit = true
@@ -61,17 +63,17 @@ func _physics_process(delta):
 		jump_sprite.visible = false
 		sprite.visible = true
 	
-	if Input.is_action_just_pressed("LeftP1"):
-		sprite.flip_h = true
+	if Input.is_action_just_pressed("LeftP2"):
+		sprite.flip_h = false
 		jump_sprite.flip_h = false
 		$Attack/Spawn.position.x = -0.4
-	elif Input.is_action_just_pressed("RightP1"):
-		sprite.flip_h = false
+	elif Input.is_action_just_pressed("RightP2"):
+		sprite.flip_h = true
 		jump_sprite.flip_h = true
 		$Attack/Spawn.position.x = 0.4
 	
 	# Movimiento
-	var input_dir := Input.get_vector("LeftP1", "RightP1", "UpP1", "DownP1")
+	var input_dir := Input.get_vector("LeftP2", "RightP2", "UpP2", "DownP2")
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * speed
@@ -86,10 +88,10 @@ func _physics_process(delta):
 	transform.origin.z = clamp(transform.origin.z, 0.444, 2.2)
 	
 	# Salto
-	if Input.is_action_just_pressed("JumpP1") and is_on_floor():
+	if Input.is_action_just_pressed("JumpP2") and is_on_floor():
 		velocity.y = jump_force
 	
-	if Input.is_action_pressed("HitP1"):
+	if Input.is_action_pressed("HitP2"):
 		hitting = true
 		state_machine.travel("Hit1")
 		attack_index += 1
@@ -146,6 +148,10 @@ func _death(time_up = false):
 	stop_movement()
 	is_dead = true
 	Global.player_1_lives -= 1
+	
+	# Desconectar la señal level_time_up
+	if Global.is_connected("level_time_up", Callable(self, "_on_level_time_up")):
+		Global.disconnect("level_time_up", Callable(self, "_on_level_time_up"))
 	
 	# Emitir señal de muerte
 	emit_signal("player_died", self, last_safe_position)

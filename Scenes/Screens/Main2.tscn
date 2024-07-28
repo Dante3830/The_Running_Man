@@ -1,22 +1,26 @@
-[gd_scene load_steps=18 format=3 uid="uid://cggpaukndg53f"]
+[gd_scene load_steps=22 format=3 uid="uid://cggpaukndg53f"]
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_2.gd" id="1_t16aw"]
 [ext_resource type="Texture2D" uid="uid://sl6ruwgtjetc" path="res://Assets/Sprites/Streets of Fight files/Stage Layers/back.png" id="2_2lvpt"]
 [ext_resource type="Texture2D" uid="uid://p7bct1lg8r3v" path="res://Assets/Stages/Stage 3-2 (SORIII).png" id="3_ltr0u"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_an3c3"]
 [ext_resource type="PackedScene" uid="uid://6bmfe8g83q4t" path="res://Scenes/Items/Gold.tscn" id="6_wuphh"]
+[ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="7_03n5n"]
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_4bpe5"]
+[ext_resource type="PackedScene" uid="uid://cw7iyhvnlkm" path="res://Scenes/Items/Cake.tscn" id="8_2m8ax"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_j5ula"]
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_g1t8u"]
+[ext_resource type="FontFile" uid="uid://cvqdurs0vwgu1" path="res://Assets/lazenby_computer/LazenbyCompSmooth.ttf" id="9_gflq7"]
+[ext_resource type="Texture2D" uid="uid://bsi3j8oifhelf" path="res://Assets/Sprites/kenney_pixel-ui-pack/Spritesheet/UIpackSheet_transparent.png" id="10_iqrm3"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_5exso"]
-size = Vector2(40, 4.75)
+size = Vector2(62.49, 4.75)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ltqr4"]
 data = PackedVector3Array(20, 0, 1, -20, 0, 1, 20, 0, -1, -20, 0, 1, -20, 0, -1, 20, 0, -1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_wqyk0"]
-size = Vector3(40, 1.4, 0.06)
+size = Vector3(65, 1.4, 0.06)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_78mxi"]
 data = PackedVector3Array(-20, 0.5, 0.03, 20, 0.5, 0.03, -20, -0.5, 0.03, 20, 0.5, 0.03, 20, -0.5, 0.03, -20, -0.5, 0.03, 20, 0.5, -0.03, -20, 0.5, -0.03, 20, -0.5, -0.03, -20, 0.5, -0.03, -20, -0.5, -0.03, 20, -0.5, -0.03, 20, 0.5, 0.03, 20, 0.5, -0.03, 20, -0.5, 0.03, 20, 0.5, -0.03, 20, -0.5, -0.03, 20, -0.5, 0.03, -20, 0.5, -0.03, -20, 0.5, 0.03, -20, -0.5, -0.03, -20, 0.5, 0.03, -20, -0.5, 0.03, -20, -0.5, -0.03, 20, 0.5, 0.03, -20, 0.5, 0.03, 20, 0.5, -0.03, -20, 0.5, 0.03, -20, 0.5, -0.03, 20, 0.5, -0.03, -20, -0.5, 0.03, 20, -0.5, 0.03, -20, -0.5, -0.03, 20, -0.5, 0.03, 20, -0.5, -0.03, -20, -0.5, -0.03)
@@ -40,18 +44,17 @@ size = Vector3(1.15436, 1.9502, 3.78662)
 script = ExtResource("1_t16aw")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, -4.59592, 1.413, 3.551)
+transform = Transform3D(1, 0, 0, 0, 0.949956, 0.312385, 0, -0.312385, 0.949956, 51.7945, 1.413, 3.551)
 projection = 1
 size = 2.7
 script = ExtResource("4_an3c3")
-clamped = 28.862
+clamped = 51.795
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
-visible = false
 
 [node name="Floor" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9438, -0.684559, 1.1771)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2317, -0.684559, 1.1771)
 mesh = SubResource("PlaneMesh_5exso")
 skeleton = NodePath("../..")
 
@@ -63,7 +66,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_ltqr4")
 
 [node name="Wall1" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.0591, -0.335104, 2.346)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.8747, -0.335104, 2.346)
 mesh = SubResource("BoxMesh_wqyk0")
 skeleton = NodePath("../..")
 
@@ -75,7 +78,7 @@ collision_mask = 3
 shape = SubResource("ConcavePolygonShape3D_78mxi")
 
 [node name="Wall2" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1607, -0.303, -0.210098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.3017, -0.303, -0.210098)
 mesh = SubResource("BoxMesh_wqyk0")
 skeleton = NodePath("../..")
 
@@ -99,7 +102,7 @@ collision_mask = 27
 shape = SubResource("ConcavePolygonShape3D_c642f")
 
 [node name="Wall4" type="MeshInstance3D" parent="SURFACE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.1296, -0.227952, 0.964336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.137, -0.227952, 0.964336)
 mesh = SubResource("BoxMesh_o5ih5")
 skeleton = NodePath("../..")
 
@@ -198,12 +201,6 @@ texture = ExtResource("3_ltr0u")
 region_enabled = true
 region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
 
-[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND/FORE"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3701, 0, 3.981)
-texture = ExtResource("3_ltr0u")
-region_enabled = true
-region_rect = Rect2(484, 397.893, 766, 212.539)
-
 [node name="FORE2" type="Node3D" parent="BACKGROUND/FORE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127204, 0)
 
@@ -231,7 +228,128 @@ texture = ExtResource("3_ltr0u")
 region_enabled = true
 region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
 
-[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND/FORE/FORE2"]
+[node name="BACKGROUND2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.067, 0, -3.79063)
+
+[node name="BACK" type="Node3D" parent="BACKGROUND2"]
+
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, -2.91585, 0, 3.51681)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 2.05341, 0, 3.517)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 7.01642, 0, 3.517)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 11.9475, 0, 3.51681)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 16.9172, 0, 3.517)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D6" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 21.8802, 0, 3.517)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D7" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 26.1209, 0, 3.51681)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="Sprite3D8" type="Sprite3D" parent="BACKGROUND2/BACK"]
+transform = Transform3D(5.20678, 0, 0, 0, 4.59522, 0, 0, 0, 1, 31.091, 0, 3.517)
+texture_filter = 2
+texture = ExtResource("2_2lvpt")
+region_enabled = true
+region_rect = Rect2(-0.772995, -0.886, 95.638, 83.1)
+
+[node name="FORE" type="Node3D" parent="BACKGROUND2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0638766)
+
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.98114)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(14.7656, 397.893, 1112.46, 212.539)
+
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.426, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3777, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9555, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3701, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(484, 397.893, 766, 212.539)
+
+[node name="FORE2" type="Node3D" parent="BACKGROUND2/FORE"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.127204, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="BACKGROUND2/FORE/FORE2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.98114)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(14.7656, 397.893, 1112.46, 212.539)
+
+[node name="Sprite3D2" type="Sprite3D" parent="BACKGROUND2/FORE/FORE2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.426, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D3" type="Sprite3D" parent="BACKGROUND2/FORE/FORE2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.3777, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D5" type="Sprite3D" parent="BACKGROUND2/FORE/FORE2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.9555, 0, 3.981)
+texture = ExtResource("3_ltr0u")
+region_enabled = true
+region_rect = Rect2(125.979, 397.893, 1001.25, 212.539)
+
+[node name="Sprite3D4" type="Sprite3D" parent="BACKGROUND2/FORE/FORE2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.3701, 0, 3.981)
 texture = ExtResource("3_ltr0u")
 region_enabled = true
@@ -246,7 +364,59 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.21566, 0.401269, 0.742203)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
 
 [node name="Barrel" parent="." instance=ExtResource("9_g1t8u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 2.11307)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99813, -0.257351, 1.68483)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel2" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.244899, -0.257351, 0.860089)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel3" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.59129, -0.257351, 1.24961)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel4" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.4214, -0.257351, 1.24961)
+drop_object = ExtResource("7_03n5n")
+
+[node name="Barrel5" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.618, -0.257, 0.7)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel6" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3965, -0.257, 0.7)
+drop_object = ExtResource("8_2m8ax")
+
+[node name="Barrel7" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.3965, -0.257, 1.83995)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel8" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.4359, -0.257, 1.83995)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel9" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.531, -0.257351, 1.24961)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel14" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2216, -0.257351, 1.24961)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel10" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4739, -0.257, 0.7)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel11" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1789, -0.257, 0.7)
+drop_object = ExtResource("6_wuphh")
+
+[node name="Barrel12" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1789, -0.257, 1.83995)
+drop_object = ExtResource("7_03n5n")
+
+[node name="Barrel13" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.5064, -0.257, 1.83995)
 drop_object = ExtResource("6_wuphh")
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_j5ula")]
@@ -261,8 +431,9 @@ enemy_b_amount = 5
 
 [node name="EnemySpawn3" parent="." instance=ExtResource("8_j5ula")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 1.435)
-enemy_a_amount = 5
+enemy_a_amount = 4
 enemy_b_amount = 4
+enemy_c_amount = 1
 
 [node name="EnemySpawn4" parent="." instance=ExtResource("8_j5ula")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 0, 1.435)
@@ -270,16 +441,53 @@ enemy_a_amount = 4
 enemy_b_amount = 2
 enemy_c_amount = 2
 
+[node name="EnemySpawn5" parent="." instance=ExtResource("8_j5ula")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30, 0, 1.435)
+enemy_a_amount = 1
+enemy_b_amount = 4
+enemy_c_amount = 4
+
+[node name="EnemySpawn6" parent="." instance=ExtResource("8_j5ula")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 0, 1.435)
+enemy_a_amount = 2
+enemy_b_amount = 1
+enemy_c_amount = 3
+
+[node name="EnemySpawn7" parent="." instance=ExtResource("8_j5ula")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 0, 1.435)
+enemy_a_amount = 2
+enemy_b_amount = 3
+enemy_c_amount = 2
+
+[node name="EnemySpawn8" parent="." instance=ExtResource("8_j5ula")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 1.435)
+enemy_a_amount = 3
+enemy_b_amount = 1
+enemy_c_amount = 4
+
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 1.5
 
 [node name="UICanvas" parent="." instance=ExtResource("7_4bpe5")]
 
 [node name="NextAreaDoor" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.2116, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.33, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NextAreaDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.24326, 0.286318, 1.39331)
 shape = SubResource("BoxShape3D_xhw33")
+
+[node name="Next zone" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.8827, 0.632165, 0.556139)
+modulate = Color(0, 0.486275, 1, 1)
+text = "edificio"
+font = ExtResource("9_gflq7")
+
+[node name="Sprite3D" type="Sprite3D" parent="Next zone"]
+transform = Transform3D(2.06, 0, 0, 0, 2.06, 0, 0, 0, 2.06, 0.568977, -0.00755739, -0.041194)
+texture_filter = 2
+texture = ExtResource("10_iqrm3")
+region_enabled = true
+region_rect = Rect2(412.862, 467.038, 18.6651, 17.5754)
 
 [connection signal="body_entered" from="NextAreaDoor" to="." method="_on_next_area_door_body_entered"]

@@ -4,7 +4,7 @@ const RESPAWN_HEIGHT_OFFSET = 2.0
 
 var enemies_deaths = 0
 
-@onready var camera = $Camera
+@onready var camera = get_node("Camera")
 @onready var ui_canvas = $UICanvas
 @onready var spawn_point_1 = $"SPAWN POINTS/SpawnPoint1"
 @onready var spawn_point_2 = $"SPAWN POINTS/SpawnPoint2"
@@ -15,7 +15,7 @@ func _ready():
 	
 	# Para obtener las propiedades de la barra de salud del jugador 1
 	var player1_bar_props = ui_canvas.get_player_health_bar_properties(1)
-	print("Jugador 1 barra de salud:", player1_bar_props)
+	#print("Jugador 1 barra de salud:", player1_bar_props)
 
 	# Para modificar las propiedades de la barra de salud del jugador 2
 	ui_canvas.set_player_health_bar_properties(2, {
@@ -26,7 +26,7 @@ func _ready():
 	
 	# Para obtener las propiedades de la barra de salud del enemigo
 	var enemy_bar_props = ui_canvas.get_enemy_health_bar_properties()
-	print("Enemigo barra de salud:", enemy_bar_props)
+	#print("Enemigo barra de salud:", enemy_bar_props)
 	
 	# Para modificar las propiedades de la barra de salud del enemigo
 	ui_canvas.set_enemy_health_bar_properties({
@@ -58,9 +58,9 @@ func spawn_players():
 func create_player(player_number, spawn_position):
 	var player
 	if Global.get("player_{n}_name".format({"n": player_number})) == "Richard":
-		player = preload("res://Scenes/Players/Player1.tscn").instantiate()
-	else:
-		player = preload("res://Scenes/Players/Player2.tscn").instantiate()
+		player = preload("res://Scenes/Players/Richard.tscn").instantiate()
+	elif Global.get("player_{n}_name".format({"n": player_number})) == "Amber":
+		player = preload("res://Scenes/Players/Amber.tscn").instantiate()
 	
 	player.position = spawn_position
 	add_child(player)
@@ -78,14 +78,26 @@ func enemy_death():
 		4: next_area(7.0)
 		13: next_area(15.0)
 		22: next_area(23.0)
-		30: next_area(28.862)
+		30: next_area(30.0)
+		39: next_area(35.0)
+		45: next_area(41.0)
+		52: next_area(48.0)
+		60: next_area(51.795)
 
 func next_area(limit : float):
 	camera.set_camera_limit(limit)
 	ui_canvas.show_go_sign()
 
 func on_player_died(player, last_position):
-	var player_number = 1 if player.name == "Player1" else 2
+	var player_number
+	
+	if player.name == "Richard":
+		player_number = 1
+	elif player.name == "Amber":
+		player_number = 2
+	
+	# Eliminar el jugador actual
+	player.queue_free()
 	
 	# Esperar un poco antes de hacer respawn
 	await get_tree().create_timer(1.0).timeout
@@ -109,9 +121,15 @@ func on_player_died(player, last_position):
 		ui_canvas.update_player_2_hud()
 	
 	# Notificar a la cámara del nuevo jugador
-	camera.set_players(new_player, null) if player_number == 1 else camera.set_players(null, new_player)
+	if player_number == 1:
+		camera.set_players(new_player, camera.player_2)
+	else:
+		camera.set_players(camera.player_1, new_player)
 
 func _on_next_area_door_body_entered(body):
 	if body.get_collision_layer() == 1:
-		get_tree().change_scene_to_file("res://Scenes/Screens/Main3.tscn")
-		Global.level_time = 99
+		call_deferred("change_scene")
+
+func change_scene():
+	get_tree().change_scene_to_file("res://Scenes/Screens/Main3.tscn")
+	Global.level_time = 99

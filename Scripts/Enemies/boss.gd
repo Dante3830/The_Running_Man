@@ -35,7 +35,6 @@ var z_direction = 0.0
 @onready var speed = speed_default
 @onready var life = life_default
 @onready var sprite = $Sprite3D
-@onready var player_1 = get_parent().get_node("Player1")
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var animation_player = $AnimationPlayer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
@@ -46,19 +45,42 @@ var z_direction = 0.0
 @export var attk_distance_x = 0.5
 @export var attk_distance_z = 0.5
 
-func _ready():
-	randomize()
+var target_1 = null
+var target_2 = null
 
 func _process(delta):
-	# Gravedad
-	if player_1.global_transform.origin.x >= 17.0:
-		velocity.y -= 9.8 * delta
-	else:
-		velocity.y -= 0
-	
+	_update_targets()
+	_check_gravity_activation(delta)
 	_movement(delta)
 	_animations()
 	_flip()
+
+func _update_targets():
+	if Global.player_1_name == "Richard" or Global.player_1_name == "Amber":
+		target_1 = get_parent().get_node(Global.player_1_name)
+	else:
+		target_1 = null
+	
+	if Global.two_players_mode:
+		if Global.player_2_name == "Richard" or Global.player_2_name == "Amber":
+			target_2 = get_parent().get_node(Global.player_2_name)
+		else:
+			target_2 = null
+	else:
+		target_2 = null
+
+func _check_gravity_activation(delta):
+	var should_activate_gravity = false
+	
+	if target_1 and target_1.global_transform.origin.x >= 17.0:
+		should_activate_gravity = true
+	elif Global.two_players_mode and target_2 and target_2.global_transform.origin.x >= 17.0:
+		should_activate_gravity = true
+	
+	if should_activate_gravity:
+		velocity.y -= 9.8 * delta
+	else:
+		velocity.y = 0
 
 func _physics_process(delta):
 	if not death and not on_hit:
@@ -125,7 +147,7 @@ func _flip():
 	if take_damage_entry or in_attack:
 		return
 	
-	if player_1.transform.origin.x > transform.origin.x:
+	if target_1.transform.origin.x > transform.origin.x:
 		facing_right = true
 		$Attack/Spawn.position.x = 0.512
 	else:

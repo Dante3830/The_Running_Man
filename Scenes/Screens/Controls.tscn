@@ -117,7 +117,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 1: "
+text = "richard: "
 horizontal_alignment = 1
 
 [node name="P2" type="Label" parent="."]
@@ -133,7 +133,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 2: "
+text = "amber: "
 horizontal_alignment = 1
 
 [node name="Label6" type="Label" parent="."]
@@ -181,7 +181,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 1: "
+text = "richard: "
 horizontal_alignment = 1
 
 [node name="P4" type="Label" parent="."]
@@ -197,7 +197,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 2: "
+text = "amber: "
 horizontal_alignment = 1
 
 [node name="P5" type="Label" parent="."]
@@ -213,7 +213,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(0.129412, 0.34902, 1, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 1: "
+text = "richard: "
 horizontal_alignment = 1
 
 [node name="P6" type="Label" parent="."]
@@ -229,7 +229,7 @@ grow_horizontal = 2
 theme_override_colors/font_color = Color(1, 0.362, 0.13, 1)
 theme_override_fonts/font = ExtResource("2_j38lo")
 theme_override_font_sizes/font_size = 50
-text = "jugador 2: "
+text = "amber: "
 horizontal_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

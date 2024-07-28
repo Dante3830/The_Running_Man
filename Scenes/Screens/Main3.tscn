@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Screens/main_3.gd" id="1_ixssj"]
 [ext_resource type="Texture2D" uid="uid://bogmok5vu2aqh" path="res://Assets/Stages/Stage 4D (Sailor Moon).png" id="3_maedm"]
-[ext_resource type="PackedScene" uid="uid://b03sapmouwjyb" path="res://Scenes/Items/Burger.tscn" id="3_yq853"]
 [ext_resource type="Script" path="res://Scripts/UI/camera.gd" id="4_rvo6f"]
+[ext_resource type="PackedScene" uid="uid://6bmfe8g83q4t" path="res://Scenes/Items/Gold.tscn" id="5_hbopk"]
 [ext_resource type="PackedScene" uid="uid://le8uuuu77tny" path="res://Scenes/UI/UI_Canvas.tscn" id="7_8hehy"]
 [ext_resource type="PackedScene" uid="uid://d30cyth32fx7y" path="res://Scenes/Enemies/EnemySpawn.tscn" id="8_rixxx"]
 [ext_resource type="PackedScene" uid="uid://dwfhvrlimq73w" path="res://Scenes/Items/Barrel.tscn" id="9_otm7f"]
@@ -45,6 +45,7 @@ clamped = 18.4
 
 [node name="SURFACE" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0306797)
+visible = false
 
 [node name="Floor" type="MeshInstance3D" parent="SURFACE"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9438, -0.684559, 1.1771)
@@ -150,7 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98643, 0.465153, 1.6566)
 
 [node name="Barrel" parent="." instance=ExtResource("9_otm7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.998, -0.257, 1.36297)
-drop_object = ExtResource("3_yq853")
+drop_object = ExtResource("5_hbopk")
 
 [node name="Barrel2" parent="." instance=ExtResource("9_otm7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4363, -0.257351, 0.579296)
@@ -163,24 +164,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1123, -0.257351, 2.02988)
 
 [node name="EnemySpawn" parent="." instance=ExtResource("8_rixxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.51903, 0, 1.43511)
-enemy_a_amount = 2
-enemy_b_amount = 2
+enemy_a_amount = 5
+enemy_b_amount = 5
 enemy_c_amount = 2
 
 [node name="EnemySpawn2" parent="." instance=ExtResource("8_rixxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1.435)
-enemy_a_amount = 2
-enemy_b_amount = 3
+enemy_a_amount = 3
+enemy_b_amount = 5
 enemy_c_amount = 4
 
 [node name="EnemySpawn3" parent="." instance=ExtResource("8_rixxx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 1.435)
-enemy_a_amount = 1
-enemy_b_amount = 1
-enemy_c_amount = 1
+enemy_a_amount = 5
+enemy_b_amount = 5
+enemy_c_amount = 4
 
 [node name="Boss" parent="." instance=ExtResource("10_p5cl5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5992, 3.93404, 1.10362)
+life_default = 400
 
 [node name="RespawnTimer" type="Timer" parent="."]
 wait_time = 1.5
