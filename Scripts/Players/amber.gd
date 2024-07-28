@@ -54,7 +54,6 @@ func _physics_process(delta):
 	if in_take_damage:
 		return
 	
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		jump_sprite.visible = true
@@ -149,7 +148,6 @@ func _death(time_up = false):
 	is_dead = true
 	Global.player_1_lives -= 1
 	
-	# Desconectar la señal level_time_up
 	if Global.is_connected("level_time_up", Callable(self, "_on_level_time_up")):
 		Global.disconnect("level_time_up", Callable(self, "_on_level_time_up"))
 	

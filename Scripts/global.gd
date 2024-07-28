@@ -60,16 +60,14 @@ func check_for_extra_life():
 func time_up():
 	if level_time <= 0:
 		is_time_up = true
-		if player_1_health > 0:  # Solo si el jugador aún tiene salud
+		if player_1_health > 0:
 			player_1_health = 0
 		
 		if two_players_mode and player_2_health > 0:
 			player_2_health = 0
 		
-		# Reiniciar el tiempo del nivel
-		level_time = 99  # O el valor inicial que prefieras
+		level_time = 99
 		
-		# Emitir una señal para manejar el respawn
 		emit_signal("level_time_up")
 	else:
 		is_time_up = false

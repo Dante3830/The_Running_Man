@@ -37,7 +37,7 @@ func _ready():
 		Global.connect("level_time_up", Callable(self, "_on_level_time_up"))
 
 func _process(_delta):
-	#print("Posición del jugador: ", global_position)
+	print("Posición del jugador: ", global_position.x)
 	transform.origin.x = clamp(transform.origin.x, camera.transform.origin.x - 4.5, camera.clamped + 4.5)
 	
 	if is_on_floor():
@@ -54,7 +54,6 @@ func _physics_process(delta):
 	if in_take_damage:
 		return
 	
-	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		jump_sprite.visible = true
@@ -149,14 +148,13 @@ func _death(time_up = false):
 	is_dead = true
 	Global.player_1_lives -= 1
 	
-	# Desconectar la señal level_time_up
 	if Global.is_connected("level_time_up", Callable(self, "_on_level_time_up")):
 		Global.disconnect("level_time_up", Callable(self, "_on_level_time_up"))
 	
 	# Emitir señal de muerte
 	emit_signal("player_died", self, last_safe_position)
 	
-	# Esperar a que termine la animación de muerte
+	# Espera a que termine la animación de muerte
 	await get_tree().create_timer(1.0).timeout
 	
 	queue_free()

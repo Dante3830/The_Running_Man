@@ -1,4 +1,3 @@
-# HEALTH BAR
 extends ProgressBar
 
 @onready var damage_bar = $DamageBar

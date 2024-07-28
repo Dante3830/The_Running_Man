@@ -22,7 +22,7 @@ var knockback_speed = 0.5
 
 var take_damage_entry = false
 
-@export var fall_duration = 2.0   # Duración en segundos que permanece caído
+@export var fall_duration = 2.0
 
 var walk_timer = 0.0
 
@@ -37,23 +37,20 @@ var z_direction = 0.0
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 
-@onready var detection_area = $Detection
 @onready var player = null
 
-@export var attk_distance_x = 0.5  # Distancia en X para atacar
-@export var attk_distance_z = 0.5  # Distancia en Z para atacar
+@export var attk_distance_x = 0.5
+@export var attk_distance_z = 0.5
 
 var take_damage_index = 0
 
 func _on_detection_body_entered(body):
 	if body.get_collision_layer() == 1:
 		player = body
-		#print("Jugador detectado")
 
 func _on_detection_body_exited(body):
 	if body.get_collision_layer() == 1:
 		player = null
-		#print("Jugador salió del rango")
 
 func _process(delta):
 	# Gravedad
@@ -88,28 +85,19 @@ func _movement(_delta):
 		
 		if not in_attack:
 			if distance > stop_distance:
-				# Moverse hacia el jugador
 				velocity.x = direction.x * speed_default
 				velocity.z = direction.z * speed_default
 			else:
-				# Detenerse cerca del jugador
 				stop_movement()
 			
-			# Atacar cuando esté lo suficientemente cerca en ambos ejes
 			if distance_x <= attk_distance_x and distance_z <= attk_distance_z and can_attack:
 				_start_attack()
 		else:
 			stop_movement()
-		
-		#print("Moviendo hacia el jugador. Distancia X:", distance_x, " Distancia Z:", distance_z)
 	
 	else:
 		stop_movement()
 	
-	
-	#print("Posición del enemigo: ", global_position)
-	
-	# Mover al enemigo
 	move_and_slide()
 
 func take_damage(damage_index: int, damage: int):
@@ -122,7 +110,7 @@ func take_damage(damage_index: int, damage: int):
 	stop_movement()
 	
 	life = max(0, life - damage)
-	ui_canvas.update_enemy_hud(enemy_name, life, life_default)
+	ui_canvas.update_enemy_hud(enemy_name, life, life_default, false)
 	
 	if take_damage_index >= 3:
 		on_hit = true
@@ -216,7 +204,6 @@ func _start_attack():
 	in_attack = true
 	can_attack = false
 	stop_movement()
-	# Aquí podrías llamar a la función de ataque si es necesario
 	get_tree().create_timer(0.5).timeout.connect(_end_attack)
 
 func _end_attack():

@@ -20,8 +20,6 @@ func _process(delta):
 			position.x = lerp(position.x, target_player.transform.origin.x, smooth * delta)
 	
 	position.x = clamp(position.x, -17.8, clamped)
-	
-	#print("Camara X: " + str(position.x))
 
 func set_camera_limit(limit : float):
 	clamped = limit

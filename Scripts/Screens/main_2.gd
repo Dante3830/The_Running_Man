@@ -115,13 +115,11 @@ func on_player_died(player, last_position):
 	# Recrear la barra de salud en la UI
 	ui_canvas.recreate_player_health_bar(player_number)
 	
-	# Actualizar la UI
 	if player_number == 1:
 		ui_canvas.update_player_1_hud()
 	else:
 		ui_canvas.update_player_2_hud()
 	
-	# Notificar a la cámara del nuevo jugador
 	if player_number == 1:
 		camera.set_players(new_player, camera.player_2)
 	else:

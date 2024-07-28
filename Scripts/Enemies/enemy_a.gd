@@ -38,7 +38,6 @@ var z_direction = 0.0
 @onready var take_damage_timer = $TakeDamageTimer
 @onready var ui_canvas = get_parent().get_node("UICanvas")
 
-@onready var detection_area = $Detection
 @onready var player = null
 
 @export var attk_distance_x = 0.5
@@ -85,11 +84,9 @@ func _movement(_delta):
 		
 		if not in_attack:
 			if distance > stop_distance:
-				# Moverse hacia el jugador
 				velocity.x = direction.x * speed_default
 				velocity.z = direction.z * speed_default
 			else:
-				# Detenerse cerca del jugador
 				stop_movement()
 			
 			# Atacar cuando esté lo suficientemente cerca en ambos ejes
@@ -100,7 +97,6 @@ func _movement(_delta):
 	else:
 		stop_movement()
 	
-	# Mover al enemigo
 	move_and_slide()
 
 func take_damage(damage_index: int, damage: int):
@@ -113,7 +109,7 @@ func take_damage(damage_index: int, damage: int):
 	stop_movement()
 	
 	life = max(0, life - damage)
-	ui_canvas.update_enemy_hud(enemy_name, life, life_default)
+	ui_canvas.update_enemy_hud(enemy_name, life, life_default, false)
 	
 	if take_damage_index >= 3:
 		on_hit = true
@@ -207,7 +203,6 @@ func _start_attack():
 	in_attack = true
 	can_attack = false
 	stop_movement()
-	# Aquí podrías llamar a la función de ataque si es necesario
 	get_tree().create_timer(0.5).timeout.connect(_end_attack)
 
 func _end_attack():
