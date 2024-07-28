@@ -73,6 +73,9 @@ func _movement(_delta):
 	if take_damage_entry or death:
 		return
 	
+	# Aplicar límites en el eje Z
+	transform.origin.z = clamp(transform.origin.z, 0.444, 2.2)
+	
 	if player and not take_damage_entry:
 		var direction = (player.global_position - global_position).normalized()
 		var distance = global_position.distance_to(player.global_position)
