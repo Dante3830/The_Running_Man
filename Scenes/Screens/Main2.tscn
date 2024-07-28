@@ -408,6 +408,10 @@ drop_object = ExtResource("6_wuphh")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.4739, -0.257, 0.7)
 drop_object = ExtResource("6_wuphh")
 
+[node name="Barrel15" parent="." instance=ExtResource("9_g1t8u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37.8624, -0.257, 0.7)
+drop_object = ExtResource("8_2m8ax")
+
 [node name="Barrel11" parent="." instance=ExtResource("9_g1t8u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1789, -0.257, 0.7)
 drop_object = ExtResource("6_wuphh")
