@@ -167,10 +167,10 @@ func _death():
 	stop_movement()
 	death = true
 	on_hit = true
-	Global.score += 100
+	Global.score += 10000
 	animation_player.play("Fall")
 	set_collision_layer_value(2, false)
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(1.5).timeout
 	
 	for i in range(20):
 		sprite.visible = not sprite.visible
